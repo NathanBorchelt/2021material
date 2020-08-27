@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+
+
 public class ScannerTax {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
@@ -13,11 +15,7 @@ public class ScannerTax {
 
         System.out.println("Discount?");
         double discount = in.nextInt();
-        //System.out.println(tax(bill,tax));
-
-        System.out.println("What is the name?");
-        String name = in.next();
-        System.out.println(tax(name,tax,discount));
+        System.out.println(tax(bill,tax,discount));
 
         in.close();
 
@@ -26,23 +24,14 @@ public class ScannerTax {
             int can converto to double
             double cannot be int, because of removal of information
         */
-
-        public static double tax(double bill, double tax){
+    /*
+        public static double tax(int bill, int tax){
         double t = tax/100;
         double tamount = bill*t;
         double total = tamount+bill;
         return total;
     }
-
-    public static double tax(String name, double bill, double tax){
-        double t = tax/100;
-        double tamount = bill*t;
-        double total = tamount+bill;
-        System.out.println(name + " owes this much: ");
-        return total;
-    }
-
-
+    */
     public static double tax(double bill, double tax, double discount){
         double t = tax/100;
         bill = (1-discount/100)*bill;
