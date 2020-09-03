@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner; import static java.lang.Math.pow;
 public class BorcheltU1S1Problems{ 
     public static void main(String[] args){
-        
+        drivingCost();
     }
     public static void converMiletoKm(){ 
         Scanner in = new Scanner(System.in);  
@@ -33,6 +34,13 @@ public class BorcheltU1S1Problems{
         in.close();
     }
     public static void drivingCost(){
-        
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Miles Driven:  ");
+        double milageDriven = in.nextDouble();
+        System.out.println("Enter MPG:   ");
+        double milesPerGallon = in.nextDouble();
+        System.out.println("Enter Price Per Gallon:   ");
+        double pricePerGallon = in.nextDouble();
+        System.out.printf("To drive " + milageDriven + " miles, it would cost $%.2f.",((milageDriven/milesPerGallon)*pricePerGallon));
     }
 }
