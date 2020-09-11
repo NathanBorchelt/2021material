@@ -1,9 +1,9 @@
 import java.lang.Math; import java.util.*;
 public class BorcheltU1S2PracticeProblems {
    public static void main(String[] args) {
-       midPointTable();
+       triangleVolume();
    } 
-   public static void triangleArea(){
+   private static void triangleArea(){
     Scanner in = new Scanner(System.in);
     System.out.println("Enter the coordinates of the three points separated by spaces\n like x1 y1 x2 y2 x3 y3:  ");
     String inputNumbers = in.nextLine();
@@ -19,7 +19,7 @@ public class BorcheltU1S2PracticeProblems {
     System.out.printf("The Area of the triangle is %1f",area);
     in.close();
     }
-    public static void midPointTable(){
+    private static void midPointTable(){
         //Scanner in = new Scanner(System.in);
         //Midpoint = (p1+p2)/2  , do for both x any y
         double[][] coords = {{0,0},{2,1},{1,4},{4,2},{2,7},{6,3},{3,9},{10,5},{4,11},{12,7}};
@@ -32,12 +32,28 @@ public class BorcheltU1S2PracticeProblems {
             System.out.printf("%20s%20s%20s%n","("+coords[step][0]+","+coords[step][1]+")","("+coords[step+1][0]+","+coords[step+1][1]+")","("+xCord+","+yCord+")");
             step += 2;
         }
-
     }
 
     public static double midPoint(double point1, double point2){
         double rtnMidpoint = ((point1 + point2)/2);
         return rtnMidpoint;
     }
+    private static void minuteYearConverter(){
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter the number of minutes:  "); int inMin = in.nextInt();
+        int yearsPassed = inMin / 525600;
+        int nonFullYearMinutes = inMin % 525600;
+        int daysRemaining = nonFullYearMinutes / 1440;
 
+        System.out.printf("%s minutes is the same as %s years and %s days.",inMin,yearsPassed,daysRemaining);
+        in.close();
+    }
+    private static void triangleVolume(){
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter the length of of an Equilateral triangle:  "); double sideLength = in.nextDouble();
+        double area = ((Math.sqrt(3))/4)*(sideLength*sideLength);
+        double triVolume = area * sideLength;
+        System.out.printf("The area is %.2f\nThe Volume of the Triangular prism is %.2f", area, triVolume);
+        in.close();
+    }
 }

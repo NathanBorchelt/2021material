@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "408564155576",
+    "firebase_url": "https://banderinentorywebstoredb.firebaseio.com",
+    "project_id": "banderinentorywebstoredb",
+    "storage_bucket": "banderinentorywebstoredb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408564155576:android:c4de6c0a09e185d244a04d",
+        "android_client_info": {
+          "package_name": "com.example.androidinventory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408564155576-jrfc9ef72mqc7osp9sho8ju1ajch8207.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtWiNoOQAmWgP7agGVCJOUQTZXkBSQuDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408564155576-jrfc9ef72mqc7osp9sho8ju1ajch8207.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
