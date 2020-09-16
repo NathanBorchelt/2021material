@@ -6,6 +6,8 @@ public class chooseYourPath {
         System.out.println("You and Rick are heading to a deal. As the deal goes south, Rick tells you to jump into a vat of acid:\nWhat do you do?");
         System.out.print
 
-    public static void printLoop(String q)
+    public static void printLoop(String q){
+        
+    }
     }
 }
