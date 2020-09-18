@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mPstVerb;
     private TextView mAdjective;
     private TextView mRoom;
-    private TextView mOutput
+    private TextView mOutput;
     private LinearLayout mVerticalLayout;
 
 
