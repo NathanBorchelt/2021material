@@ -17,8 +17,8 @@ public class TheLottery {
         while ((!input.equals("Quit") || !input.equals("quit")) && credits > 0){
             inputBet = Integer.valueOf(input);
             guessingNum = rand.nextInt(100)+1;
+            System.out.println(inputInstruction); inputNum = in.nextInt();
             while ( !correctAnswer && turns != 0){
-                System.out.println(inputInstruction); inputNum = in.nextInt();
                 if (inputNum == guessingNum){
                     correctAnswer = true;
                     credits += inputBet+(turns*inputBet*.1);
@@ -35,8 +35,10 @@ public class TheLottery {
                 else if(inputNum < guessingNum){
                     System.out.println("The number is higher");
                 }
+                System.out.println(inputInstruction); inputNum = in.nextInt();
             }
-            System.out.print(instructionLine); input = in.nextLine();
+            System.out.print(instructionLine); 
+            input = in.nextLine();
             turns = 5;
             correctAnswer = false;
         }
