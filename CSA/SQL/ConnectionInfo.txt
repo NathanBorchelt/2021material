@@ -1,0 +1,5 @@
+endpoint: database-1.cmdytnitoh1c.us-east-1.rds.amazonaws.com
+port: 3306
+username: admin
+password: Momanddad-1
+db identifier: database-1
