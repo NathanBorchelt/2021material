@@ -1,0 +1,50 @@
+id, snack, quanity, cost, url1, foodType
+1	Snickers Bar	0	0.75	https://www.samsclub.com/p/snickers-bars-48ct/prod8150240?xid=plp_product_1_1
+2	Goldfish	0	0.50	https://www.samsclub.com/p/pepperidge-farm-goldfish-cheddar-crackers-36ct/prod23390969
+3	Mountain Dew	0	1.00	https://www.samsclub.com/p/mountain-dew-24-oz-bottles-24-pk/167836
+4	3 Musketeers Candy Bar	0	0.75	https://www.samsclub.com/p/3-musketeers-36-ct/prod8150219?xid=plp_product_1_1
+5	Doritos	0	1.00	https://www.samsclub.com/p/doritos-nacho-50ct/prod14220235?xid=plp_product_15
+6	Chips	0	0.50	https://www.samsclub.com/p/frito-lay-flavor-mix-variety-pack-50-1-oz/124013?xid=cat1444-groc_carousel_criteo_3
+7	Ding Dong	0	0.50	https://www.samsclub.com/p/hostess-ding-dongs-24-pk/131925
+8	Frito-Lay Classic Mix Variety Pack (50 pk.)	0	0.50	https://www.samsclub.com/p/classic-variety-pk-50ct/prod14220234?xid=plp_product_2
+9	Mtn Dew Baja Blast	0	0.75	https://www.samsclub.com/p/mountain-dew-baja-blast-12oz-24pk/prod23210834
+10	Nabisco Sweet Treats Cookie Variety Pack (60 pk.)	0	1.00	https://www.samsclub.com/p/nabisco-2ct-vty-pk-60-ct/prod20201063?xid=plp_product_22
+11	Ritz Crackers	0	1.00	https://www.samsclub.com/p/kraft-crackers-n-cheez-30-95-oz-packs/105178
+12	Mountain Dew 24 oz.	0	0.75	https://www.samsclub.com/p/mountain-dew-24-oz-bottles-24-pk/167836?xid=plp_product_1_2
+13	Pudding	0	1.00	https://www.samsclub.com/p/hunt-s-snack-pack-pudding-variety-36-3-5-oz/120552?xid=cat1444-groc_carousel_criteo_4
+14	Cheetos Crunchy (1 oz. 50 ct.)	0	1.00	https://www.samsclub.com/p/cheetos-crunchy-50ct/prod14220233?xid=plp_product_8
+15	Takis	0	1.00	https://www.samsclub.com/p/takis-fuego-46-ct/prod19900687?xid=plp_product_23
+16	m&ms	0	1.00	https://www.samsclub.com/p/m-m-s-peanut-48-1-74-oz-bags/157752?xid=cat1444-groc_carousel_criteo_17
+17	Twizzlers	0	0.25	https://www.samsclub.com/p/twizzlers-strawberry-twists-180-pcs/157982?xid=plp_product_1
+18	Doritos Nacho Cheese (1 oz. 50 pk.)	0	1.00	https://www.samsclub.com/p/doritos-nacho-50ct/prod14220235?xid=pdp_carousel_rich-relevance.rr0_5
+19	Gatoraide	0	0.75	https://www.samsclub.com/p/gatorade-variety-pack-12-24oz-bottles/131777?xid=_headerGrid_6_3
+20	Gatorade	0	1.00	https://www.samsclub.com/p/gatorade-cool-blue-20-oz-bottles-24-pk/prod1190338?xid=plp_product_7
+21	Lay's Classic Potato Chips (1 oz. 50 pk.)	0	1.00	https://www.samsclub.com/p/lay-regular-50ct/prod14220237?xid=pdp_carousel_rich-relevance.rr0_7
+22	Coca-Cola 16.9 oz	0	0.75	https://www.samsclub.com/p/coca-cola-16-9-oz-bottles-24-pk/168645?xid=plp_product_1_2
+23	Almond Joy	0	0.25	https://www.samsclub.com/p/peter-paul-almond-joy-36-bars/159940?xid=plp_product_1
+24	Twizzlers Nibs Cherry Candy (2.25 oz. 36 ct	0	0.75	https://www.samsclub.com/p/twizzlers-nibs-cherry-bits-36-2-25-oz/157051?xid=plp_product_5
+25	Haribo Gold Bears	0	1.00	https://www.samsclub.com/p/haribo-gold-bear-5oz-caddy-12-ct/prod21002330?xid=plp_product_1_3
+26	Motts Fruit Snacks	0	0.50	https://www.samsclub.com/p/motts-90-ct-90-ct/prod20292242?xid=plp_product_2
+27	Mountain Dew	0	0.50	https://www.samsclub.com/p/mountain-dew-36-12-oz-cans/168408?xid=plp_product_2
+28	Lay's Barbecue Potato Chips (1 oz. 50 pk.)	0	1.00	https://www.samsclub.com/p/lay-s-kc-masterpiece-barbq-50-1-oz-bags/160932?xid=pdp_carousel_rich-relevance.rr0_7
+29	Twinkies	0	1.00	https://www.samsclub.com/p/hostess-variety-pack-dng-dngs-twnke-32-ct/prod21930040?xid=plp_product_1
+30	Ruffles Original Potato Chips (1 oz. 50 pk.)	0	1.00	https://www.samsclub.com/p/ruffles-original-50-count/prod19130040?xid=pdp_carousel_rich-relevance.rr0_8
+31	Monster Energy Mega Can Original (24oz / 12pk)	0	1.00	https://www.samsclub.com/p/mega-monster-energy-12-24oz/190986?xid=plp_product_3
+32	5-hour ENERGY Shot Extra Strength Berry (1.93 oz. 24 pk.)	0	1.00	https://www.samsclub.com/p/5-hour-energy-berry-extra-shots-24-pack/198675?xid=plp_product_2
+33	sun chips mixed varity	0	0.50	https://www.samsclub.com/p/sunchips-variety-pk-30ct/prod14220240?xid=plp_product_1
+34	Sunchips Garden Salsa	0	1.00	https://www.samsclub.com/p/sunchips-garden-salsa-flavored-whole-grain-snacks13-oz/prod24373503?xid=plp_product_13
+35	CANDY	0	1.00	https://www.samsclub.com/p/skittles-starburst-fruity-candy-variety-box-single-packs-23ct/prod23550519?xid=plp_product_5
+36	MORE CANDY DIFFERENT	0	1.00	https://www.samsclub.com/p/hershey-s-full-size-variety-pack-30-ct/182959?xid=plp_product_18
+37	Famous Amos Chocolate Chip Cookies	0	0.50	https://www.samsclub.com/p/famous-amos-42ct-42-ct/prod18983410?xid=plp_product_1_2
+38	potato skins	0	0.75	https://www.samsclub.com/p/t-g-i-friday-s-cheddar-bacon-potato-skins-snack-chips-50-1-oz/161944?xid=plp_product_35
+39	Sugar Donuts	0	0.50	https://www.samsclub.com/p/duchess-mini-sugar-donuts-12-3-oz/161770?xid=plp_product_2
+40	IZZIE Sparkling Juice	0	1.00	https://www.samsclub.com/p/izze-sparkling-juice-variety-12oz-12pk-glass/193433
+41	Monster Energy Java	0	1.00	https://www.samsclub.com/p/monster-java-variety-12pk-15-5oz-can/prod9110146?xid=plp_product_8
+42	BABY BOTTLE POP	0	1.00	https://www.samsclub.com/p/baby-bottle-pop-assortment-20-85-oz/178235?xid=plp_product_46
+43	Lay's  Classic Potato Chips	0	0.25	https://www.samsclub.com/p/lay-regular-50ct/prod14220237?xid=plp_product_1_1
+44	Monster Energy Original	0	1.00	https://www.samsclub.com/p/monster-energy-drink-24-16-oz/155316?xid=plp_product_1
+45	PUSH POP	0	1.00	https://www.samsclub.com/p/push-pop-assorted-flavors-24-ct/156070?xid=plp_product_47
+46	Doritos Nacho Cheese	0	0.25	https://www.samsclub.com/p/doritos-nacho-50ct/prod14220235?xid=plp_product_1_8
+47	Reese's	0	1.00	https://www.samsclub.com/p/reese-peanut-butter-snack-size-42oz-70ct/prod22321584?xid=plp_product_3
+48	Members Mark Lemonade	0	0.25	https://www.samsclub.com/p/members-mark-natural-lemonade-twin-pack-52-fl-2-pk/prod24451007?xid=plp_product_3
+49	Monster Energy Zero Ultra	0	1.00	https://www.samsclub.com/p/monster-zero-ultra-24pk-16oz-can/prod8620263?xid=plp_product_2

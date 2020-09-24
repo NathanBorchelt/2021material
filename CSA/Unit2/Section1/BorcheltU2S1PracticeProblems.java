@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Random;
 public class BorcheltU2S1PracticeProblems {
     public static void main(String[] args) {
-        passwordGenerator();
+        cToFChart();
     }
     public static void passwordGenerator(){
         Scanner in = new Scanner(System.in);
@@ -26,8 +26,7 @@ public class BorcheltU2S1PracticeProblems {
         boolean allDone = false;
         boolean anotherLoop = false;
 
-        char tempChar;
-
+        String tempChar;
         String specCharsString = "!@#$%&()_-+=?";
         String passwordOut;
         String checkAgain;
@@ -46,28 +45,28 @@ public class BorcheltU2S1PracticeProblems {
             while(!allDone){
                 charType = rand.nextInt(4);
                 if (charType == 0 && addedCap != capLets){
-                    tempChar = (char)(rand.nextInt(26)+65);
+                    tempChar = String.valueOf((char)(rand.nextInt(26)+65));
                     passwordOut += tempChar; addedCap++;
                     if (addedCap == capLets){
                         doneCap = true;
                     }
                 }
                 else if (charType == 1 && addedLow != lowLets){
-                    tempChar = (char)(rand.nextInt(26)+97);
+                    tempChar = String.valueOf((char)(rand.nextInt(26)+97));
                     passwordOut += tempChar; addedLow++;
-                    if (addedLow == lowChars){
+                    if (addedLow == lowLets){
                         doneLow = true;
                     }
                 }
-                else if (charType == 2 && addedSpc != specLets){
+                else if (charType == 2 && addedSpc != specChars){
                     tempChar = specCharsString.substring(i = rand.nextInt(specCharsString.length()),i+1);
                     passwordOut += tempChar; addedSpc++;
-                    if (addedSpc == spcChars){
+                    if (addedSpc == specChars){
                         doneSpc = true;
                     }
                 }
                 else if (charType == 3 && addedNum != numChars){
-                    tempChar = String.valueOf(rand.nextInt(10));
+                    tempChar = String.valueOf((char)(rand.nextInt(10)+48));
                     passwordOut += tempChar; addedNum++;
                     if (addedNum == numChars){
                         doneNum = true;
@@ -86,4 +85,19 @@ public class BorcheltU2S1PracticeProblems {
 
         }
     }
+    public static void cToFChart(){
+        int f = 20;
+        double fahrenheitOut;
+        double celsiusOut;
+        System.out.printf("%10s%10s%5s%10s%10s","Celsius","Fahrenheit","|     ","Fahrenheit","Celsius");
+        for (int c =0;c < 100;c+=2){
+            fahrenheitOut = c*1.8+32;
+            celsiusOut = (f-32)/1.8;
+            System.out.printf("%10d%10d.3%5s%10d%10d.3",c,fahrenheitOut,"|     ",f,celsiusOut);
+            f+=5;
+
+
+        }
+    }
 }
+
