@@ -89,15 +89,26 @@ public class BorcheltU2S1PracticeProblems {
         int f = 20;
         double fahrenheitOut;
         double celsiusOut;
-        System.out.printf("%10s%10s%5s%10s%10s","Celsius","Fahrenheit","|     ","Fahrenheit","Celsius");
+        System.out.printf("%15s%10s%5s%10s%10s\n","Celsius","Fahrenheit","|     ","Fahrenheit","Celsius");
         for (int c =0;c < 100;c+=2){
             fahrenheitOut = c*1.8+32;
             celsiusOut = (f-32)/1.8;
-            System.out.printf("%10d%10d.3%5s%10d%10d.3",c,fahrenheitOut,"|     ",f,celsiusOut);
+            System.out.printf("%15d.3 %10d.3 %5s %10d.3 %10d.3\n",c,fahrenheitOut,"|     ",f,celsiusOut);
             f+=5;
-
-
         }
+    }
+
+    public static void seriesSummation(){
+        int numerator = 1;
+        int denominator = numerator + 2;
+        double summation = 0;
+
+        while (numerator < 97){
+            summation += (numerator/denominator);
+            numerator += 2;
+            denominator += 2;
+        }
+        System.out.printf("%d.5",summation);
     }
 }
 
