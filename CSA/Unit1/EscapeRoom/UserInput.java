@@ -38,6 +38,7 @@ import java.util.Scanner;
             }
             if(!valid)
                 System.out.print("Invalid input. Please try again\n>");
+                EscapeRoom.score -= 5;
         }
         while(!valid);
         return input;
