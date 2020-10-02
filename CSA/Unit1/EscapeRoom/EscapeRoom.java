@@ -67,7 +67,7 @@ public class EscapeRoom{
     while (play){
       playerInput = UserInput.getValidInput(validCommands);
         if (playerInput.equals("help") || playerInput.equals("?")){
-          System.out.println("The commands are:")
+          System.out.println("The commands are:");
           for (String i : validCommands){
             System.out.println(i);
           }
@@ -80,31 +80,52 @@ public class EscapeRoom{
         }
         else if (playerInput.equals("left") || playerInput.equals("l")){
           score += game.movePlayer(-m , 0);
+          if (game.isTrap(-m, 0)){
+            game.springTrap(-m, 0);
+          }
         }
         else if (playerInput.equals("up") || playerInput.equals("u")){
-          score += game.movePlayer(0 , m);
+          score += game.movePlayer(0 , -m);
+          if (game.isTrap(0, -m)){
+            game.springTrap(0, -m);
+          }
         }
         else if (playerInput.equals("down") || playerInput.equals("d")){
-          score += game.movePlayer(0 , -m);
+          score += game.movePlayer(0 , m);
+          if (game.isTrap(m, 0)){
+            game.springTrap(0 , m);
+          }
         }
         //jump commands
         else if (playerInput.equals("jumpright") || playerInput.equals("jr")){
           score += game.movePlayer(2*m , 0);
+          if (game.isTrap(m, 0)){
+            game.springTrap(m, 0);
+          }
         }
         else if (playerInput.equals("jumpleft") || playerInput.equals("jl")){
           score += game.movePlayer(-2*m , 0);
+          if (game.isTrap(-m, 0)){
+            game.springTrap(-m, 0);
+          }
         }
         else if (playerInput.equals("jumpup") || playerInput.equals("ju")){
-          score += game.movePlayer(0 , 2*m);
+          score += game.movePlayer(0 , -2*m);
+          if (game.isTrap(0 , -m)){
+            game.springTrap(0 , -m);
+          }
         }
         else if (playerInput.equals("jumpdown") || playerInput.equals("jd")){
-          score += game.movePlayer(0, -2*m);
+          score += game.movePlayer(0, 2*m);
+          if (game.isTrap(0 , m)){
+            game.springTrap(0 , m);
+          }
         }
         else if (playerInput.equals("pickup") || playerInput.equals("p")){
           score += game.pickupPrize();
         }
         else if (playerInput.equals("quit") || playerInput.equals("q")){
-          System.out.println("Your score was:  " + game.endGame());
+          break;
         }
         else if (playerInput.equals("replay")){
           System.out.println("Your score was:  " + game.replay());
