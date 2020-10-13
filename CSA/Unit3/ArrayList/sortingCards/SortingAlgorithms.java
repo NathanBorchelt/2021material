@@ -140,7 +140,7 @@ public class SortingAlgorithms
     
     // Create an double variable to hold the last element of the sorted portion of the array. 
     // It's right before the first element of the unsorted portion of the array
-    double prevIndex = i - 1; 
+    int prevIndex = i - 1; 
     
     // Use a loop to move backwards through the sorted elements of the array using prevIndex
     // in the condition of the loop
@@ -164,4 +164,46 @@ public class SortingAlgorithms
     return doubleList;
   }
 
+
+  public static ArrayList<String> insertionSortStrings(ArrayList<String> stringList)
+  {
+    ArrayList<ArrayList<Integer>> stringIntList = new ArrayList<ArrayList<Integer>>();
+    for (int i = 1; i < stringList.size(); i++){    
+      ArrayList<Integer> wordInt = new ArrayList<Integer>();
+      for (int j = 0; j < stringList.get(i).length(); j++){
+        char letter = stringList.get(i).charAt(j);
+        int letInt = Integer.valueOf(letter);
+        wordInt.add(letInt);
+      }
+      stringIntList.add(wordInt);
+    }
+
+
+
+    for (int i = 1; i < stringIntList.size(); i++){
+
+    ArrayList<Integer> currentValues = stringIntList.get(i);
+    int prevIndex = i-1;
+
+    while (prevIndex >= 0){
+      ArrayList<Integer> sortedValue = stringIntList.get(prevIndex);
+      for (int j = 0; j < currentValues.size(); j++){
+        try{
+          if (stringIntList.get(prevIndex).get(j) > currentValues.get(j)){
+            stringIntList.set(prevIndex + 1, sortedValue);
+            stringIntList.set(prevIndex, currentValues); 
+          }
+        }
+        catch(Exception e){
+          if (sortedValue.size() > currentValues.size()){
+            stringIntList.set(prevIndex + 1, sortedValue);
+            stringIntList.set(prevIndex, currentValues); 
+          }
+        }
+      }
+    }
+    }
+
+    return doubleList;
+  }
 }
