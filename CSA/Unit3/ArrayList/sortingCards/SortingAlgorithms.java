@@ -165,10 +165,9 @@ public class SortingAlgorithms
   }
 
 
-  public static ArrayList<String> insertionSortStrings(ArrayList<String> stringList)
-  {
+  public static ArrayList<ArrayList<Integer>> stringToInts(ArrayList<String> stringList){
     ArrayList<ArrayList<Integer>> stringIntList = new ArrayList<ArrayList<Integer>>();
-    for (int i = 1; i < stringList.size(); i++){    
+    for (int i = 0; i < stringList.size(); i++){    
       ArrayList<Integer> wordInt = new ArrayList<Integer>();
       for (int j = 0; j < stringList.get(i).length(); j++){
         char letter = stringList.get(i).charAt(j);
@@ -177,9 +176,26 @@ public class SortingAlgorithms
       }
       stringIntList.add(wordInt);
     }
+    return stringIntList;
+  }
 
 
+  public static ArrayList<String> intsToString(ArrayList<ArrayList<Integer>> stringIntList){
+    ArrayList<String> stringList = new ArrayList<String>();
+    for (int i = 0; i < stringIntList.size(); i++){    
+      char[] letters = new char[stringIntList.get(i).size()];
+      for (int j = 1; j < stringIntList.get(i).size(); j++){
+        letters[j] = Character.forDigit(stringIntList.get(i).get(j),10);
+      }
+      stringList.set(i,new String(letters));
+    } 
+    return stringList;
+  }
 
+  public static ArrayList<String> insertionSortStrings(ArrayList<String> stringList)
+  {
+
+    ArrayList<ArrayList<Integer>> stringIntList = stringToInts(stringList);
     for (int i = 1; i < stringIntList.size(); i++){
 
     ArrayList<Integer> currentValues = stringIntList.get(i);
@@ -192,6 +208,7 @@ public class SortingAlgorithms
           if (stringIntList.get(prevIndex).get(j) > currentValues.get(j)){
             stringIntList.set(prevIndex + 1, sortedValue);
             stringIntList.set(prevIndex, currentValues); 
+            break;
           }
         }
         catch(Exception e){
@@ -203,7 +220,43 @@ public class SortingAlgorithms
       }
     }
     }
+    
+    return intsToString(stringIntList);
+  }
+
+  public static ArrayList<String> selectionSortString(ArrayList<String> stringList){
+    // Use a for loop to iterate through all the values in the list. This loop
+    // will keep track of which value will be swapped with the lowest value.
+
+    ArrayList<ArrayList<Integer>> stringIntList = stringToInts(stringList);
+
+    for (int i = 0; i < stringIntList.size() - 1; i++)
+    {
+    // Create a variable to hold the index of the smallest number.
+    int minIndex = i;
+    
+    // Use a sequential search to find the smallest number
+    for (int searchIndex = i + 1; searchIndex < stringList.size(); searchIndex++)
+    {
+        // If the value at minIndex is larger, then set minIndex to the index of the 
+        // smaller value.
+        if(stringList.get(searchIndex) < stringList.get(minIndex))
+        minIndex = searchIndex;
+    }
+    
+    // Create a variable to temporarily hold the current value at index i
+    // and one to hold the smallest value at index minIndex
+    double temp = stringList.get(i);
+    double smallest = stringList.get(minIndex);
+    
+    // Swap the values
+    stringList.set(i, smallest);
+    stringList.set(minIndex, temp);
+    }
+    
+    // Print all the elements of the list
 
     return doubleList;
   }
+
 }
