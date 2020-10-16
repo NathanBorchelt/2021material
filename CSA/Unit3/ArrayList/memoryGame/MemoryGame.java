@@ -12,6 +12,8 @@ public class MemoryGame
 {
   static int blocks = 3;
   public static void main(String[] args) {
+    int correct = 0;
+    int gamesPlayed = 0;
 
     String[] validLets = new String[36];
     for (int i=0;i<26;i++){
@@ -25,20 +27,47 @@ public class MemoryGame
 
     //System.out.println(Arrays.toString(validLets));
     MemoryGameGUI game = new MemoryGameGUI();
-
-    
+    String answerOut = "";  
 
     game.createBoard(blocks, true);
     // Play the game until user wants to quit.
     Random rand = new Random();
     String[] randomLetters = new String[blocks];
+    for(int i = 0; i < blocks;i++){
+      // Create a new array that will contain the randomly ordered memory strings.
+      randomLetters[i] = validLets[rand.nextInt(validLets.length)];
+    }
+    String key = randomLetters.toString();
+    answerOut = game.playSequence(randomLetters, .5);
+
+    if (answerOut.equals(key)){
+      game.matched();
+      correct++;
+    }
+    else{
+      game.tryAgain();
+    }
+    gamesPlayed++;
+
     while(game.playAgain()){
       for(int i = 0; i < blocks;i++){
+        // Create a new array that will contain the randomly ordered memory strings.
         randomLetters[i] = validLets[rand.nextInt(validLets.length)];
       }
       game.playSequence(randomLetters, .5);
+      key = randomLetters.toString();
+      answerOut = game.playSequence(randomLetters, .5);
+
+      if (answerOut.equals(key)){
+        game.matched();
+        correct++;
+      }
+      else{
+        game.tryAgain();
+      }
+      gamesPlayed++;
     }
-      // Create a new array that will contain the randomly ordered memory strings.
+      
 
       // Create a list of randomly ordered integers with no repeats, the length
       // of memory strings. Use it to create a random sequence of the memory strings.
@@ -63,5 +92,10 @@ public class MemoryGame
       // and track the number of games played.
    
     // When done playing, show score and end the game.
+  }
+
+  public static String cleanString(String stringIn){
+    stringIn.replace(" ","");
+    k
   }
 }
