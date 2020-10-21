@@ -8,21 +8,21 @@ import java.util.Random;
  * buttons. After wathcing the memory strings appear in the buttons one at a
  * time, the player recreates the sequence from memory.
  */
-public class MemoryGame
+public class BorcheltMemoryGameRev1
 {
-  static int blocks = 3;
+  static int blocks = 5;
   public static void main(String[] args) {
     int correct = 0;
     int gamesPlayed = 0;
 
-    String[] validLets = new String[36];
+    char[] validLets = new char[26];
     for (int i=0;i<26;i++){
       char validLet = (char)(i+65);
       //System.out.println(validLet);
-      validLets[i] = String.valueOf(validLet);
+      validLets[i] = validLet;
     }
     for (int i = 26;i<36;i++){
-      validLets[i]=String.valueOf(i-26);
+      validLets[i]= (char)(i-26+48);
     }
 
     //System.out.println(Arrays.toString(validLets));
@@ -32,13 +32,22 @@ public class MemoryGame
     game.createBoard(blocks, true);
     // Play the game until user wants to quit.
     Random rand = new Random();
-    String[] randomLetters = new String[blocks];
-    for(int i = 0; i < blocks;i++){
+    char[] randomLetters = new char[blocks];
+    int i = 0;
+    while(i < blocks){
+      char randString = validLets[rand.nextInt(validLets.length)];
       // Create a new array that will contain the randomly ordered memory strings.
-      randomLetters[i] = validLets[rand.nextInt(validLets.length)];
+      try{
+        if(randomLetters[i-1]!=randString){
+          randomLetters[i] = randString;
+          i++;
+        }
+      }
+      catch(Exception e){randomLetters[i] = randString; i++;}
     }
-    String key = randomLetters.toString();
-    answerOut = game.playSequence(randomLetters, .5);
+    String key = String.valueOf(randomLetters);
+    String[] randStrLetters = String.valueOf(randomLetters).split("");
+    answerOut = game.playSequence(randStrLetters, .25);
 
     if (answerOut.equals(key)){
       game.matched();
@@ -49,14 +58,26 @@ public class MemoryGame
     }
     gamesPlayed++;
 
-    while(game.playAgain()){
-      for(int i = 0; i < blocks;i++){
+    boolean again = game.playAgain();
+
+    while(again){
+      i = 0;
+      char[] randLets = new char[blocks];
+      while(i < blocks){
+        char randString = validLets[rand.nextInt(validLets.length)];
         // Create a new array that will contain the randomly ordered memory strings.
-        randomLetters[i] = validLets[rand.nextInt(validLets.length)];
+        try{
+          if(randLets[i-1]!=randString){
+            randLets[i] = randString;
+            i++;
+          }
+        }
+        catch(Exception e){randLets[i] = randString; i++;}
       }
-      game.playSequence(randomLetters, .5);
-      key = randomLetters.toString();
-      answerOut = game.playSequence(randomLetters, .5);
+      key = String.valueOf(randLets);
+      randStrLetters = String.valueOf(randLets).split("");
+      answerOut = game.playSequence(randStrLetters, .5);
+      answerOut = cleanString(answerOut);
 
       if (answerOut.equals(key)){
         game.matched();
@@ -66,9 +87,14 @@ public class MemoryGame
         game.tryAgain();
       }
       gamesPlayed++;
-    }
+      again = game.playAgain();
+      if(java.lang.Math.abs(gamesPlayed-correct)>=3){
+          again=false;
+      }
       
-
+    }
+    game.showScore(correct, gamesPlayed);
+    game.quit();
       // Create a list of randomly ordered integers with no repeats, the length
       // of memory strings. Use it to create a random sequence of the memory strings.
       // - OR -
@@ -96,6 +122,9 @@ public class MemoryGame
 
   public static String cleanString(String stringIn){
     stringIn.replace(" ","");
-    k
+    stringIn.replace(",","");
+    stringIn.replace("-","");
+    stringIn = stringIn.toUpperCase();
+    return stringIn;
   }
 }

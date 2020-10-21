@@ -1,8 +1,15 @@
 import java.util.Scanner;
+
+import jdk.dynalink.StandardOperation;
+
 import java.util.Random;
 import java.lang.Math;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 public class BorcheltU3S6Problems{
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //System.out.format("The LCM is:   %d",lcm());
         bean();
     }
@@ -137,7 +144,7 @@ public class BorcheltU3S6Problems{
         in.close();
         return true;
     }
-    public static void bean(){
+    public static void bean() throws IOException {
         Scanner in = new Scanner(System.in);
         Random rand = new Random();
         System.out.println("Enter the number of balls to drop:  ");
@@ -181,14 +188,15 @@ public class BorcheltU3S6Problems{
             for(int j = 0; j<slots.length;j++){
                // System.out.println(slots[j] + "  "+ j);
                 if(slots[j]>0 && slots[j]>=i){
-                    System.out.print("0");
+                    Files.write(Paths.get("./BillionByThousand.txt"),"0".getBytes(StandardCharsets.UTF_8));
                 }
                 else{
-                    System.out.print("-");
+                    Files.write(Paths.get("./BillionByThousand.txt"),"-".getBytes(StandardCharsets.UTF_8));
                 }
             }
-            System.out.println();
+            Files.write(Paths.get("./BillionByThousand.txt"),"\n".getBytes(StandardCharsets.UTF_8));
         }
-    System.out.println(java.util.Arrays.toString(slots));
+        Files.write(Paths.get("./BillionByThousand.txt"),java.util.Arrays.toString(slots).getBytes(StandardCharsets.UTF_8));
+        in.close();
     }
 }
