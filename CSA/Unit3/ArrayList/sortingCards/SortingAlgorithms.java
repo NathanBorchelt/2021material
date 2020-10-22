@@ -198,28 +198,31 @@ public class SortingAlgorithms
     ArrayList<ArrayList<Short>> stringIntList = stringToInts(stringList);
     for (int i = 1; i < stringIntList.size(); i++){
 
-    ArrayList<Short> currentValues = stringIntList.get(i);
-    int prevIndex = i-1;
+      ArrayList<Short> currentValues = stringIntList.get(i);
+      int prevIndex = i-1;
 
-    System.out.format("\n%s   \nPrevIndex  %d\n",currentValues,prevIndex);
+      System.out.format("\n%s   \nPrevIndex  %d\n",currentValues,prevIndex);
 
-    while (prevIndex >= 0){
-      ArrayList<Short> sortedValue = stringIntList.get(prevIndex);
-      for (short j = 0; j < currentValues.size(); j++){
-        try{
-          if (stringIntList.get(prevIndex).get(j) > currentValues.get(j)){
+      while (prevIndex >= 0){
+        ArrayList<Short> sortedValue = stringIntList.get(prevIndex);
+        int cV = currentValues.size();
+        for (short j = 0; j < cV; j++){
+          try{
+            if (sortedValue.get(j) > currentValues.get(j)){
+              stringIntList.set(prevIndex + 1, sortedValue);
+              stringIntList.set(prevIndex, currentValues); 
+              System.out.println(sortedValue + "  " + currentValues);
+              break;
+            }
+          }
+          catch(Exception e){
+            System.out.println("Reached Error");
+            if (sortedValue.size() > currentValues.size()){
             stringIntList.set(prevIndex + 1, sortedValue);
             stringIntList.set(prevIndex, currentValues); 
-            System.out.println(sortedValue + "  " + currentValues);
-            break;
-          }
+            }
         }
-        catch(Exception e){
-          if (sortedValue.size() > currentValues.size()){
-            stringIntList.set(prevIndex + 1, sortedValue);
-            stringIntList.set(prevIndex, currentValues); 
-          }
-        }
+        break;
       }
     }
     } 
