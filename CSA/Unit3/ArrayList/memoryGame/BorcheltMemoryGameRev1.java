@@ -62,7 +62,7 @@ public class BorcheltMemoryGameRev1 {
     }
     String key = String.valueOf(randomLetters);
     String[] randStrLetters = String.valueOf(randomLetters).split("");
-    answerOut = game.playSequence(randStrLetters, .25);
+    answerOut = game.playSequence(randStrLetters, .5);
 
     if (answerOut.equals(key)) {
       game.matched();
