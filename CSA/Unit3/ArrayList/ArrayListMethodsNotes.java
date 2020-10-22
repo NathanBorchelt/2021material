@@ -132,18 +132,25 @@ public class ArrayListMethodsNotes {
         System.out.format("\nThe values " + (hasValueSame ? "are" :"are not" )+ "all %d",find);
     }
 
-    public static void mode(){
-        int modeValue = 0;
-        int mode = 0;
-        ArrayList<Integer> modeCount = new ArrayList<Integer>();
-        for (int a : arrList)
-            modeCount.add(0);
-        for (int a : arrList){
-            modeCount.set( a , ( modeCount.get(a) + 1 ));
-            if (modeCount.get(a) >modeValue){
-                modeValue = modeCount.get(a);
-                mode = a;
-            }
+    public static void mode() {
+        int mode = inNums.get(0);
+        int maxCount = 0;
+        for (int i = 0; i < inNums.size(); i++) {
+            int value = inNums.get(i);
+            int count = 0;
+            for (int j = 0; j < inNums.size(); j++) {
+                if (inNums.get(j) == value) count++;
+                if (count > maxCount) {
+                    mode = value;
+                    maxCount = count;
+                    }
+                }
+        }
+        if (maxCount > 1) {
+            System.out.println("\nThe mode is"+mode);
+        }
+        else{
+            System.out.println("\nThere is no mode.");
         }
     }
 }

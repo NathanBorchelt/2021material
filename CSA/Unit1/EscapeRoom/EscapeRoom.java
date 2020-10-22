@@ -64,7 +64,7 @@ public class EscapeRoom{
 
     // set up game
     boolean play = true;
-    while (play){
+    while (play){ 
       playerInput = UserInput.getValidInput(validCommands);
         if (playerInput.equals("help") || playerInput.equals("?")){
           System.out.println("The commands are:");

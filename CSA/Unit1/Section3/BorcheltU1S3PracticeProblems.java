@@ -1,8 +1,9 @@
 //https://stackoverflow.com/questions/19599880/if-statement-inside-the-print-statement
-import java.util.Scanner; import java.util.Random;
+import java.util.Random;
+import java.util.Scanner;
 public class BorcheltU1S3PracticeProblems {
     public static void main(String[] args) {
-        sortThreeInts();
+
     }
     public static void findFutureDates(){
         Scanner in = new Scanner(System.in);
@@ -107,7 +108,6 @@ public class BorcheltU1S3PracticeProblems {
         }
 
         System.out.println("The Card You Picked is the " + printFace + " of " + printSuit);
-        in.close()
     } 
     public static void rpsls(){
         Scanner in = new Scanner(System.in);
@@ -115,7 +115,6 @@ public class BorcheltU1S3PracticeProblems {
         int playerScore = 0;
         int compScore = 0;
         int timesPlayed = 0;
-        double winAvg = 0;
 
         String compOptions = "rkprsrldsk";
         String compOut;
@@ -125,85 +124,86 @@ public class BorcheltU1S3PracticeProblems {
         String playerIn = in.nextLine();
 
         while(!playerIn.equals("quit") && (compOptions.indexOf(playerIn) != -1)){
-            compChoice = rand.nextInt(compOptions.length()/2)
-            compOut = compOut.substring(compChoice,compChoice+2);
+            timesPlayed++;
+            compChoice = rand.nextInt(compOptions.length()/2);
+            compOut = compOptions.substring(compChoice,compChoice+2);
             //player chooses rock
             if (playerIn.equals("rk")){
                 if (compOut.equals("ld") || compOut.equals("sr")){
-                    System.out.println("The computer is" + ((compOut.equals("ld")) ? "Lizard" : "Scissors")+", You picked Rock, You Win!");
+                    System.out.println("The computer is " + ((compOut.equals("ld")) ? "Lizard" : "Scissors")+", You picked Rock, You Win!");
                     playerScore ++;
                 }
                 else if(compOut.equals("ld") || compOut.equals("sr")){
-                    System.out.println("The computer is" + ((compOut.equals("sk")) ? "Spock" : "Paper")+", You picked Rock, You Lose");
+                    System.out.println("The computer is " + ((compOut.equals("sk")) ? "Spock" : "Paper")+", You picked Rock, You Lose");
                     compScore ++;
                 }
                 else{
                     System.out.println("You both were Rock, it is a tie");
                 }
-                timesPlayed++;
             }
             //player chooses lizard
-            if (playerIn.equals("ld")){
+            else if (playerIn.equals("ld")){
                 if (compOut.equals("sk") || compOut.equals("pr")){
-                    System.out.println("The computer is" + ((compOut.equals("sk")) ? "Spock" : "Paper")+", You picked Lizard, You Win!");
+                    System.out.println("The computer is " + ((compOut.equals("sk")) ? "Spock" : "Paper")+", You picked Lizard, You Win!");
                     playerScore ++;
                 }
                 else if(compOut.equals("rk") || compOut.equals("sr")){
-                    System.out.println("The computer is" + ((compOut.equals("rk")) ? "Rock" : "Scissors")+", You picked Lizard, You Lose");
+                    System.out.println("The computer is " + ((compOut.equals("rk")) ? "Rock" : "Scissors")+", You picked Lizard, You Lose");
                     compScore ++;
                 }
                 else{
                     System.out.println("You both were Lizzard, it is a tie");
                 }
-                timesPlayed++;
             }
             //player chooses Spock
-            if (playerIn.equals("sk")){
+            else if (playerIn.equals("sk")){
                 if (compOut.equals("rk") || compOut.equals("sr")){
-                    System.out.println("The computer is" + ((compOut.equals("rk")) ? "Rock" : "Scissors")+", You picked Spock, You Win!");
+                    System.out.println("The computer is " + ((compOut.equals("rk")) ? "Rock" : "Scissors")+", You picked Spock, You Win!");
                     playerScore ++;
                 }
                 else if(compOut.equals("ld") || compOut.equals("pr")){
-                    System.out.println("The computer is" + ((compOut.equals("ld")) ? "Lizzard" : "Paper")+", You picked Spock, You Lose");
+                    System.out.println("The computer is " + ((compOut.equals("ld")) ? "Lizzard" : "Paper")+", You picked Spock, You Lose");
                     compScore ++;
                 }
                 else{
                     System.out.println("You both were Spock, it is a tie");
                 }
-                timesPlayed++;
             }
             //player chooses Scissors
-            if (playerIn.equals("sr")){
+            else if (playerIn.equals("sr")){
                 if (compOut.equals("ld") || compOut.equals("pr")){
-                    System.out.println("The computer is" + ((compOut.equals("ld")) ? "Lizzard" : "Paper")+", You picked Scissors, You Win!");
+                    System.out.println("The computer is " + ((compOut.equals("ld")) ? "Lizzard" : "Paper")+", You picked Scissors, You Win!");
                     playerScore ++;
                 }
                 else if(compOut.equals("sk") || compOut.equals("rk")){
-                    System.out.println("The computer is" + ((compOut.equals("sk")) ? "Spock" : "Rock")+", You picked Scissors, You Lose");
+                    System.out.println("The computer is " + ((compOut.equals("sk")) ? "Spock" : "Rock")+", You picked Scissors, You Lose");
                     compScore ++;
                 }
                 else{
                     System.out.println("You both were Scissors, it is a tie.");
                 }
-                timesPlayed++;
             }
             //player chooses Paper
-            if (playerIn.equals("pr")){
+            else if (playerIn.equals("pr")){
                 if (compOut.equals("sk") || compOut.equals("rk")){
-                    System.out.println("The computer is" + ((compOut.equals("sk")) ? "Spock" : "Rock")+", You picked Paper, You Win!");
+                    System.out.println("The computer is " + ((compOut.equals("sk")) ? "Spock" : "Rock")+", You picked Paper, You Win!");
                     playerScore ++;
                 }
                 else if(compOut.equals("ld") || compOut.equals("sr")){
-                    System.out.println("The computer is" + ((compOut.equals("ld")) ? "Lizzard" : "Scissors")+", You picked Paper, You Lose");
+                    System.out.println("The computer is " + ((compOut.equals("ld")) ? "Lizzard" : "Scissors")+", You picked Paper, You Lose");
                     compScore ++;
                 }
                 else{
                     System.out.println("You both were Paper, it is a tie.");
                 }
-                timesPlayed++;
+            }
+            else{
+                System.out.println("That is not a valid option, try again.");
             } 
+            System.out.println("Enter:\n(rk) Rock\n(pr) Paper\n(sr) Scissors\n(ld)Lizard\n(sk) Spock\nOR type ]\"quit\"to quit");
+            playerIn = in.nextLine();
         }
-        winAvg = playerScore/timesPlayed;
-        System.out.println("Final Score:\nWins: "+playerScore+"\nLosses: "+compScore+"Win/Lose Ratio: "+(winAvg));
+
+        System.out.println("Final Score:\nWins: "+playerScore+"\nLosses: "+compScore+"\nTies: "+(timesPlayed-(playerScore+compScore)));
     }
 }
