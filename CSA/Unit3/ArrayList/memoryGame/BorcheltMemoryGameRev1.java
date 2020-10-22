@@ -1,6 +1,18 @@
 import java.util.Arrays;
 import java.util.Random;
 
+//https://www.geeksforgeeks.org/play-audio-file-using-java/
+import java.io.File; 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.Scanner;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 /**
  * Project 3.6.5
  *
@@ -8,123 +20,142 @@ import java.util.Random;
  * buttons. After wathcing the memory strings appear in the buttons one at a
  * time, the player recreates the sequence from memory.
  */
-public class BorcheltMemoryGameRev1
-{
+public class BorcheltMemoryGameRev1 {
   static int blocks = 5;
-  public static void main(String[] args) {
+
+  public static void main(String[] args)
+      throws MalformedURLException, UnsupportedAudioFileException, IOException, LineUnavailableException {
     int correct = 0;
     int gamesPlayed = 0;
 
-    char[] validLets = new char[26];
-    for (int i=0;i<26;i++){
-      char validLet = (char)(i+65);
-      //System.out.println(validLet);
+    char[] validLets = new char[36];
+    for (int i = 0; i < 26; i++) {
+      char validLet = (char) (i + 65);
+      // System.out.println(validLet);
       validLets[i] = validLet;
     }
-    for (int i = 26;i<36;i++){
-      validLets[i]= (char)(i-26+48);
+    for (int i = 26; i < 36; i++) {
+      validLets[i] = (char) (i - 26 + 48);
     }
 
-    //System.out.println(Arrays.toString(validLets));
+    // System.out.println(Arrays.toString(validLets));
     MemoryGameGUI game = new MemoryGameGUI();
-    String answerOut = "";  
+    String answerOut = "";
 
     game.createBoard(blocks, true);
     // Play the game until user wants to quit.
     Random rand = new Random();
     char[] randomLetters = new char[blocks];
     int i = 0;
-    while(i < blocks){
+    while (i < blocks) {
       char randString = validLets[rand.nextInt(validLets.length)];
       // Create a new array that will contain the randomly ordered memory strings.
-      try{
-        if(randomLetters[i-1]!=randString){
+      try {
+        if (randomLetters[i - 1] != randString) {
           randomLetters[i] = randString;
           i++;
         }
+      } catch (Exception e) {
+        randomLetters[i] = randString;
+        i++;
       }
-      catch(Exception e){randomLetters[i] = randString; i++;}
     }
     String key = String.valueOf(randomLetters);
     String[] randStrLetters = String.valueOf(randomLetters).split("");
     answerOut = game.playSequence(randStrLetters, .25);
 
-    if (answerOut.equals(key)){
+    if (answerOut.equals(key)) {
       game.matched();
       correct++;
-    }
-    else{
+    } else {
       game.tryAgain();
     }
     gamesPlayed++;
 
     boolean again = game.playAgain();
 
-    while(again){
+    while (again) {
       i = 0;
       char[] randLets = new char[blocks];
-      while(i < blocks){
+      while (i < blocks) {
         char randString = validLets[rand.nextInt(validLets.length)];
         // Create a new array that will contain the randomly ordered memory strings.
-        try{
-          if(randLets[i-1]!=randString){
+        try {
+          if (randLets[i - 1] != randString) {
             randLets[i] = randString;
             i++;
           }
+        } catch (Exception e) {
+          randLets[i] = randString;
+          i++;
         }
-        catch(Exception e){randLets[i] = randString; i++;}
       }
       key = String.valueOf(randLets);
       randStrLetters = String.valueOf(randLets).split("");
       answerOut = game.playSequence(randStrLetters, .5);
       answerOut = cleanString(answerOut);
 
-      if (answerOut.equals(key)){
+      if (answerOut.equals(key)) {
         game.matched();
+        play("correct.wav");
         correct++;
-      }
-      else{
+      } else {
         game.tryAgain();
+        play("wrong.wav");
       }
       gamesPlayed++;
       again = game.playAgain();
-      if(java.lang.Math.abs(gamesPlayed-correct)>=3){
-          again=false;
+      if (java.lang.Math.abs(gamesPlayed - correct) >= 3) {
+        again = false;
       }
-      
+
     }
     game.showScore(correct, gamesPlayed);
     game.quit();
-      // Create a list of randomly ordered integers with no repeats, the length
-      // of memory strings. Use it to create a random sequence of the memory strings.
-      // - OR -
-      // Overload the next method in RandomPermutation to create a random sequence 
-      // of the memory strings, passed as a parameter.
+    // Create a list of randomly ordered integers with no repeats, the length
+    // of memory strings. Use it to create a random sequence of the memory strings.
+    // - OR -
+    // Overload the next method in RandomPermutation to create a random sequence
+    // of the memory strings, passed as a parameter.
 
-      // Play one sequence, delaying half a second for the strings to show
-      // in the buttons. Save the player's guess. 
-      // (Later, you can speed up or slow down the game.)
+    // Play one sequence, delaying half a second for the strings to show
+    // in the buttons. Save the player's guess.
+    // (Later, you can speed up or slow down the game.)
 
-      // Determine if player's guess matches all elements of the random sequence.
-      
-        // Cleanup the guess - remove commas and spaces. Refer to a new String method 
-        // replace to make this easy.
-        
-        // iterate to determine if guess matches sequence
+    // Determine if player's guess matches all elements of the random sequence.
 
-        // If match, increase score, and signal a match, otherwise, try again.
+    // Cleanup the guess - remove commas and spaces. Refer to a new String method
+    // replace to make this easy.
 
-      // Ask if user wants to play another round of the game 
-      // and track the number of games played.
-   
+    // iterate to determine if guess matches sequence
+
+    // If match, increase score, and signal a match, otherwise, try again.
+
+    // Ask if user wants to play another round of the game
+    // and track the number of games played.
+
     // When done playing, show score and end the game.
   }
 
-  public static String cleanString(String stringIn){
-    stringIn.replace(" ","");
-    stringIn.replace(",","");
-    stringIn.replace("-","");
+  public static String cleanString(String stringIn) {
+    stringIn.replace(" ", "");
+    stringIn.replace(",", "");
+    stringIn.replace("-", "");
     stringIn = stringIn.toUpperCase();
     return stringIn;
+  }
+
+  public static void play(String filename)
+  {
+    try
+    {
+      Clip clip = AudioSystem.getClip();
+      clip.open(AudioSystem.getAudioInputStream(new File(filename)));
+      clip.start();
+    }
+    catch (Exception exc)
+    {
+      exc.printStackTrace(System.out);
+    }
   }
 }

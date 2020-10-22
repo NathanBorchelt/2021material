@@ -99,12 +99,12 @@ public class Game
     int num2 = 0;
         
     if (in.hasNextInt())
-      num1 = in.nextInt();
+      num1 = in.nextInt()-1;
     else
       quitGame();
   
     if (in.hasNextInt())
-      num2 = in.nextInt();
+      num2 = in.nextInt()-1;
      else
       quitGame();
 

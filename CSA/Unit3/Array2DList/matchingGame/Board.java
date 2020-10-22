@@ -1,3 +1,4 @@
+import java.util.Random
 /** 
  * A game board of NxM board of tiles.
  * 
@@ -26,19 +27,29 @@ public class Board
   public Board(){
     /* your code here */ 
     //step 14 in 3.8.2
-    short tileCount = 0;
+    short tileCount = (short) (tileValues.length-1);
+    /*
     for(short i = 0; i < gameboard.length;i++){
         for(short j = 0; j < gameboard[0].length;j++){
             gameboard[i][j] = new Tile(tileValues[tileCount]);
             tileCount++;
         }
-    System.out.println(java.util.Arrays.toString(gameboard[0]));
-    System.out.println(java.util.Arrays.toString(gameboard[1]));
-    System.out.println(java.util.Arrays.toString(gameboard[2]));
+     */   
+    //System.out.println(java.util.Arrays.toString(gameboard[0]));
+    //System.out.println(java.util.Arrays.toString(gameboard[1]));
+    //System.out.println(java.util.Arrays.toString(gameboard[2]));
+    Random rand = new Random();
+    for(short i = 0;i<gameboard.length;i++){
+      for(short j = 0; j<gameboard[i].length;j++){
+        short randSet = (short) rand.nextInt(tileCount);
+        gameboard[i][j] = new Tile(tileValues[randSet]);
+        tileValues[randSet] = tileValues[tileCount];
+        tileCount--;
+      }
     }
 }
 
- /** 
+    /* 
    * Returns a string representation of the board, getting the state of
    * each tile. If the tile is showing, displays its value, 
    * otherwise displays it as hidden.
@@ -47,15 +58,28 @@ public class Board
    * 
    * @return a string represetation of the board
    */
-  public String toString()
+  public String toString(Tile[][] gameboard)
   {
+    String value = "";
+    for(Tile[] row : gameboard){
+      for(Tile item : row){
+        // done  is visable ?
+        if(item.isShowingValue()){
+          value+=item.getValue();
+        }
+        else{
+          value+=item.getHidden();
+        }
+        // done tab for spacing
+        value+="\t";
+      }
+      value+="\n";
+    }
  
-    /* your code here */
- 
-    return "";
+    return value;
   }
 
-  /** 
+  /* 
    * Determines if the board is full of tiles that have all been matched,
    * indicating the game is over.
    * 
@@ -66,12 +90,18 @@ public class Board
   public boolean allTilesMatch()
   {
 
-    /* your code  here */
-    
+    // done return false unless all are true
+    for(Tile[] row : gameboard){
+      for(Tile item : row){
+        if(!item.matched()){
+          return false;
+        }
+      }
+    }
     return true;
   }
 
-  /** 
+  /* 
    * Sets the tile to show its value (like a playing card face up)
    * 
    * Preconditions:
@@ -82,10 +112,8 @@ public class Board
    * @param row the row value of Tile
    * @param column the column value of Tile
    */
-  public void showValue (int row, int column)
-  {
-   
-    /* your code here */
+  public void showValue (int row, int column){  
+    gameboard[row][column].show();
   }  
 
   /** 
@@ -109,7 +137,18 @@ public class Board
   {
     String msg = "";
 
-     /* your code here */
+    Tile t1 = gameboard[row1][col1];
+    Tile t2 = gameboard[row2][col2];
+
+    if(t1.equals(t2)){
+      t1.foundMatch();
+      t2.foundMatch();
+      msg = "Matched";
+    }
+    else{
+      t1.hide();
+      t2.hide();
+    }
     
      return msg;
   }
@@ -124,7 +163,8 @@ public class Board
    */
   public boolean validateSelection(int row, int col)
   {
-
+    if(row>=gameboard.length){if(col>=gameboard[row].length){return false;}return false;}
+    if(gameboard[row][col].matched())return false;
     /* your code here */
 
     return true;
