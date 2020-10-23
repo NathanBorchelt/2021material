@@ -20,6 +20,3 @@ git commit -m "$COMMENT"
 
 git push
 
-cmd
-
-logoff
