@@ -6,7 +6,7 @@ DATE+'%c'
 
 PUSH="Push Up on"
 
-COMMENT="$PUSH at $DATE"
+COMMENT="$PUSH at $DATE from $HOSTNAME"
 
 cd
 
@@ -19,3 +19,7 @@ git add .
 git commit -m "$COMMENT"
 
 git push
+
+cmd
+
+logoff
