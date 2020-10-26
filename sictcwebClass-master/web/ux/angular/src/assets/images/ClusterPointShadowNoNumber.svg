@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="88.001" height="91.784" viewBox="0 0 88.001 91.784">
+  <defs>
+    <filter id="Union_2" x="0" y="0" width="88.001" height="91.784" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feFlood flood-color="#0069bf"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_4267" data-name="Group 4267" transform="translate(-8375 310)">
+    <g transform="matrix(1, 0, 0, 1, 8375, -310)" filter="url(#Union_2)">
+      <path id="Union_2-2" data-name="Union 2" d="M8456.488,1943.678a19.016,19.016,0,1,1,6.4.106l-3.127,3.5Z" transform="translate(-8416 -1881)" fill="#008cff" stroke="#fff" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

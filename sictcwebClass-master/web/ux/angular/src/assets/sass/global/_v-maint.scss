@@ -1,0 +1,45 @@
+// Base class
+.v-maint {
+  position: relative;
+  left: 0;
+  right: 0;
+  height: 30px;
+  width: 100%;
+  border-bottom: 1px solid $u-brand-beige-dark;
+  margin-bottom: 10px;
+}
+
+// Contains all the elements to the left
+.v-maint .left {
+  position: absolute;
+  bottom: 0;
+  color: $u-brand-blue;
+
+}
+
+// Contains all element of the right side
+.v-maint .right {
+  position: absolute;
+  right:0;
+}
+
+// Style the icons inside the right container
+.v-maint .right > i {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
+  cursor: pointer;
+  cursor: hand;
+  margin-left: 20px;
+  font-size: 24px;
+  color: $u-brand-blue;
+}
+
+//  Remove the right container when we reach resolutions lower
+//  than what is defined as Medium Devices or Desktops
+@media only screen and (max-width : 992px) {
+  .maint-right {
+    display: none;
+  }
+}

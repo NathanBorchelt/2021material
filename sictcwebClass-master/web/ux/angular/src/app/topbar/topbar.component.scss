@@ -1,0 +1,112 @@
+@import '../../assets/sass/common';
+
+.topbar {
+  padding: 0 10px 0 20px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: $u-navbar-height;
+  background-color: $u-brand-blue;
+}
+
+.beta-topbar {
+  background-color: #206693;
+}
+
+.dropdown-menu {
+  z-index: 1000000 !important;
+}
+
+.topbar-top {
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
+  width: 100%;
+  &__logo {
+    margin-top: 13px;
+    align-self: flex-start;
+  }
+  &__right {
+    margin: 0 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &__button-divider {
+      height: 25px;
+      border-right: 1px solid white;
+      margin: 0 10px;
+    }
+    .cph-text {
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    // User Name and down arrow
+    .topbar-button-large {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 10px;
+      i {
+        font-size: 24px;
+        margin-right: 8px;
+      }
+      .glyphicon {
+        font-size: 10px;
+        margin-left: 5px;
+        color: white;
+        opacity: 0.5;
+      }
+      &:hover .glyphicon {
+        opacity: 1;
+        color: $u-brand-orange;
+      }
+    }
+    .topbar-button-small {
+      margin: 0 10px;
+      i {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.topbar-icon-button {
+  font-size: 20px !important;
+}
+
+.user-menu {
+  li {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    a {
+      padding-left: $u-brand-banner-dropdown-padding;
+      width: 100%;
+      i {
+        font-size: $u-banner-dropdown-icon-size;
+        color: $u-brand-blue;
+        padding-right: $u-brand-banner-dropdown-icon-padding;
+        margin-left: (-$u-brand-banner-dropdown-padding + $u-banner-dropdown-icon-size) - $u-brand-banner-dropdown-icon-padding;
+      }
+    }
+  }
+  .dropdown-item-disabled {
+    cursor: default;
+    color: rgba(0, 0, 0, 0.4);
+    &:hover {
+      background-color: inherit;
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+  .divider {
+    margin: 5px 0;
+  }
+  .settings-divider {
+    margin-left: 35px;
+  }
+}

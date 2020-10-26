@@ -1,0 +1,31 @@
+<i class="fal fa-envelope fa-4x envelope-icon"></i>
+<p class="title">
+  Update your email address
+</p>
+<p>Please enter your email address. <br>
+  This is where all important messages will <br>
+  be sent, including lost password requests.
+</p>
+<form #emailForm="ngForm" class="input-container">
+
+  <div class="login-form__group">
+    <label>Email Address</label>
+    <input required
+           [(ngModel)]="emailInput"
+           (focus)="email.control.markAsUntouched()"
+           email name="email" #email="ngModel" type="email">
+    <p *ngIf="email.invalid && email.touched" class="warning-text">Please enter your email address</p>
+  </div>
+
+  <div class="login-form__group">
+    <label>Confirm Email Address</label>
+    <input required
+           [(ngModel)]="emailConfirmInput"
+           (focus)="emailConfirm.control.markAsUntouched()"
+           email name="emailConfirm" #emailConfirm="ngModel" type="email">
+    <p *ngIf="emailConfirm.invalid && emailConfirm.touched" class="warning-text">Please confirm your email address</p>
+    <p *ngIf="emailForm.submitted && (email.control.value !== emailConfirm.control.value)" class="warning-text">Email addresses must match. Please try again.</p>
+  </div>
+  <app-button-settings #nextButton (onClick)="onSubmit(emailForm)" class="next-button" [style]="'primary'" [type]="'submit'">NEXT</app-button-settings>
+</form>
+<br>

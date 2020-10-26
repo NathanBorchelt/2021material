@@ -1,0 +1,135 @@
+@import '../../../assets/sass/common';
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  height: 100%;
+  background: white;
+}
+
+.vinpoint-logo {
+  width: 250px;
+  margin-bottom: 10px;
+}
+
+.vinpoint-logo__subtext {
+  color: #6e6e6e;
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 25px;
+}
+
+.login-form {
+  width: 250px;
+  label {
+    display: block;
+    color: #373a3c;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    margin-left: 4px;
+  }
+  .login-form__group {
+    margin-bottom: 12px;
+  }
+  input {
+    background: #f4f5f6;
+    color: #333;
+    border: none;
+    border-radius: 2px;
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    margin-bottom: 4px;
+    transition: all 350ms;
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 1px 1px #00c3ed;
+    }
+  }
+  input.ng-invalid.ng-dirty {
+    outline: none;
+    box-shadow: 0 0 1px 1px #c33131;
+  }
+  .warning-text {
+    color: #c33131;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    padding: 0;
+    font-size: 12px;
+  }
+  app-button-settings {
+    width: 100%;
+    margin: 13px 0 18px 0;
+  }
+}
+
+.notification-error {
+  display: flex;
+  align-items: stretch;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding-right: 20px;
+  max-width: 500px;
+  .notification-error__iconbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 38px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background: white;
+    margin-right: 22px;
+    i {
+      color: #bc7279;
+      font-size: 16px;
+    }
+  }
+  .notification-error__message {
+    color: #86252d;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0;
+    padding: 10px;
+  }
+}
+
+.reset-link {
+  color: $vp-primary-dark;
+  font-weight: normal;
+  font-size: 14px;
+  margin-bottom: 22px;
+  text-decoration: underline;
+  &:hover {
+    color: lighten($vp-primary-dark, 5%);
+  }
+  &:active {
+    color: $vp-primary-dark;
+  }
+}
+
+@keyframes shake {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+}
+
+.shake {
+  animation: shake 1200ms;
+}

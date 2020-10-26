@@ -1,0 +1,46 @@
+// Year and Manufacturer
+.v-year-manu {
+  text-decoration: none;
+  font-size: 16px;
+  color: #666;
+  font-weight: 600;
+}
+// Model
+.v-model {
+  text-decoration: none;
+  font-size: 16px;
+  color: $u-card-font-color;
+  font-style: italic;
+  font-weight: 600;
+}
+// VIN
+.v-vin {
+  text-decoration: none;
+  font-size: 16px;
+  color: #666;
+  font-weight: 300;
+  word-wrap: break-word;
+}
+// Stock Number
+.v-stock {
+  text-decoration: none;
+  font-size: 16px;
+  color: $u-card-font-color;
+  font-weight: 300;
+  font-style: italic;
+}
+// Colour
+.v-color {
+  text-decoration: none;
+  color: $u-card-font-color;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+}
+// DealershipName
+.v-dealershipname {
+  text-decoration: none;
+  font-size: 16px;
+  color: $u-card-font-color;
+  font-weight: 600;
+}

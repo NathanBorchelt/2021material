@@ -1,0 +1,21 @@
+@import '../../assets/sass/common';
+:host {
+  display: flex;
+  height: 100%;
+  background: white;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.throbber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  app-throbber {
+    height: 50px;
+    width: 50px;
+    stroke: $vp-blue-alternate;
+  }
+}

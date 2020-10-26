@@ -1,0 +1,12 @@
+<ng-container *ngIf="user; else interstitial">
+  <app-email-verification-question *ngIf="state === VERIFICATION_STATE.QUESTION" [user]="user" (stateChanged)="state = $event"></app-email-verification-question>
+  <app-email-verification-update *ngIf="state === VERIFICATION_STATE.UPDATE" [user]="user" (stateChanged)="state = $event"></app-email-verification-update>
+  <app-email-verification-complete *ngIf="state === VERIFICATION_STATE.COMPLETE" [user]="user"></app-email-verification-complete>
+</ng-container>
+
+<ng-template #interstitial>
+  <div class="throbber">
+    <app-throbber></app-throbber>
+  </div>
+</ng-template>
+

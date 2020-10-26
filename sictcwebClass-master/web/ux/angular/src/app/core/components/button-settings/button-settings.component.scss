@@ -1,0 +1,140 @@
+@import '../../../../assets/sass/common';
+:host {
+  display: inline-block;
+  &:only-of-type {
+    margin: 0;
+  }
+  &:first-child:not(:only-of-type) {
+    margin: 0 16px 0 0;
+  }
+  &:last-child:not(:only-of-type) {
+    margin: 0 0 0 16px;
+  }
+}
+
+.button-settings {
+  width: inherit;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  border: 1px solid #DEDEDE;
+  background-color: white;
+  color: #2E5A77;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  &::ng-deep {
+    span {
+      i {
+        margin-left: 5px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  app-throbber {
+    width: 20px;
+    height: 20px;
+    stroke: $vp-blue-alternate;
+  }
+  &:hover {
+    background-color: darken(white, 6%);
+    border-color: darken(white, 6%);
+  }
+  &:active {
+    background-color: darken(white, 9%);
+    border-color: darken(white, 9%);
+  }
+  &:disabled {
+    color: lighten($vp-blue-alternate, 6%);
+    background-color: darken(white, 6%);
+    border-color: darken(white, 6%);
+  }
+}
+
+@mixin button-settings($font-color, $bg-color, $bd-color) {
+  border-color: $bd-color;
+  background-color: $bg-color;
+  color: $font-color;
+  stroke: $font-color;
+  app-throbber {
+    stroke: $font-color;
+  }
+  &:hover {
+    background-color: darken($bg-color, 6%);
+    border-color: darken($bg-color, 6%);
+  }
+  &:active {
+    background-color: darken($bg-color, 9%);
+    border-color: darken($bg-color, 9%);
+  }
+  &:disabled {
+    cursor: not-allowed;
+    $bg: desaturate($bg-color, 12%);
+    $ft: desaturate($font-color, 12%);
+    color: lighten($ft, 10%);
+    background-color: lighten($bg, 10%);
+    border-color: lighten($bg, 10%);
+  }
+}
+
+.button-settings.primary {
+  @include button-settings(white, $vp-blue-alternate, $vp-blue-alternate);
+}
+
+.button-settings.bright {
+  @include button-settings(white, $accent-blue, $accent-blue);
+}
+
+.button-settings.basic {
+  @include button-settings(#555555, #EBEBEB, #EBEBEB);
+}
+
+.button-settings.tertiary {
+  @include button-settings(white, $vp-primary-dark, $vp-primary-dark);
+}
+
+.button-settings.secondary {
+  @include button-settings(#5f5f5f, white, #DEDEDE);
+}
+
+.button-settings.danger {
+  @include button-settings(white, #E57171, #E57171);
+}
+
+.button-settings.danger-reverse {
+  @include button-settings(#E57171, white, #E57171);
+}
+
+.button-settings.dark {
+  @include button-settings($vp-primary-dark, #EBEBEB, #EBEBEB);
+}
+
+.button-settings.small {
+  padding: 4px 16px;
+  app-throbber {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.icon {
+  position: absolute;
+  font-size: 20px;
+  visibility: hidden;
+  transform: scale(0);
+  transition: transform .3s ease;
+  &.show {
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+
+.spinner-wrapper {
+  position: absolute;
+}

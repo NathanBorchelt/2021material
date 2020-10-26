@@ -1,0 +1,25 @@
+<img class="vinpoint-logo" src="assets/images/vinpoint-logo-top.svg" alt="vinpoint logo">
+<p class="vinpoint-logo__subtext">Inventory Location Management</p>
+<form class="login-form">
+
+  <div class="login-form__group">
+    <label for="username">Username</label>
+    <input id="username" required name="username" #username="ngModel" #usernameInput [(ngModel)]="usernameValue" type="text" autocomplete="username">
+    <p class="warning-text" [hidden]="username.valid || username.pristine">Please enter your username</p>
+  </div>
+
+  <div class="login-form__group">
+    <label for="password">Password</label>
+    <input id="password" required name="password" #password="ngModel" #passwordInput [(ngModel)]="passwordValue" type="password" autocomplete="current-password">
+    <p class="warning-text" [hidden]="password.valid || password.pristine">Please enter your password</p>
+  </div>
+
+  <app-button-settings #submitButton (onClick)="onSubmit()" [style]="'tertiary'" [disableFinishLoadingAnimation]="true" [type]="'submit'">Log In</app-button-settings>
+
+</form>
+<a class="reset-link" routerLink="/password-reset">Forgot Password?</a>
+
+<div *ngIf="error && error.hasError" class="notification-error" [ngClass]="{'shake': isShowingErrorAnimation}">
+  <div class="notification-error__iconbox"><i class="fas fa-exclamation-circle"></i></div>
+  <p class="notification-error__message">{{error.errorMessage}}</p>
+</div>

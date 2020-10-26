@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-878 -1099 229 124.017">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ffa400;
+      }
+
+      .cls-2 {
+        fill: #e58d00;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        opacity: 0.2;
+      }
+
+      .cls-4 {
+        fill: #2e5a76;
+      }
+    </style>
+  </defs>
+  <g id="Group_792" data-name="Group 792" transform="translate(-878 -1098.983)">
+    <g id="Group_790" data-name="Group 790">
+      <g id="Group_789" data-name="Group 789">
+        <path id="Path_903" data-name="Path 903" class="cls-1" d="M100.5.8A22.553,22.553,0,0,0,84.8,28.4c2.7,9.7,23.2,27.9,30.6,34.2a2.337,2.337,0,0,0,3.8-1.1c3.1-9.3,11.4-35.4,8.7-45.1A22.2,22.2,0,0,0,100.5.8m8.2,29.7a8.2,8.2,0,1,1,5.7-10.1,8.331,8.331,0,0,1-5.7,10.1"/>
+      </g>
+      <ellipse id="Ellipse_67" data-name="Ellipse 67" class="cls-2" cx="13.3" cy="3" rx="13.3" ry="3" transform="translate(101.9 69.4)"/>
+      <path id="Path_904" data-name="Path 904" class="cls-3" d="M109.1,30.3c-.1,0-.3.1-.4.1a8.2,8.2,0,0,1-4.4-15.8,8.088,8.088,0,0,1,7.5,1.7l2.9-14.7A22.862,22.862,0,0,0,100.5.8,22.553,22.553,0,0,0,84.8,28.4C86.6,34.9,96.2,45,104.6,53Z"/>
+    </g>
+    <g id="Group_791" data-name="Group 791">
+      <path id="Path_905" data-name="Path 905" class="cls-4" d="M17.8,109.5l8.3-20.7h9.6l-14.5,34H14.3L0,88.8H9.6Z"/>
+      <path id="Path_906" data-name="Path 906" class="cls-4" d="M46.7,122.8H37.9v-34h8.8Z"/>
+      <path id="Path_907" data-name="Path 907" class="cls-4" d="M50.7,88.8h8.8l16.2,20.8h.1V88.8h8.8v34H75.8L59.6,102h-.1v20.8H50.7Z"/>
+      <path id="Path_908" data-name="Path 908" class="cls-4" d="M88.1,88.8h13.5c7.3,0,12.4,3.4,12.4,11.2,0,8-4.3,11.6-12,11.6H97v11.3H88.2V88.8Zm8.8,15.6h1.5c3.2,0,6.4,0,6.4-4.2,0-4.3-2.9-4.3-6.4-4.3H96.9Z"/>
+      <path id="Path_909" data-name="Path 909" class="cls-4" d="M153.5,105.2c0,11-7.9,18.8-18.8,18.8s-18.8-7.8-18.8-18.8c0-10.3,9-17.5,18.8-17.5S153.5,94.9,153.5,105.2Zm-28.4,0c0,5.9,4.3,10.2,9.6,10.2s9.6-4.3,9.6-10.2c0-4.7-4.3-9-9.6-9S125.1,100.5,125.1,105.2Z"/>
+      <path id="Path_910" data-name="Path 910" class="cls-4" d="M165,122.8h-8.8v-34H165Z"/>
+      <path id="Path_911" data-name="Path 911" class="cls-4" d="M168.7,88.8h8.8l16.2,20.8h.1V88.8h8.8v34h-8.8L177.7,102h-.1v20.8h-8.8v-34Z"/>
+      <path id="Path_912" data-name="Path 912" class="cls-4" d="M221.7,122.8h-8.8V96.3h-7.3V88.8H229v7.5h-7.3Z"/>
+    </g>
+  </g>
+</svg>

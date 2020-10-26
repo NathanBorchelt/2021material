@@ -1,0 +1,121 @@
+%fa {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+
+%fas {
+  @extend %fa;
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+}
+
+@mixin circle($width, $color, $fillColor, $diameter: inherit) {
+  content: "";
+  display: block;
+  border: $width solid $color;
+  border-radius: 50%;
+  background: $fillColor;
+  width: $diameter;
+  height: $diameter;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.step-pane {
+  flex: 0 0 245px;
+  background: #3586b9;
+  border-radius: 2px 0 0 2px;
+  .title {
+    background: #307aa9;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: Bold;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 2px 0 0 0;
+    letter-spacing: 0.56px;
+  }
+}
+
+ul.steps {
+  display: block;
+  list-style-type: none;
+  padding: 0;
+  margin: 30px 0 0 30px;
+  > li {
+    display: flex;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.7px;
+    color: #fff;
+    margin-bottom: 50px;
+    .icon {
+      @extend %fas;
+      position: relative;
+      width: 22px;
+      height: 22px;
+      line-height: 22px;
+      text-align: center;
+      font-size: 12px;
+      color: #fff;
+      margin-right: 7px;
+      &::before {
+        content: "";
+        position: relative;
+        z-index: 1;
+      }
+      &::after {
+        @include circle(2px, rgba(255, 255, 255, 0.25), transparent, 14px);
+      }
+    }
+    &.complete .icon {
+      &::before {
+        content: "\f00c";
+      }
+      &::after {
+        @include circle(2px, #fff, #68d391);
+      }
+    }
+    &.active .icon {
+      &::before {
+        content: "";
+      }
+      &::after {
+        @include circle(7px, #fff, transparent);
+        box-shadow: 0 0 25px #00000080;
+      }
+    }
+    .line {
+      content: "";
+      display: block;
+      border-left: 3px solid rgba(255, 255, 255, 0.25);
+      position: absolute;
+      width: 0;
+      height: 58px;
+      left: 0;
+      right: 0;
+      top: calc(100% - 4px);
+      margin: auto;
+    }
+    &.complete .line {
+      border-left-color: #68d391;
+    }
+    .text {
+      opacity: 0.75;
+    }
+    &.active .text {
+      opacity: 1;
+    }
+  }
+}

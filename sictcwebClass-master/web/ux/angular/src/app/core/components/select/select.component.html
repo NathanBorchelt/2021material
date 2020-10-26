@@ -1,0 +1,29 @@
+
+<div class="outer-wrapper">
+  <div class="inner-wrapper">
+    <input #input
+           (focus)="openDropunder()"
+           type="text"
+           [(ngModel)]="filterSubstring"
+           (ngModelChange)="filterDataByReflect(filterSubstring)"
+           name="somename"
+           [placeholder]="placeholder"
+           autocomplete="off"
+           autocomplete="nope"
+           (keydown)="onInputKeydown($event)"
+           [disabled]="disabled">
+
+    <i class="fas fa-caret-down" (click)="focusInput()"></i>
+  </div>
+  <div class="dropunder" [ngClass]="{ 'visible': dropunderOpen }">
+    <ul>
+      <ng-container *ngFor="let s of filteredSelectable; let i = index">
+        <li #listItem [ngClass]="{'highlighted': highlightedItemIndex === i}" [id]="'dropdown-item-'+i">
+          <a (click)="select(i, s)" class="dropdown-item">{{s.reflect}}</a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>
+
+

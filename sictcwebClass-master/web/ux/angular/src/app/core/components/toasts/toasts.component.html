@@ -1,0 +1,6 @@
+<div class="toast-container">
+  <ng-container *ngFor="let toast of toastService.toasts">
+    <app-toast [@fadeIn]="'in'" [toast]="toast"></app-toast>
+  </ng-container>
+</div>
+

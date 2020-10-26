@@ -1,0 +1,269 @@
+/*! Hint.css - v2.4.1 - 2016-11-08
+* http://kushagragour.in/lab/hint/
+* Copyright (c) 2016 Kushagra Gour */
+
+/*-------------------------------------*	HINT.css - A CSS tooltip library
+\*-------------------------------------*/
+/**
+ * HINT.css is a tooltip library made in pure CSS.
+ *
+ * Source: https://github.com/chinchang/hint.css
+ * Demo: http://kushagragour.in/lab/hint/
+ *
+ * Release under The MIT License
+ *
+ */
+/**
+ * source: hint-core.scss
+ *
+ * Defines the basic styling for the tooltip.
+ * Each tooltip is made of 2 parts:
+ * 	1) body (:after)
+ * 	2) arrow (:before)
+ *
+ * Classes added:
+ * 	1) hint
+ */
+[class*="hint--"] {
+  position: relative;
+  display: inline-block;
+  /**
+	 * tooltip arrow
+	 */
+  /**
+	 * tooltip body
+	 */ }
+[class*="hint--"]:before, [class*="hint--"]:after {
+  position: absolute;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1000000;
+  pointer-events: none;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  transition: 0.3s ease;
+  -webkit-transition-delay: 0ms;
+  -moz-transition-delay: 0ms;
+  transition-delay: 0ms; }
+[class*="hint--"]:hover:before, [class*="hint--"]:hover:after {
+  visibility: visible;
+  opacity: 1; }
+[class*="hint--"]:hover:before, [class*="hint--"]:hover:after {
+  -webkit-transition-delay: 0.7s;
+  -moz-transition-delay: 0.7s;
+  transition-delay: 0.7s; }
+[class*="hint--"]:before {
+  content: '';
+  position: absolute;
+  background: transparent;
+  border: 6px solid transparent;
+  z-index: 1000001; }
+[class*="hint--"]:after {
+  background: $u-brand-orange;
+  color: white;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  white-space: nowrap; }
+[class*="hint--"][aria-label]:after {
+  content: attr(aria-label); }
+[class*="hint--"][data-hint]:after {
+  content: attr(data-hint); }
+
+[aria-label='']:before, [aria-label='']:after,
+[data-hint='']:before,
+[data-hint='']:after {
+  display: none !important; }
+
+/**
+ * source: hint-position.scss
+ *
+ * Defines the positoning logic for the tooltips.
+ *
+ * Classes added:
+ * 	1) hint--top
+ * 	2) hint--bottom
+ * 	3) hint--left
+ * 	4) hint--right
+ */
+/**
+ * set default color for tooltip arrows
+ */
+
+
+.hint--top-right:before {
+  border-top-color: $u-brand-orange; }
+
+.hint--top:before {
+  border-top-color: $u-brand-orange; }
+
+.hint--bottom-left:before {
+  border-bottom-color: $u-brand-orange; }
+
+.hint--bottom-right:before {
+  border-bottom-color: $u-brand-orange; }
+
+.hint--bottom:before {
+  border-bottom-color: $u-brand-orange; }
+
+.hint--left:before {
+  border-left-color: $u-brand-orange; }
+
+.hint--right:before {
+  border-right-color: $u-brand-orange; }
+
+  /**
+ * top tooltip
+ */
+.hint--top:before {
+  margin-bottom: -11px; }
+
+.hint--top:before, .hint--top:after {
+  bottom: 100%;
+  left: 50%; }
+
+.hint--top:before {
+  left: calc(50% - 6px); }
+
+.hint--top:after {
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+.hint--top:hover:before {
+  -webkit-transform: translateY(-8px);
+  -moz-transform: translateY(-8px);
+  transform: translateY(-8px); }
+
+.hint--top:hover:after {
+  -webkit-transform: translateX(-50%) translateY(-8px);
+  -moz-transform: translateX(-50%) translateY(-8px);
+  transform: translateX(-50%) translateY(-8px); }
+
+
+/**
+ * bottom tooltip
+ */
+.hint--bottom:before {
+  margin-top: -11px; }
+
+.hint--bottom:before, .hint--bottom:after {
+  top: 100%;
+  left: 50%; }
+
+.hint--bottom:before {
+  left: calc(50% - 6px); }
+
+.hint--bottom:after {
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+.hint--bottom:hover:before {
+  -webkit-transform: translateY(8px);
+  -moz-transform: translateY(8px);
+  transform: translateY(8px); }
+
+.hint--bottom:hover:after {
+  -webkit-transform: translateX(-50%) translateY(8px);
+  -moz-transform: translateX(-50%) translateY(8px);
+  transform: translateX(-50%) translateY(8px); }
+
+
+/**
+ * source: hint-rounded.scss
+ *
+ * Defines rounded corner tooltips.
+ *
+ * Classes added:
+ * 	1) hint--rounded
+ *
+ */
+.hint--rounded:after {
+  border-radius: 4px; }
+
+/**
+ * source: hint-effects.scss
+ *
+ * Defines various transition effects for the tooltips.
+ *
+ * Classes added:
+ * 	1) hint--no-animate
+ * 	2) hint--bounce
+ *
+ */
+.hint--no-animate:before, .hint--no-animate:after {
+  -webkit-transition-duration: 0ms;
+  -moz-transition-duration: 0ms;
+  transition-duration: 0ms; }
+
+.hint--bounce:before, .hint--bounce:after {
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  -moz-transition: opacity 0.3s ease, visibility 0.3s ease, -moz-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24); }
+
+
+
+// SAVE THIS
+//[move-tooltip] {
+//  position: relative;
+//  z-index: 2;
+//  cursor: pointer;
+//}
+//
+///* Hide the tooltip content by default */
+//[move-tooltip]:before,
+//[move-tooltip]:after {
+//  visibility: hidden;
+//  opacity: 0;
+//  pointer-events: none;
+//}
+//
+///* Position tooltip above the element */
+//[move-tooltip]:before {
+//  white-space:pre-wrap;
+//  position: absolute;
+//  top: 125%;
+//  left: 50%;
+//  margin-bottom: 5px;
+//  margin-left: -50px;
+//  padding: 7px;
+//  width: 100px;
+//  -webkit-border-radius: 3px;
+//  -moz-border-radius: 3px;
+//  border-radius: 5px;
+//  background-color: #FFB633;
+//  //background-color: hsla(0, 0%, 20%, 0.9);
+//  color: #fff;
+//  content: attr(move-tooltip);
+//  text-align: center;
+//  //font-size: 14px;
+//  line-height: 1;
+//}
+//
+///* Triangle hack to make tooltip look like a speech bubble */
+//[move-tooltip]:after {
+//  position: absolute;
+//  top: 105%;
+//  left: 50%;
+//  margin-left: -5px;
+//  width: 0;
+//  border-bottom: 5px solid #FFB633;
+//  //border-bottom: 5px solid hsla(0, 0%, 20%, 0.9);
+//  border-right: 5px solid transparent;
+//  border-left: 5px solid transparent;
+//  content: " ";
+//  font-size: 0;
+//  line-height: 0;
+//}
+//
+///* Show tooltip content on hover */
+//[move-tooltip]:hover:before,
+//[move-tooltip]:hover:after {
+//  visibility: visible;
+//  opacity: 1;
+//}

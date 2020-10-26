@@ -1,0 +1,14 @@
+
+
+.radio-parent {
+    display: flex;
+    align-items: center;
+    margin: 0 0 5px 0;
+    input[type="radio"] {
+        margin: 0;
+        padding: 0;
+    }
+    label {
+        margin: 0 0 0 10px;
+    }
+}

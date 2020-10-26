@@ -1,0 +1,125 @@
+@import '../../../../../assets/sass/common';
+
+@mixin color-profile($color, $icon) {
+  border-color: $color;
+  .toast__icon {
+    i {
+      color: $color;
+      &::before {
+        content: $icon;
+      }
+    }
+  }
+  .toast__timer {
+    background-color: lighten($color, 20%);
+    &.disabled {
+      background-color: $color;
+    }
+    .timer {
+      background-color: $color;
+    }
+  }
+}
+
+.toast.success {
+  @include color-profile($u-brand-green, '\f058');
+}
+
+.toast.error {
+  @include color-profile($u-brand-red, '\f06a');
+}
+
+.toast.warning {
+  @include color-profile($u-brand-orange, '\f071');
+}
+
+.toast.general {
+  @include color-profile($u-brand-blue, "\f05a");
+}
+
+.toast {
+  width: 420px;
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  margin: 0 0 10px 0;
+  background-color: #fff;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.toast__timer {
+  height: 5px;
+  width: 100%;
+  .timer {
+    height: 100%;
+    width: 100%;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-name: timer;
+    transform-origin: 0%;
+  }
+}
+
+@keyframes timer {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(100%);
+  }
+}
+
+.toast__internal {
+  padding: 10px 20px 15px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.toast__icon {
+  margin: 0 15px 0 0;
+  i {
+    font-size: 35px;
+  }
+}
+
+.toast-top {
+  display: flex;
+  align-items: center;
+}
+
+.toast__title {
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.toast__body {
+  font-size: 14px;
+  color: #707070;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.toast__body--alt {
+  font-size: 13px;
+  margin: 0;
+}
+
+.toast__buttons {
+  padding: 0;
+  margin: 0;
+  line-height: 27px;
+  .toast-button {
+    margin-top: 2px;
+    margin-bottom: 5px;
+    border: none;
+    background: none;
+    color: $vp-blue-alternate;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 0;
+    text-decoration: underline;
+  }
+}

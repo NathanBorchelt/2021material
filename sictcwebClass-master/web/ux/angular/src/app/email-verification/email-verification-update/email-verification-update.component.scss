@@ -1,0 +1,66 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  color: #373a3c;
+  font-size: 14px;
+  margin-left: 4px;
+  text-align: left;
+  margin-bottom: 4px;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+input {
+  background: #f4f5f6;
+  color: #333;
+  border: none;
+  border-radius: 2px;
+  width: 275px;
+  height: 38px;
+  padding: 0 10px;
+  margin-bottom: 4px;
+  transition: all 350ms;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px #00c3ed;
+  }
+}
+
+input.ng-invalid.ng-touched {
+  outline: none;
+  box-shadow: 0 0 1px 1px #c33131;
+}
+
+.warning-text {
+  color: #c33131;
+  margin-bottom: 4px;
+  padding: 0;
+  font-size: 12px;
+  text-align: left;
+}
+
+.fal {
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555555;
+}
+
+.title {
+  font-size: 17px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.next-button {
+  width: 275px;
+  margin-top: 43px !important;
+}

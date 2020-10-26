@@ -1,0 +1,49 @@
+.u-wide-table {
+  width: 100%;
+}
+
+.u-wide-table > tbody > tr {
+  background-color: #ffffff;
+  height: 50px;
+  padding: 10px;
+  border-top: 2px solid #f2f2f2;
+  border-bottom: 2px solid #f2f2f2;
+  cursor: hand;
+  cursor: pointer;
+  &:hover {
+    background-color: #dddddd;
+  }
+}
+
+.u-wide-table > tbody > tr > td {
+  padding: 10px 0 10px 0;
+}
+.u-wide-table > tbody > tr > td:first-child {
+  padding-left: 10px;
+}
+.u-wide-table > tbody > tr > td:last-child {
+  padding-right: 10px;
+}
+
+// Extensions
+.u-wide-table-name {
+  font-weight: 600;
+}
+.u-wide-table .align-right {
+  text-align: right;
+}
+.u-wide-table .align-center {
+  text-align: center;
+}
+.u-wide-table .checkbox {
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 50px;
+}
+.u-wide-table tr.disabled {
+  cursor: auto !important;
+  font-style: italic;
+  &:hover {
+    background-color: #ffffff !important;
+  }
+}

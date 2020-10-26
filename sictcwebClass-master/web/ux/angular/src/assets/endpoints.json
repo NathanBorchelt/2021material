@@ -1,0 +1,12 @@
+{
+    "unisonApi": "CP_UNISON_API",
+    "printerApi": "CP_PRINTER_API",
+    "batchApi": "CP_BATCH_API",
+    "storeEmailApi": "CP_STORE_EMAIL_API",
+    "scannerApi": "CP_SCANNER_API",
+    "integrationApi": "CP_INTEGRATION_API",
+    "sockRoot": "CP_SOCK_ROOT",
+    "sockPath": "CP_SOCK_PATH",
+    "sockNs": "CP_SOCK_NS",
+    "stripePublishableKey": "STRIPE_PUBLISHABLE_KEY"
+}

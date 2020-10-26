@@ -1,0 +1,14 @@
+
+.tag {
+  padding: 8px 20px 8px 0px;
+  border-radius: 20px;
+  color: white;
+  display: inline-block;
+  border: 2px solid white;
+  background: grey;
+  user-select: none;
+  i {
+    font-size: 15px;
+    margin: 0 10px 0 10px;
+  }
+}

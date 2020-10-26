@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Redirect to mobile landing if screen width is tiny -->
+  <script type="text/javascript">
+    if(navigator.userAgent.match(/Android|iPhone|iPod|Opera Mini|BlackBerry|IEMobile|iOS|Mobile/i)) {
+      window.location = "http://www.cphandheld.com/mobile";
+    }
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+      'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-WHQ5ZHK');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google Javascript Maps API-->
+  <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcG7ruxu1QBqWJGnc23g143372iJbYqoA&libraries=places">
+  </script>
+  <!--End Google Javscript Maps API-->
+
+  <link href="assets/preloader.css" rel="stylesheet">
+  <script data-pace-options='{ "ajax": false }' src="assets/pace.min.js"></script>
+
+  <meta charset="utf-8">
+
+  <link rel="manifest" href="assets/manifest.json">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Vinpoint">
+  <meta name="apple-mobile-web-app-title" content="Vinpoint">
+  <meta name="theme-color" content="#775A2C">
+  <meta name="msapplication-navbutton-color" content="#775A2C">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="msapplication-starturl" content="/">
+  <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" name="viewport"/>
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="apple-touch-icon" href="assets/icons/114x114.png">
+  <link rel="apple-touch-icon" sizes="55x55" href="assets/icons/57x57.png">
+  <link rel="apple-touch-icon" sizes="70x70" href="assets/icons/72x72.png">
+  <link rel="apple-touch-icon" sizes="112x112" href="assets/icons/114x114.png">
+
+  <title>VINpoint</title>
+  <base href="/">
+
+  <!-- Adobe Fonts -->
+  <link rel="stylesheet" href="https://use.typekit.net/yvh7edz.css">
+
+  <!-- Auth0 Lock script -->
+  <!-- ERIC: Why can't I just import this like a regular module?? -->
+  <script src="assets/external-js/highlight.js"></script>
+  <script src="https://cdn.auth0.com/js/auth0/9.3.1/auth0.min.js"></script>
+
+  <script src="https://js.stripe.com/v3/"></script>
+
+</head>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHQ5ZHK"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<app-root>
+</app-root>
+  <div style=position:fixed;height:100%;width:100%;display:flex;justify-content:center;align-items:center class=preload><div style=width:250px;text-align:center;color:#aaa;font-family:Arial,sans-serif!important;font-size:16px><svg style=width:250px viewBox="-878 -1099 229 124.017"xmlns=http://www.w3.org/2000/svg><defs><style>.cls-1{fill:#ffa400}.cls-2{fill:#e58d00}.cls-3{fill:#fff;opacity:.2}.cls-4{fill:#2e5a76}</style></defs><g data-name="Group 792"id=Group_792 transform="translate(-878 -1098.983)"><g data-name="Group 790"id=Group_790><g data-name="Group 789"id=Group_789><path class=cls-1 d=M100.5.8A22.553,22.553,0,0,0,84.8,28.4c2.7,9.7,23.2,27.9,30.6,34.2a2.337,2.337,0,0,0,3.8-1.1c3.1-9.3,11.4-35.4,8.7-45.1A22.2,22.2,0,0,0,100.5.8m8.2,29.7a8.2,8.2,0,1,1,5.7-10.1,8.331,8.331,0,0,1-5.7,10.1 data-name="Path 903"id=Path_903 /></g><ellipse class=cls-2 cx=13.3 cy=3 data-name="Ellipse 67"id=Ellipse_67 rx=13.3 ry=3 transform="translate(101.9 69.4)"/><path class=cls-3 d=M109.1,30.3c-.1,0-.3.1-.4.1a8.2,8.2,0,0,1-4.4-15.8,8.088,8.088,0,0,1,7.5,1.7l2.9-14.7A22.862,22.862,0,0,0,100.5.8,22.553,22.553,0,0,0,84.8,28.4C86.6,34.9,96.2,45,104.6,53Z data-name="Path 904"id=Path_904 /></g><g data-name="Group 791"id=Group_791><path class=cls-4 d=M17.8,109.5l8.3-20.7h9.6l-14.5,34H14.3L0,88.8H9.6Z data-name="Path 905"id=Path_905 /><path class=cls-4 d=M46.7,122.8H37.9v-34h8.8Z data-name="Path 906"id=Path_906 /><path class=cls-4 d=M50.7,88.8h8.8l16.2,20.8h.1V88.8h8.8v34H75.8L59.6,102h-.1v20.8H50.7Z data-name="Path 907"id=Path_907 /><path class=cls-4 d=M88.1,88.8h13.5c7.3,0,12.4,3.4,12.4,11.2,0,8-4.3,11.6-12,11.6H97v11.3H88.2V88.8Zm8.8,15.6h1.5c3.2,0,6.4,0,6.4-4.2,0-4.3-2.9-4.3-6.4-4.3H96.9Z data-name="Path 908"id=Path_908 /><path class=cls-4 d=M153.5,105.2c0,11-7.9,18.8-18.8,18.8s-18.8-7.8-18.8-18.8c0-10.3,9-17.5,18.8-17.5S153.5,94.9,153.5,105.2Zm-28.4,0c0,5.9,4.3,10.2,9.6,10.2s9.6-4.3,9.6-10.2c0-4.7-4.3-9-9.6-9S125.1,100.5,125.1,105.2Z data-name="Path 909"id=Path_909 /><path class=cls-4 d=M165,122.8h-8.8v-34H165Z data-name="Path 910"id=Path_910 /><path class=cls-4 d=M168.7,88.8h8.8l16.2,20.8h.1V88.8h8.8v34h-8.8L177.7,102h-.1v20.8h-8.8v-34Z data-name="Path 911"id=Path_911 /><path class=cls-4 d=M221.7,122.8h-8.8V96.3h-7.3V88.8H229v7.5h-7.3Z data-name="Path 912"id=Path_912 /></g></g></svg><div style=margin-top:20px>Loading. Please Wait...</div></div></div>
+</body>
+</html>

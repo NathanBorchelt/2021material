@@ -1,0 +1,35 @@
+.pill {
+  display: inline-block;
+  background-color: $u-brand-blue;
+  padding-left: 8px;
+  padding-right: 4px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 5px;
+}
+
+.pill.cloud {
+  margin: 4px;
+}
+
+.pill > a {
+  margin-right: 6px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.pill > a > i {
+  cursor: pointer;
+  cursor: hand; // Has to be defined twice for older/different browsers
+  font-size: 10px;
+  margin-left: 6px;
+  padding-left: 6px;
+  border-left: 1px solid #fff;
+}
+
+.pill.remove {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s .2s, opacity .2s linear;
+}
+

@@ -1,0 +1,9 @@
+<button class="button-settings" [ngClass]="[style]" (click)="click()" [disabled]="disabled" [type]="type">
+  <span [ngStyle]="isShowingLoadingAnimation || (!isShowingLoadingAnimation && isShowingFinishLoadingAnimation) ? {'visibility': 'hidden'} : ''">
+      <ng-content></ng-content>
+  </span>
+    <div *ngIf="isShowingLoadingAnimation && !isShowingFinishLoadingAnimation" class="spinner-wrapper">
+      <app-throbber></app-throbber>
+    </div>
+  <i [ngClass]="{'show': isShowingFinishLoadingAnimation}" class="icon {{resultIcon}}"></i>
+</button>

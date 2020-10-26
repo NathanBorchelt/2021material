@@ -1,0 +1,22 @@
+table.flex-table {
+  display: flex;
+  flex-direction: column;
+  & > tbody,
+  & > thead,
+  & > tfoot {
+    display: flex;
+    flex-direction: column;
+    & > tr {
+      display: flex;
+      flex-direction: row;
+      & > th,
+      & > td {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}

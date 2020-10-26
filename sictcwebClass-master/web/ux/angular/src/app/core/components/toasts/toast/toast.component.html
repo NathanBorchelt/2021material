@@ -1,0 +1,33 @@
+<div (click)="toastService.dismiss(toast)" class="toast" [ngClass]="{
+  'success': toast.style === ToastStyle.SUCCESS,
+  'error': toast.style === ToastStyle.ERROR,
+  'warning': toast.style === ToastStyle.WARNING,
+  'general': toast.style === ToastStyle.GENERAL
+  }">
+  <div class="toast__timer" [ngClass]="{'disabled' : !toast.timeout}">
+    <div *ngIf="toast.timeout" [ngStyle]="{'animation-duration' : toast.timeout.toString() + 'ms'}" class="timer"></div>
+  </div>
+  <div class="toast__internal">
+
+    <div class="toast-top">
+
+      <div class="toast__icon">
+        <i class="far"></i>
+      </div>
+
+      <div class="toast__content">
+        <span class="toast__title">{{toast.title}}</span>
+        <p [ngClass]="toast.title ? 'toast__body' : 'toast__body--alt'">
+          {{toast.body}}
+        </p>
+      </div>
+    </div>
+
+    <div class="toast-bottom">
+      <p class="toast__buttons" *ngFor="let action of toast.actions">
+        <button class="toast-button" (click)="action.callback()">{{action.label}}</button>
+      </p>
+    </div>
+
+  </div>
+</div>

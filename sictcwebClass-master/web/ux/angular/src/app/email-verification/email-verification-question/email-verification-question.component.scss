@@ -1,0 +1,46 @@
+@import '../../../assets/sass/common';
+.envelope-icon {
+  color: #38393b;
+  margin-bottom: 30px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 46px;
+  margin-bottom: 13px;
+  .button {
+    width: 150px;
+    height: 34px;
+    border-radius: 3px;
+    border: none;
+    &--secondary {
+      background: #eee;
+      color: #6a6a6a;
+      &:hover {
+        background: darken(#eee, 5%);
+      }
+    }
+    &--primary {
+      background: $vp-blue-alternate;
+      color: white;
+      &:hover {
+        background: darken($vp-blue-alternate, 5%);
+      }
+    }
+  }
+}
+
+.not-ready-link {
+  text-align: center;
+}

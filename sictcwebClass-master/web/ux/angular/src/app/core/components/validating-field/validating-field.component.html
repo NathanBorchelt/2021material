@@ -1,0 +1,5 @@
+<div [ngClass]="{'has-error' : fieldError}" class="form-group">
+  <label *ngIf="label" for="validatingField_{{uniqueId}}">{{label}}</label>
+  <input type="{{type}}" class="form-control" id="validatingField_{{uniqueId}}" #validatingField placeholder="{{placeholder}}" [(ngModel)]="value" (blur)="onBlur()" (focus)="onFocus()" [maxlength]="!maxLength ? null : maxLength" [disabled]="disabled">
+  <span *ngIf="fieldError" class="help-block">{{errorMessage}}</span>
+</div>

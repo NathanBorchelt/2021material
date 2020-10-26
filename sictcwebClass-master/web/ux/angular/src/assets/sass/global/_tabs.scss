@@ -1,0 +1,38 @@
+.tab-content {
+  -webkit-box-shadow: 0px 1px 10px 1px #bababa;
+  -moz-box-shadow: 0px 1px 10px 1px #bababa;
+  box-shadow: 0px 1px 10px 1px #bababa;
+  background-color: white;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  background-color: $u-brand-blue;
+  color: #fff;
+  border: hidden;
+  box-shadow: none;
+}
+
+.nav-tabs > li > a {
+  padding-left: 40px;
+  padding-right: 40px;
+  box-shadow: inset 5px 0 6px -5px rgba(0,0,0,0.2);
+  border-radius: 0;
+  margin: 0;
+  border: hidden;
+  color: #fff;
+  background-color: $u-brand-blue-original-light;
+}
+
+.nav-tabs > li:first-child > a {
+  border-top-left-radius: 4px;
+  box-shadow: none;
+}
+
+.nav-tabs > li:last-child > a {
+  border-top-right-radius: 4px;
+}
+
+.nav-tabs > li > a:hover {
+  border: hidden;
+  background-color: $u-brand-blue-lighter;
+}

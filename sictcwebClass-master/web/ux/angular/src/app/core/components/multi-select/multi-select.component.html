@@ -1,0 +1,29 @@
+<div class="outer-wrapper">
+  <div class="inner-wrapper">
+    <input #input
+           (focus)="openDropunder()"
+           type="text"
+           [(ngModel)]="filterSubstring"
+           (ngModelChange)="filter(filterSubstring)"
+           name="somename"
+           [placeholder]="generatePlaceholder()"
+           autocomplete="off"
+           (keydown)="onInputKeydown($event)">
+
+    <i class="fas fa-caret-down" (click)="focusInput()"></i>
+  </div>
+  <div class="dropunder" [ngClass]="{ 'visible': dropunderOpen }">
+    <ul>
+      <li>
+        <input id="all_{{uniqueId}}" (change)="selectAll($event)" [checked]="allSelected" class="u-cb" type="checkbox">
+        <label for="all_{{uniqueId}}">Select All</label>
+      </li>
+      <ng-container *ngFor="let s of filteredSelectable; let i = index">
+        <li #listItem [ngClass]="{'highlighted': highlightedItemIndex === i}" tabindex="0">
+          <input [attr.id]="s.reflect + '_' + i + '_' + uniqueId" (change)="select(i, s)" [checked]="s.selected" class="u-cb" type="checkbox">
+          <label [attr.for]="s.reflect + '_' + i + '_' + uniqueId">{{s.reflect}}</label>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<i class="fal fa-envelope fa-4x envelope-icon"></i>
+<p class="font-16">
+  <b>Please verify your email address</b>
+</p>
+<p>The address we currently have for your account is <br>
+  <b *ngIf="user">{{user.Email}}</b>
+</p>
+<p class="font-16">Is this your correct email address?</p>
+<div class="button-container">
+  <button (click)="stateChanged.emit(VERIFICATION_STATE.UPDATE)" class="button button--secondary">NO</button>
+  <app-button-settings #yesButton (onClick)="sendVerificationEmailAndContinue()" class="button" [style]="'primary'">YES</app-button-settings>
+</div>

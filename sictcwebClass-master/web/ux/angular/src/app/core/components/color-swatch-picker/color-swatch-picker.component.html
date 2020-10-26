@@ -1,0 +1,19 @@
+
+  <div class="dropdown" dropdown #dropdown="bs-dropdown" [isDisabled]="disabled">
+    
+    <button dropdownToggle type="button" class="btn btn-custom dropdown-toggle">
+      <div class="selected-text">{{value ? value.color : label}}</div>
+      <div class="selected-color" [ngStyle]="{'background': value ? value.hex : '', 'border-color': value && value.color === 'White' ? '' : 'transparent'}"></div>
+    </button>
+
+    <div *dropdownMenu class="dropdown-menu pull-right" role="menu" (click)="$event.stopPropagation();">
+      <div class="swatch-table">
+        <ng-container *ngFor="let swatch of swatches; index as i;">
+          <div [ngClass]="{'selected': isSelected(swatch)}" [ngStyle]="{'background': swatch.hex}" (click)="onSelect(swatch);" class="swatch-item"></div>
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+
+  <!--<div class="preview-item" [ngClass]="{'blank': !value}" [ngStyle]="{'background': value ? value.hex : ''}"></div>-->

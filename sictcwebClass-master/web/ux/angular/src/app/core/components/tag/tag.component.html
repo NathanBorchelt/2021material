@@ -1,0 +1,4 @@
+<div class="tag" (click)="toggle()" [ngStyle]="generateStyle(simpleTagDefinition.Color)">
+  <i *ngIf="simpleTagDefinition.Type === 'ADVANCED'" [ngClass]="{'far': !active, 'fas': active}" class="fa-circle"></i>
+  {{simpleTagDefinition.Label}}
+</div>

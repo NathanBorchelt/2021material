@@ -1,0 +1,19 @@
+@import '../../../assets/sass/common';
+.circle-icon {
+  color: #309012;
+  margin-bottom: 30px;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16)
+}
+
+a {
+  font-size: 14px;
+  color: $vp-blue-alternate;
+}
+
+:host {
+  p {
+    font-size: 14px;
+    color: #2F2F2F;
+    line-height: 1.8;
+  }
+}
