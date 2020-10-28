@@ -11,7 +11,8 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/Krusty_krab_gallery_grub" />
+        android:src="@drawable/Krusty_krab_gallery_grub"
+        android:contentDescription="TODO" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +21,7 @@
 
 
         <NumberPicker
-            android:id="@+id/numberpicker_main_picker"
+            android:id="@+id/menuItems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -30,6 +31,42 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:text="Add Selected Item" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="0">
+
+                <CheckBox
+                    android:id="@+id/cheese"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add Cheese?" />
+
+                <CheckBox
+                    android:id="@+id/meal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Make It a Combo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

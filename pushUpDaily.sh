@@ -6,7 +6,11 @@ DATE+'%c'
 
 PUSH="Push Up on"
 
-COMMENT="$PUSH at $DATE from $HOSTNAME"
+echo "What did you do today:  "
+
+read REASON
+
+COMMENT="$PUSH at $DATE from $HOSTNAME. Reason:  $REASON"
 
 cd
 
