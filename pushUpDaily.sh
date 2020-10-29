@@ -17,7 +17,7 @@ cd
 
 cd C:\\Users\\$USER\\Documents\\2021material
 
-read 
+read  DATE
 
 git add .
 
