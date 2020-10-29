@@ -17,6 +17,8 @@ cd
 
 cd C:\\Users\\$USER\\Documents\\2021material
 
+echo "rand text"
+
 read  DATE
 
 git add .
