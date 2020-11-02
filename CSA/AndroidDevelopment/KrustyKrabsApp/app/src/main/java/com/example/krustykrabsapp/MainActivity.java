@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //Start your second activity
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, OrderActivity.class);
                 startActivity(intent);
             }
         });

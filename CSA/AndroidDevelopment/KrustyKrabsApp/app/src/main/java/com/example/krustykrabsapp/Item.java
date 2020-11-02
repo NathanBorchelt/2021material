@@ -7,21 +7,33 @@ public class Item {
 
     private String name;
     private double price;
+    private double originalPrice;
     private boolean sauce;
+    private boolean meal;
     private int size;
+
+
+    public Item(){
+        this.name = "";
+        this.price = 0.;
+    }
+
     public Item(String name,double price){
         this.name = name;
         this.price = price;
+        this.originalPrice = price;
     }
     public Item(String name, double price, boolean sauceCheese){
         this.name = name;
         this.price=price;
         this.sauce = sauceCheese;
+        this.originalPrice = price;
     }
     public Item(String name, double price, int size){
         this.name = name;
         this.price = price;
         this.size = size;
+        this.originalPrice = price;
     }
 //getters
     public double getPrice() {
@@ -37,9 +49,9 @@ public class Item {
     }
 
     //setters
-    public void setSauce(boolean sauce) {
-        this.sauce = sauce;
-    }
+    public void setMeal(boolean meal){ this.meal = meal;}
+
+    public void setSauce(boolean sauce) {this.sauce=sauce;}
 
     public void setPrice(double price) {
         this.price = price;
@@ -51,5 +63,13 @@ public class Item {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public void upcharge(double uCPrice){
+        this.price += uCPrice;
+    }
+    public void recharge(double uCPrice){
+        this.price = this.originalPrice;
+        this.price += uCPrice;
     }
 }
