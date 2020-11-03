@@ -16,9 +16,9 @@ cd
 
 cd C:\\Users\\CS-PM\\Documents\\2021material
 
+cd C:\\Users\\tomme\\OneDrive\\Documents\\2021material
+
 git add .
-
-
 
 git commit -m "$COMMENT"
 
