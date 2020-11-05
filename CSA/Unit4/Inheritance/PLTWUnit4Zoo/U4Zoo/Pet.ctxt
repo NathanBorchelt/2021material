@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Pet
+comment0.text=\r\n\ Activity\ 4.9.1\r\n\ \r\n\ Write\ a\ description\ of\ class\ Pet\ here.\r\n\r\n\ @author\ Borchelt\r\n\ @version\ 20201105\r\n
+comment1.params=n
+comment1.target=void\ setName(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment3.params=e
+comment3.target=void\ setEnergy(int)
+comment4.params=
+comment4.target=int\ getEnergy()
+comment5.params=
+comment5.target=void\ eat()
+comment6.params=
+comment6.target=void\ sleep()
+numComments=7
