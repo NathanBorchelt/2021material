@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BorcheltNavPractice</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">The Pat Mayes</string>
+    <string name="nav_header_subtitle">the.pat.mays@evsck12.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Log Out</string>
+
+    <string name="menu_home">Mi Casa</string>
+    <string name="menu_gallery">Those Photos</string>
+    <string name="menu_slideshow">Moving Pictures</string>
+</resources>

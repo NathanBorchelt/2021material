@@ -31,65 +31,40 @@ public class SWCharacter{
     private boolean stillLiving;
     private boolean lostALimb;
     private boolean spaceBallsCharacter;
-    //private Object[] attributes = { name, jedi, droid, humanLike, wookie, darkSide, lightSide, bountyHunter, smuggler, kesselSpeed, empire, rebel, resistance, firstOrder, separatist, galacticRepublic, ewok, fluffy, slimey, lightsaberColor, tall, shortH, pilot, annoying, cute, bandersFav, gotButtWhooped, insideATauntaun, stillLiving, lostALimb, spaceBallsCharacter};
-    private ArrayList attributes = new ArrayList<>(){{
-        add(name);
-        add(jedi);
-        add(droid);
-        add(humanLike);
-        add(wookie);
-        add(darkSide);
-        add(lightSide);
-        add(bountyHunter);
-        add(smuggler);
-        add(kesselSpeed);
-        add(empire);
-        add(rebel);
-        add(resistance);
-        add(firstOrder);
-        add(separatist);
-        add(galacticRepublic);
-        add(ewok);
-        add(fluffy);
-        add(slimey);
-        add(lightsaberColor);
-        add(tall);
-        add(shortH);
-        add(pilot);
-        add(annoying);
-        add(cute);
-        add(bandersFav);
-        add(gotButtWhooped);
-        add(insideATauntaun);
-        add(stillLiving);
-        add(lostALimb);
-        add(spaceBallsCharacter);
-    }};
-
-
 
     public SWCharacter(String charInfo){
         String optionsString[] = charInfo.split(",");
-        System.out.println(optionsString);
-        for(int i = 0; i < attributes.size(); i++){
-            try{
-                if(optionsString[i] == "0") attributes.set(i,false);
-                else attributes.set(i,true);
-            }
-            catch(Exception e){
-                try{
-                    attributes.set(i,Integer.valueOf(optionsString[i]));
-                }
-                catch(Exception e2){
-                    try{
-                        attributes.set(i,optionsString[i]);
-                    }
-                    catch(Exception e3){
-                        System.out.println(e3);
-                    }
-                }
-            }
-        }
+        this.name = optionsString[0];
+        this.jedi = (Integer.valueOf(optionsString[1])==1);
+        this.droid = (Integer.valueOf(optionsString[2])==1);
+        this.humanLike = (Integer.valueOf(optionsString[3])==1);
+        this.wookie = (Integer.valueOf(optionsString[4])==1);
+        this.darkSide = (Integer.valueOf(optionsString[5])==1);
+        this.lightSide = (Integer.valueOf(optionsString[6])==1);
+        this.bountyHunter = (Integer.valueOf(optionsString[7])==1);
+        this.smuggler = (Integer.valueOf(optionsString[8])==1);
+        this.kesselSpeed = Integer.valueOf(optionsString[9]);
+        this.empire = (Integer.valueOf(optionsString[10])==1);
+        this.rebel = (Integer.valueOf(optionsString[11])==1);
+        this.resistance = (Integer.valueOf(optionsString[12])==1);
+        this.firstOrder = (Integer.valueOf(optionsString[13])==1);
+        this.separatist = (Integer.valueOf(optionsString[14])==1);
+        this.galacticRepublic = (Integer.valueOf(optionsString[15])==1);
+        this.ewok = (Integer.valueOf(optionsString[16])==1);
+        this.fluffy = (Integer.valueOf(optionsString[17])==1);
+        this.slimey = (Integer.valueOf(optionsString[18])==1);
+        this.lightsaberColor = optionsString[19];
+        this.tall = (Integer.valueOf(optionsString[20])==1);
+        this.shortH = (Integer.valueOf(optionsString[21])==1);
+        this.pilot = (Integer.valueOf(optionsString[22])==1);
+        this.annoying = (Integer.valueOf(optionsString[23])==1);
+        this.cute = (Integer.valueOf(optionsString[24])==1);
+        this.bandersFav = (Integer.valueOf(optionsString[25])==1);
+        this.gotButtWhooped = (Integer.valueOf(optionsString[26])==1);
+        this.insideATauntaun = (Integer.valueOf(optionsString[27])==1);
+        this.stillLiving = (Integer.valueOf(optionsString[28])==1);
+        this.lostALimb = (Integer.valueOf(optionsString[29])==1);
+        this.spaceBallsCharacter = (Integer.valueOf(optionsString[30])==1);
     }
 
     public String getName() { return name; }
