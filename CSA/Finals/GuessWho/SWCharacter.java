@@ -67,6 +67,10 @@ public class SWCharacter{
         this.spaceBallsCharacter = (Integer.valueOf(optionsString[30])==1);
     }
 
+    public String toString(){
+        return name;
+    }
+
     public String getName() { return name; }
     public int getKesselSpeed() { return kesselSpeed; }
     public String getLightsaberColor() { return lightsaberColor; }
