@@ -5,14 +5,48 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.lang.Math;
 
 public class GuessWho{
     public static void main(String[] args) {
         Random rand = new Random();
         ArrayList<SWCharacter> avalibleChars = new ArrayList<SWCharacter>();
-        ArrayList<Integer> randOptions = new ArrayList<Integer>();
-        SWCharacter[] player1Board  = new SWCharacter[25];
-        SWCharacter[] player2Board  = new SWCharacter[25];
+        ArrayList<Integer> randOptions1 = new ArrayList<Integer>();
+        ArrayList<Integer> randOptions2 = new ArrayList<Integer>();
+        ArrayList<SWCharacter> player1Board  = new ArrayList<SWCharacter>();
+        ArrayList<SWCharacter> player2Board  = new ArrayList<SWCharacter>();
+
+        String[] optionPrompStrings = {"Are they a jedi?",
+            "Are they a droid?",
+            "Are they a humanoid?",
+            "Are they a wookie?",
+            "Are they part of the Dark Side?",
+            "Are they part of the Light Side?",
+            "Are they a bountyHunter?",
+            "Are they a smuggler?",
+            "How kesselSpeed?",
+            "Are they part of the empire?",
+            "Are they a rebel?",
+            "Are they part of the Resistance?",
+            "Are they part of the First Order?",
+            "Are they part of the Separatist?",
+            "Are they part of the Galactic Republic?",
+            "Are they a ewok?",
+            "fluffy?",
+            "slimey?",
+            "lightsaberColor?",
+            "tall?",
+            "short?",
+            "Are they a pilot?",
+            "annoying?",
+            "cute?",
+            "bandersFav?",
+            "gotButtWhooped?",
+            "insideATauntaun?",
+            "stillLiving?",
+            "lostALimb?",
+            "Are they a Space Balls character?"}
+
         try{
             //https://www.journaldev.com/709/java-read-file-line-by-line
             BufferedReader allFile = new BufferedReader(new FileReader("SWData.txt"));
@@ -34,15 +68,21 @@ public class GuessWho{
         }
         */
         int potCharIndex;
-        while(randOptions.size()<(avalibleChars.size()/2)){
+        while(randOptions1.size()<(Math.round((avalibleChars.size()/2)))){
             potCharIndex = rand.nextInt(avalibleChars.size());
-            if(!randOptions.contains(potCharIndex)){
-                randOptions.add(potCharIndex);
+            if(!randOptions1.contains(potCharIndex)){
+                randOptions1.add(potCharIndex);
             }
         }
-        for(int i = 0; i < randOptions.size();i++){
-            player1Board[i] = avalibleChars.get(randOptions.get(i));
-            player2Board[i] = avalibleChars.get(randOptions.get(i));
+        while(randOptions2.size()<(Math.round((avalibleChars.size()/2)))){
+            potCharIndex = rand.nextInt(avalibleChars.size());
+            if(!randOptions2.contains(potCharIndex)){
+                randOptions2.add(potCharIndex);
+            }
+        }
+        for(int i = 0; i < randOptions1.size();i++){
+            player1Board.add(avalibleChars.get(randOptions1.get(i)));
+            player2Board.add(avalibleChars.get(randOptions2.get(i)));
         }
         /*
         for(int i = 0; i < player1Board.length; i++){
