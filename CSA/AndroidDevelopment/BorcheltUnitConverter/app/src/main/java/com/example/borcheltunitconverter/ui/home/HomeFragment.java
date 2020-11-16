@@ -60,9 +60,12 @@ public class HomeFragment extends Fragment {
         mTempInput.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
+                //this gets the index of the selection so that It is easier to compare to the wanted output
                 int sTempIndex = mStartUnitPicker.getValue();
                 int eTempIndex = mEndUnitPicker.getValue();
 
+                //This runs aslong as it is not just plain text
+                //it also converts it to Kelvin since it is a universal unit ov measument for all other conversions
                 if(!mTempInput.getText().toString().equals("")) {
                     if (unitSymbols[sTempIndex].equalsIgnoreCase("F"))
                         kelvinMiddleMan = ((Double.valueOf(mTempInput.getText().toString()) - 32) * 5 / 9 + 273.15);
@@ -75,15 +78,18 @@ public class HomeFragment extends Fragment {
                     else if (unitSymbols[sTempIndex].equalsIgnoreCase("D"))
                         kelvinMiddleMan = (373.15 - (Double.valueOf((mTempInput.getText().toString())) * 2 / 3));
                 }
+                //defaults to 0 so avoid errors of processing blank strings
                 else kelvinMiddleMan = 0;
 
-
+                //this converst from kelvin to the desired unit.
                 if(unitSymbols[eTempIndex].equalsIgnoreCase("F")) outputNum = (kelvinMiddleMan-273.15)*9/5+32;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("C")) outputNum = kelvinMiddleMan-273.15;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("K")) outputNum = kelvinMiddleMan;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("R")) outputNum = kelvinMiddleMan*9/5;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("D")) outputNum = (373.15-kelvinMiddleMan)*3/2;
 
+                //this is the out put that shows the inital temperature and units, and dows a similar thing for the ending units
+                //multiplies by 100 then rounds because Math.round only does it to an integer, i then devide by 100. so it keeps it as an double.
                 mOutputText.setText(mTempInput.getText().toString()+" "+displayArrays[sTempIndex] + " is equal to\n"+String.valueOf(Math.round(outputNum*100)/100.)+" "+ displayArrays[eTempIndex]);
                 return false;
             }
@@ -92,9 +98,12 @@ public class HomeFragment extends Fragment {
         mStartUnitPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                //this gets the index of the selection so that It is easier to compare to the wanted output
                 int sTempIndex = mStartUnitPicker.getValue();
                 int eTempIndex = mEndUnitPicker.getValue();
 
+                //This runs aslong as it is not just plain text
+                //it also converts it to Kelvin since it is a universal unit ov measument for all other conversions
                 if(!mTempInput.getText().toString().equals("")) {
                     if (unitSymbols[sTempIndex].equalsIgnoreCase("F"))
                         kelvinMiddleMan = ((Double.valueOf(mTempInput.getText().toString()) - 32) * 5 / 9 + 273.15);
@@ -107,23 +116,30 @@ public class HomeFragment extends Fragment {
                     else if (unitSymbols[sTempIndex].equalsIgnoreCase("D"))
                         kelvinMiddleMan = (373.15 - (Double.valueOf((mTempInput.getText().toString())) * 2 / 3));
                 }
+                //defaults to 0 so avoid errors of processing blank strings
                 else kelvinMiddleMan = 0;
 
-
+                //this converst from kelvin to the desired unit.
                 if(unitSymbols[eTempIndex].equalsIgnoreCase("F")) outputNum = (kelvinMiddleMan-273.15)*9/5+32;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("C")) outputNum = kelvinMiddleMan-273.15;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("K")) outputNum = kelvinMiddleMan;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("R")) outputNum = kelvinMiddleMan*9/5;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("D")) outputNum = (373.15-kelvinMiddleMan)*3/2;
 
-                mOutputText.setText(mTempInput.getText().toString()+" "+displayArrays[sTempIndex] + " is equal to\n"+String.valueOf(Math.round(outputNum*100)/100.)+" "+ displayArrays[eTempIndex]);            }
+                //this is the out put that shows the inital temperature and units, and dows a similar thing for the ending units
+                //multiplies by 100 then rounds because Math.round only does it to an integer, i then devide by 100. so it keeps it as an double.
+                mOutputText.setText(mTempInput.getText().toString()+" "+displayArrays[sTempIndex] + " is equal to\n"+String.valueOf(Math.round(outputNum*100)/100.)+" "+ displayArrays[eTempIndex]);
+            }
         });
         mEndUnitPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                //this gets the index of the selection so that It is easier to compare to the wanted output
                 int sTempIndex = mStartUnitPicker.getValue();
                 int eTempIndex = mEndUnitPicker.getValue();
 
+                //This runs aslong as it is not just plain text
+                //it also converts it to Kelvin since it is a universal unit ov measument for all other conversions
                 if(!mTempInput.getText().toString().equals("")) {
                     if (unitSymbols[sTempIndex].equalsIgnoreCase("F"))
                         kelvinMiddleMan = ((Double.valueOf(mTempInput.getText().toString()) - 32) * 5 / 9 + 273.15);
@@ -136,16 +152,20 @@ public class HomeFragment extends Fragment {
                     else if (unitSymbols[sTempIndex].equalsIgnoreCase("D"))
                         kelvinMiddleMan = (373.15 - (Double.valueOf((mTempInput.getText().toString())) * 2 / 3));
                 }
+                //defaults to 0 so avoid errors of processing blank strings
                 else kelvinMiddleMan = 0;
 
-
+                //this converst from kelvin to the desired unit.
                 if(unitSymbols[eTempIndex].equalsIgnoreCase("F")) outputNum = (kelvinMiddleMan-273.15)*9/5+32;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("C")) outputNum = kelvinMiddleMan-273.15;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("K")) outputNum = kelvinMiddleMan;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("R")) outputNum = kelvinMiddleMan*9/5;
                 else if(unitSymbols[eTempIndex].equalsIgnoreCase("D")) outputNum = (373.15-kelvinMiddleMan)*3/2;
 
-                mOutputText.setText(mTempInput.getText().toString()+" "+displayArrays[sTempIndex] + " is equal to\n"+String.valueOf(Math.round(outputNum*100)/100.)+" "+ displayArrays[eTempIndex]);            }
+                //this is the out put that shows the inital temperature and units, and dows a similar thing for the ending units
+                //multiplies by 100 then rounds because Math.round only does it to an integer, i then devide by 100. so it keeps it as an double.
+                mOutputText.setText(mTempInput.getText().toString()+" "+displayArrays[sTempIndex] + " is equal to\n"+String.valueOf(Math.round(outputNum*100)/100.)+" "+ displayArrays[eTempIndex]);
+            }
         });
         return root;
     }
