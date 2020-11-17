@@ -3,19 +3,35 @@ import java.io.FileReader;
 import java.io.IOException;
 //https://www.journaldev.com/709/java-read-file-line-by-line
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.lang.Math;
 import java.util.Collections;
-import java.util.List;
+
 
 public class GuessWho{
+
+    public static boolean computer = false;
+    public static byte playerTurn = -127;
+
+    public static PlayerBoard p1Board = new PlayerBoard();
+    public static PlayerBoard p2Board = new PlayerBoard();
+
+    public static ArrayList<String> playerOptions = new ArrayList<String>();
+
+    public static ArrayList<String> p1QuestionOptions = new ArrayList<String>();
+    public static ArrayList<String> p2QuestionOptions = new ArrayList<String>();
+
+    public static Scanner in = new Scanner(System.in);
+
     public static void main(String[] args) {
         Random rand = new Random();
+
         ArrayList<SWCharacter> avalibleChars = new ArrayList<SWCharacter>();
         ArrayList<Integer> randOptions = new ArrayList<Integer>();
-        ArrayList<SWCharacter> player1Board  = new ArrayList<SWCharacter>();
-        ArrayList<SWCharacter> player2Board  = new ArrayList<SWCharacter>();
+        ArrayList<SWCharacter> p1Initalization  = new ArrayList<SWCharacter>();
+        ArrayList<SWCharacter> p2Initalization  = new ArrayList<SWCharacter>();
 
         String[] optionPrompStrings = {
             "Are they a jedi?",
@@ -49,6 +65,9 @@ public class GuessWho{
             "Have they lost a limb?",
             "Are they a Space Balls character?"};
 
+        p1QuestionOptions =  (ArrayList<String>) Arrays.asList(optionPrompStrings)
+        Collections.copy(p2QuestionOptions, p1QuestionOptions);
+
         try{
             //https://www.journaldev.com/709/java-read-file-line-by-line
             BufferedReader allFile = new BufferedReader(new FileReader("SWData.txt"));
@@ -77,18 +96,32 @@ public class GuessWho{
             }
         }
         for(int i = 0; i < randOptions.size();i++){
-            player1Board.add(avalibleChars.get(randOptions.get(i)));
-            player2Board.add(avalibleChars.get(randOptions.get(i)));
+            p1Initalization.add(avalibleChars.get(randOptions.get(i)));
+            p2Initalization.add(avalibleChars.get(randOptions.get(i)));
         }
 
-        Collections.shuffle(player2Board);
+        Collections.shuffle(p2Initalization);
         /*
-        for(int i = 0; i < player1Board.length; i++){
-            System.out.println("Player 1: "+ player1Board[i]+"\nPlayer 2: "+player2Board[i]);
+        for(int i = 0; i < p1Initalization.length; i++){
+            System.out.println("Player 1: "+ p1Initalization[i]+"\nPlayer 2: "+p2Initalization[i]);
         }
         */
+        p1Board.fillBoard(p1Initalization);
+        p2Board.fillBoard(p2Initalization);
 
+       
+    }
+
+    public static void testCharacteristic(){
+        if(playerTurn%2 == 0) playerOptions = p1QuestionOptions;
+        else                  playerOptions = p2QuestionOptions;
+        printOptions(playerOptions);
         
+    }
 
+    public static void printOptions(ArrayList<String> avalibleOptions){
+        for(byte i = 0; i < avalibleOptions.size();i++){
+            System.out.println(String.valueOf(i+1)+". "+avalibleOptions.get(i));
+        }
     }
 }

@@ -1,20 +1,21 @@
+import java.util.ArrayList;
 public class PlayerBoard {
-    private SWCharacter[] playerBoard  = new SWCharacter[25];
+    private ArrayList<SWCharacter> playerBoard;
 
-    public void fillBoard(SWCharacter[] swChars){
+    public void fillBoard(ArrayList<SWCharacter> swChars){
         this.playerBoard = swChars;
     }
 
     public SWCharacter returnChar(byte index){
         try{
-            return playerBoard[index];
+            return playerBoard.get(index);
         }
         catch(Exception e){
             return null;
         }
     }
     public void changeValidity(byte index){
-        playerBoard[index].validity(!playerBoard[index].isValidChar());
+        playerBoard.get(index).validity(!playerBoard.get(index).isValidChar());
     }
 
 }
