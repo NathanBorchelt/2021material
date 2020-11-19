@@ -37,4 +37,8 @@ public class Animal
     System.out.println("The Animal makes noise");
   }
 
+  public String toString(){
+    return "This is an Object of the Animal Class";
+  }
+
 }

@@ -12,6 +12,11 @@ import java.util.Collections;
 
 public class GuessWho{
 
+    public static boolean checkingSide;
+    public static boolean isDoesDoesNot = false;
+    public static boolean isInteger = false;
+    public static byte atributeType;
+
     public static boolean computer = false;
     public static byte playerTurn = -127;
 
@@ -24,6 +29,9 @@ public class GuessWho{
     public static ArrayList<String> p2QuestionOptions = new ArrayList<String>();
 
     public static Scanner in = new Scanner(System.in);
+
+    public static String selectionOption;
+    public static String doesDoesNotHaveQuestion;
 
     public static void main(String[] args) {
         Random rand = new Random();
@@ -42,7 +50,7 @@ public class GuessWho{
             "Are they part of the Light Side?",
             "Are they a bounty hunter?",
             "Are they a smuggler?",
-            "How many kessel speeds?",
+            "How many kessel speeds?",//9
             "Are they part of the empire?",
             "Are they a rebel?",
             "Are they part of the Resistance?",
@@ -52,7 +60,7 @@ public class GuessWho{
             "Are they a ewok?",
             "Are they fluffy?",
             "Are they slimey?",
-            "What is their lightsaber color?",
+            "What is their lightsaber color?",//19
             "Are they tall?",
             "Are they short?",
             "Are they a pilot?",
@@ -116,6 +124,36 @@ public class GuessWho{
         if(playerTurn%2 == 0) playerOptions = p1QuestionOptions;
         else                  playerOptions = p2QuestionOptions;
         printOptions(playerOptions);
+        while(!isInteger){
+            System.out.println("Type in the option number.");
+            selectionOption = in.nextLine();
+            try{
+                atributeType = Byte.valueOf(selectionOption);
+                if(atributeType <= playerOptions.size()){
+                    isInteger = true;
+                }
+                } catch (Exception e){
+                System.out.println("That is not a valid option");
+            }
+        }
+        isInteger = false;
+        while(!isDoesDoesNot || (atributeType != 19 || atributeType != 9)){
+            System.out.println("Type \"Has\" if they do have the atribute or \"Not\" if they do not.")
+            doesDoesNotHaveQuestion = in.nextLine();
+            if(doesDoesNotHaveQuestion.equalsIgnoreCase("has")){
+                checkingSide = true;
+                isDoesDoesNot = true;
+            }
+            else if(doesDoesNotHaveQuestion.equalsIgnoreCase("not")){
+                checkingSide = false;
+                isDoesDoesNot = true;
+            }
+        }
+        isDoesDoesNot = false;
+
+        if(atributeType == 1){
+
+        }
         
     }
 
