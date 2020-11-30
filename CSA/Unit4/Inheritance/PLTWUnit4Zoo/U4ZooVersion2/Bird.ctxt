@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Bird
+comment0.text=\r\n\ Abstract\ class\ Bird\ -\ write\ a\ description\ of\ the\ class\ here\r\n\r\n\ @author\ (your\ name\ here)\r\n\ @version\ (version\ number\ or\ date\ here)\r\n
+comment1.params=name\ desc
+comment1.target=Bird(java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ makeNoise()
+comment3.params=
+comment3.target=java.lang.String\ walk()
+comment4.params=
+comment4.target=java.lang.String\ fly()
+comment5.params=
+comment5.target=java.lang.String\ eat()
+numComments=6

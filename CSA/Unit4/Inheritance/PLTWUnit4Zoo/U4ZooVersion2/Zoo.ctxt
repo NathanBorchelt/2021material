@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Zoo
+comment0.text=\r\n\ Test\r\n\ \r\n\ @author\ 2020\ CSA\r\n\ @version\ 20201123\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=animals
+comment2.target=java.lang.String\ visitCages(java.util.List)
+comment3.params=animals
+comment3.target=java.lang.String\ lookDown(java.util.List)
+comment3.text=\ \ \ \ \r\n\ \ \ \ public\ static\ String\ listen(List<Animal>\ animals)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ String\ msg\ \=\ "";\r\n\ \ \ \ \ \ \ \ for(Animal\ a\ \:\ animals)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ msg\ +\=\ a.getName()\ +\ "\:\ \\n\ \ \ \ \ \ \ "\ \r\n\ \ \ \ \ \ \ \ \ \ \ \ +\ a.makeNoise()\ +\ "\\n";\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ return\ msg;\r\n\ \ \ \ }\ \r\n
+comment4.params=animals
+comment4.target=java.lang.String\ lookAround(java.util.List)
+comment5.params=dotAmount
+comment5.target=void\ delayDots(int)
+comment5.text=\r\n\ This\ prints\ an\ ellipses\ with\ 1\ second\ between\ each\ period\r\n\ It\ then\ moves\ to\ the\ next\ line.\r\n
+comment6.params=
+comment6.target=void\ delayDots()
+comment6.text=\r\n\ This\ prints\ an\ ellipses\ with\ 1\ second\ between\ each\ period\r\n\ It\ then\ moves\ to\ the\ next\ line.\r\n
+comment7.params=animals
+comment7.target=void\ populateAnimals(java.util.List)
+comment7.text=\r\n\ This\ is\ where\ we\ will\ all\ collaborate.\r\n\ Construct\ your\ animal\ and\ add\ it\ to\ the\ List\r\n\ @param\ animals\ the\ list\ containing\ all\ the\ zoo\ animals\r\n
+numComments=8

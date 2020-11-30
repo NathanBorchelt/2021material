@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Whale
+comment1.params=
+comment1.target=Whale()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Duck\r\n
+comment2.params=
+comment2.target=java.lang.String\ makeNoise()
+comment3.params=
+comment3.target=java.lang.String\ eat()
+comment4.params=
+comment4.target=java.lang.String\ swim()
+numComments=5

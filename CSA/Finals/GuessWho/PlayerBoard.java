@@ -14,8 +14,12 @@ public class PlayerBoard {
             return null;
         }
     }
-    public void changeValidity(byte index){
-        playerBoard.get(index).validity(!playerBoard.get(index).isValidChar());
+    public byte length(){
+        return (byte) playerBoard.size();
+    }
+
+    public void invalidChar(byte index){
+        playerBoard.remove(index);
     }
 
 }

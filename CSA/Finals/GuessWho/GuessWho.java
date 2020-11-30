@@ -23,10 +23,9 @@ public class GuessWho{
     public static PlayerBoard p1Board = new PlayerBoard();
     public static PlayerBoard p2Board = new PlayerBoard();
 
-    public static ArrayList<String> playerOptions = new ArrayList<String>();
+    public static PlayerBoard playerChars = new PlayerBoard();
 
-    public static ArrayList<String> p1QuestionOptions = new ArrayList<String>();
-    public static ArrayList<String> p2QuestionOptions = new ArrayList<String>();
+    public static ArrayList<String> questionOptions = new ArrayList<String>();
 
     public static Scanner in = new Scanner(System.in);
 
@@ -42,7 +41,7 @@ public class GuessWho{
         ArrayList<SWCharacter> p2Initalization  = new ArrayList<SWCharacter>();
 
         String[] optionPrompStrings = {
-            "Are they a jedi?",
+            "Are they a jedi?",//1
             "Are they a droid?",
             "Are they a humanoid?",
             "Are they a wookie?",
@@ -73,8 +72,7 @@ public class GuessWho{
             "Have they lost a limb?",
             "Are they a Space Balls character?"};
 
-        p1QuestionOptions =  (ArrayList<String>) Arrays.asList(optionPrompStrings)
-        Collections.copy(p2QuestionOptions, p1QuestionOptions);
+        questionOptions =  (ArrayList<String>) Arrays.asList(optionPrompStrings)
 
         try{
             //https://www.journaldev.com/709/java-read-file-line-by-line
@@ -121,15 +119,15 @@ public class GuessWho{
     }
 
     public static void testCharacteristic(){
-        if(playerTurn%2 == 0) playerOptions = p1QuestionOptions;
-        else                  playerOptions = p2QuestionOptions;
-        printOptions(playerOptions);
+        if(playerTurn%2 == 0) playerChars = p1Board;
+        else                  playerChars = p2Board;
+        printOptions(questionOptions);
         while(!isInteger){
             System.out.println("Type in the option number.");
             selectionOption = in.nextLine();
             try{
                 atributeType = Byte.valueOf(selectionOption);
-                if(atributeType <= playerOptions.size()){
+                if(atributeType <= questionOptions.size()){
                     isInteger = true;
                 }
                 } catch (Exception e){
@@ -138,7 +136,7 @@ public class GuessWho{
         }
         isInteger = false;
         while(!isDoesDoesNot || (atributeType != 19 || atributeType != 9)){
-            System.out.println("Type \"Has\" if they do have the atribute or \"Not\" if they do not.")
+            System.out.println("Type \"Has\" if they do have the atribute or \"Not\" if they do not.");
             doesDoesNotHaveQuestion = in.nextLine();
             if(doesDoesNotHaveQuestion.equalsIgnoreCase("has")){
                 checkingSide = true;
@@ -151,10 +149,22 @@ public class GuessWho{
         }
         isDoesDoesNot = false;
 
-        if(atributeType == 1){
-
-        }
         
+        if (atributeType != 9 || atributeType != 19){
+            for(byte index = 0; index < playerChars.length(); index++){
+                if(checkingSide != playerChars.returnChar(index).questionB(atributeType)){
+                    playerChars.invalidChar(index);
+                }
+            }
+        }
+        else if(atributeType == 9){
+            System.out.println("Enter how many Kessel runs has the character done?");
+            boolean
+            for(byte index = 0; index < playerChars.length(); index++){
+                if(checkingSide != playerChars.returnChar(index).questionI(atributeType)){
+                    playerChars.invalidChar(index);
+                }
+            }
     }
 
     public static void printOptions(ArrayList<String> avalibleOptions){
