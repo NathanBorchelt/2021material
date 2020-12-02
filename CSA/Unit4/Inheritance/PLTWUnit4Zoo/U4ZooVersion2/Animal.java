@@ -19,4 +19,5 @@ public abstract class Animal
     }
     public String getName(){return name;}
     public String getDesc(){return desc;}
+    public abstract String makeNoise();
 }

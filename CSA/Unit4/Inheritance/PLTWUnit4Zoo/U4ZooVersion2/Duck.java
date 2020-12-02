@@ -17,4 +17,7 @@ public class Duck extends Bird
     public String swim(){return "The duck swimms the 200, freestyle, in his gold pool";}
     public String walk(){return "waddles viciously";}
     public String fly(){return "It lets go as it flys overyour car";}
+    public String poopOnCars(){
+        return "Flaming Falling From The Sky";
+    }
 }

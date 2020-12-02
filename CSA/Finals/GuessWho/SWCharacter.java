@@ -19,7 +19,7 @@ public class SWCharacter{
     private boolean ewok;
     private boolean fluffy;
     private boolean slimey;
-    private String lightsaberColor;
+    private byte lightsaberColor;
     private boolean tall;
     private boolean shortH;
     private boolean pilot;
@@ -35,36 +35,36 @@ public class SWCharacter{
     public SWCharacter(String charInfo){
         String optionsString[] = charInfo.split(",");
         this.name = optionsString[0];
-        this.jedi = (Byte.valueOf(optionsString[1])==1);
-        this.droid = (Byte.valueOf(optionsString[2])==1);
-        this.humanLike = (Byte.valueOf(optionsString[3])==1);
-        this.wookie = (Byte.valueOf(optionsString[4])==1);
-        this.darkSide = (Byte.valueOf(optionsString[5])==1);
-        this.lightSide = (Byte.valueOf(optionsString[6])==1);
-        this.bountyHunter = (Byte.valueOf(optionsString[7])==1);
-        this.smuggler = (Byte.valueOf(optionsString[8])==1);
-        this.kesselSpeed = Byte.valueOf(optionsString[9]);
-        this.empire = (Byte.valueOf(optionsString[10])==1);
-        this.rebel = (Byte.valueOf(optionsString[11])==1);
-        this.resistance = (Byte.valueOf(optionsString[12])==1);
-        this.firstOrder = (Byte.valueOf(optionsString[13])==1);
-        this.separatist = (Byte.valueOf(optionsString[14])==1);
-        this.galacticRepublic = (Byte.valueOf(optionsString[15])==1);
-        this.ewok = (Byte.valueOf(optionsString[16])==1);
-        this.fluffy = (Byte.valueOf(optionsString[17])==1);
-        this.slimey = (Byte.valueOf(optionsString[18])==1);
-        this.lightsaberColor = optionsString[19];
-        this.tall = (Byte.valueOf(optionsString[20])==1);
-        this.shortH = (Byte.valueOf(optionsString[21])==1);
-        this.pilot = (Byte.valueOf(optionsString[22])==1);
-        this.annoying = (Byte.valueOf(optionsString[23])==1);
-        this.cute = (Byte.valueOf(optionsString[24])==1);
-        this.bandersFav = (Byte.valueOf(optionsString[25])==1);
-        this.gotButtWhooped = (Byte.valueOf(optionsString[26])==1);
-        this.insideATauntaun = (Byte.valueOf(optionsString[27])==1);
-        this.stillLiving = (Byte.valueOf(optionsString[28])==1);
-        this.lostALimb = (Byte.valueOf(optionsString[29])==1);
-        this.spaceBallsCharacter = (Byte.valueOf(optionsString[30])==1);
+        this.jedi = optionsString[1].equals("1");
+        this.droid = optionsString[2].equals("1");
+        this.humanLike = optionsString[3].equals("1");
+        this.wookie = optionsString[4].equals("1");
+        this.darkSide = optionsString[5].equals("1");
+        this.lightSide = optionsString[6].equals("1");
+        this.bountyHunter = optionsString[7].equals("1");
+        this.smuggler = optionsString[8].equals("1");
+        this.kesselSpeed = Byte.valueOf(optionsString[9]);     
+        this.empire = optionsString[10].equals("1");
+        this.rebel = optionsString[11].equals("1");
+        this.resistance = optionsString[12].equals("1");
+        this.firstOrder = optionsString[13].equals("1");
+        this.separatist = optionsString[14].equals("1");
+        this.galacticRepublic = optionsString[15].equals("1");
+        this.ewok = optionsString[16].equals("1");
+        this.fluffy = optionsString[17].equals("1");
+        this.slimey = optionsString[18].equals("1");
+        this.lightsaberColor = Byte.valueOf(optionsString[19]);
+        this.tall = optionsString[20].equals("1");
+        this.shortH = optionsString[21].equals("1");
+        this.pilot = optionsString[22].equals("1");
+        this.annoying = optionsString[23].equals("1");
+        this.cute = optionsString[24].equals("1");
+        this.bandersFav = optionsString[25].equals("1");
+        this.gotButtWhooped = optionsString[26].equals("1");
+        this.insideATauntaun = optionsString[27].equals("1");
+        this.stillLiving = optionsString[28].equals("1");
+        this.lostALimb = optionsString[29].equals("1");
+        this.spaceBallsCharacter = optionsString[30].equals("1");
 
     }
 
@@ -72,7 +72,7 @@ public class SWCharacter{
 
     public String getName() { return name; }
     public byte getKesselSpeed() { return kesselSpeed; }
-    public String getLightsaberColor() { return lightsaberColor; }
+    public byte getLightsaberColor() { return lightsaberColor; }
     public boolean isAnnoying() { return annoying; }
     public boolean isBandersFav() { return bandersFav; }
     public boolean isBountyHunter() { return bountyHunter; }
@@ -105,100 +105,68 @@ public class SWCharacter{
     interface QuestionsToAsk{
         boolean questionB();
         byte questionI();
-        String questionS();
     }
 
     private QuestionsToAsk[] questionsToAsks = new QuestionsToAsk[]{
         new QuestionsToAsk(){public boolean questionB() { return isJedi(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS() {return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these}},
         new QuestionsToAsk(){public boolean questionB() { return isDroid(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isHumanLike(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isWookie(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isDarkSide(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isLightSide(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isBountyHunter(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isSmuggler(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public byte questionI() { return getKesselSpeed(); }
-            @Override public boolean questionB() {return false;}
-            @Override public String questionS(){return null;}},
+            @Override public boolean questionB() {return false;}},
         new QuestionsToAsk(){public boolean questionB() { return isEmpire(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isRebel(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isResistance(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isFirstOrder(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isSeparatist(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isGalacticRepublic(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isEwok(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isSlimey(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
-        new QuestionsToAsk(){public String questionS() { return getLightsaberColor(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
+        new QuestionsToAsk(){public byte questionI(){return getLightsaberColor();}
             @Override public boolean questionB() {return false;}},
         new QuestionsToAsk(){public boolean questionB() { return isTall(); }
-             @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+             @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isShortH(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isPilot(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isAnnoying(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isCute(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isBandersFav(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isGotButtWhooped(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() {return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isInsideATauntaun(); }
-            @Override public byte questionI() { return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() { return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isStillLiving(); }
-            @Override public byte questionI() { return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() { return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isLostALimb(); }
-            @Override public byte questionI() { return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
+            @Override public byte questionI() { return 0;}}, //I Do not know why I need these, but the JVM is very unhappy if i do not have these},
         new QuestionsToAsk(){public boolean questionB() { return isSpaceBallsCharacter(); }
-            @Override public byte questionI() {return 0;} //I Do not know why I need these, but the JVM is very unhappy if i do not have these
-            @Override public String questionS(){return null;}},
-        };
+            @Override public byte questionI() {return 0;}}};
 
         public boolean questionB(int index){return questionsToAsks[index].questionB();}
         public byte questionI(int index){return questionsToAsks[index].questionI();}
-        public String questionS(int index){return questionsToAsks[index].questionS();}
     }

@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class Zoo
 {
+    static Scanner in = new Scanner(System.in);
     public static  void main(String[] args) throws InterruptedException 
     {
         List<Animal> animals = new ArrayList<Animal>();
@@ -27,7 +28,7 @@ public class Zoo
         System.out.print("Hiring zookeepers");
         delayDots();
 
-        Scanner in = new Scanner(System.in);
+        
         System.out.println("\nYou are standing in a wondrous zoo. What would you like to do?");
         System.out.println("Type help to find out what you can do.\n");
         String text = in.nextLine();
@@ -43,17 +44,26 @@ public class Zoo
                 case "visit cages" : 
                 msg = visitCages(animals);
                 break;
+                case "find name":
+                msg = findName(animals);
+                break;
                 case "look up" :
-                //msg = lookUp(animals);
+                msg = lookUp(animals);
                 break;
                 case "look around" :
-                //msg = lookAround(animals);
+                msg = lookAround(animals);
                 break;
                 case "listen" :
-                //msg = listen(animals);
+                    msg = listen(animals);
                 break;
                 case "look down":
-                //msg = lookDown(animals);
+                msg = lookDown(animals);
+                break;
+                case "find desc":
+                msg = findDesc(animals);
+                break;
+                case "find fly":
+                msg = findFlyingFeature(animals);
                 break;
                 default : msg = "You flail helplessly with indecision.";
             }
@@ -65,6 +75,20 @@ public class Zoo
         System.out.println(Math.random() < .8 ? "\nHave a nice day!  Hope you come back!" : "\nAn escaped lion eats you on your way out.  Sorry!");
 
     }
+
+    public static String findDesc(List<Animal> aList){
+        String msg = "";
+        System.out.println("What is the description of your animal");
+        String descToLookUp = in.nextLine();
+
+        for(Animal a : aList){
+            if(a.getDesc().contains(descToLookUp)){
+                msg += (a.getName() + ": \n       "+a.getDesc() + "\n"); 
+            }
+        }
+    
+        return msg;
+    }
     
     public static String visitCages(List<Animal> animals)
     {
@@ -74,8 +98,7 @@ public class Zoo
             msg += a.getName() + ": \n       " + a.getDesc() + "\n";
         }
         return msg;
-    }
-/*    
+    }    
     public static String listen(List<Animal> animals)
     {
         String msg = "";
@@ -86,7 +109,6 @@ public class Zoo
         }
         return msg;
     } 
-*/
     public static String lookDown(List<Animal> animals)
     {
         String msg = "";
@@ -117,7 +139,7 @@ public class Zoo
         }
         return msg;
     }
-/*
+
     public static String lookUp(List<Animal> animals)
     {
         String msg = "";
@@ -133,7 +155,41 @@ public class Zoo
         }
         return msg;
     }
-    */
+    public static String findFlyingFeature(List<Animal> aList){
+        String msg = "";
+        System.out.println("What is the name of your animal");
+        String flyFeature = in.nextLine();
+
+        for(Animal a : aList)
+        {
+            if(a instanceof Flying) 
+            {
+                Flying f = (Flying) a;
+                if(f.fly().contains(flyFeature)){
+                    msg += a.getName() + ": \n       " 
+                    + f.fly() + "\n";
+                }
+            }
+        }
+        return msg;
+    }
+
+
+
+    public static String findName(List<Animal> aList){
+        String msg = "";
+        System.out.println("What is the name of your animal");
+        String nameToLookUp = in.nextLine();
+
+        for(Animal a : aList){
+            if(a.getName().equalsIgnoreCase(nameToLookUp)){
+                msg += (a.getName() + ": \n       "+a.getDesc() + "\n"); 
+            }
+        }
+    
+        return msg;
+    }
+
     /**
      * This prints an ellipses with 1 second between each period
      * It then moves to the next line.
@@ -168,5 +224,9 @@ public class Zoo
         animals.add(new Wolf());
         animals.add(new Donkey());
         animals.add(new WarHorse());
+        animals.add(new Python());
+        animals.add(new Owl());
+        animals.add(new BoringOldBird());
+
     }
 }

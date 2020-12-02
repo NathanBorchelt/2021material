@@ -5,7 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Donkey extends Horse implements Walking
+public class Donkey extends Horse
 {
     
 

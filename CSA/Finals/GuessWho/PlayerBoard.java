@@ -1,6 +1,15 @@
 import java.util.ArrayList;
 public class PlayerBoard {
     private ArrayList<SWCharacter> playerBoard;
+    private SWCharacter playerChoice;
+
+    public void setPlayerChoice(byte index){
+        this.playerChoice = this.playerBoard.get(index);
+    }
+
+    public SWCharacter getPlayerChoice() {
+        return playerChoice;
+    }
 
     public void fillBoard(ArrayList<SWCharacter> swChars){
         this.playerBoard = swChars;

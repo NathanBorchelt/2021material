@@ -10,4 +10,9 @@ public class Owl extends Bird
     public Owl(){
         super("Al","The wise owl that helps pooh bear");}
 
+	public String poopOnCars() {
+		return "Drops words of wisdom";
+	}
+
+
 }

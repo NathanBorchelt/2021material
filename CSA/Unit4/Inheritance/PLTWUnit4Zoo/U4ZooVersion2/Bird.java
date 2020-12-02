@@ -17,5 +17,9 @@ public abstract class Bird extends Animal implements Walking, Flying, Swimming
         return "government drone goes brrrrrr....";}
     public String eat(){
         return "rains green turds from the sky";}
+    public String swim(){
+        return "floats on the water like wood";
+    }
+    public abstract String poopOnCars();
         
 }
