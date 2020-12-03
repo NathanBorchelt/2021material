@@ -65,7 +65,7 @@ public class GuessWho{
             "Are they still living?",
             "Have they lost a limb?",
             "Are they a Space Balls character?"};
-        questionOptions =  (ArrayList<String>) Arrays.asList(optionPrompStrings);
+        questionOptions =  new ArrayList<String>(Arrays.asList(optionPrompStrings));
         try{
             //https://www.journaldev.com/709/java-read-file-line-by-line
             BufferedReader allFile = new BufferedReader(new FileReader("SWData.txt"));
@@ -105,6 +105,7 @@ public class GuessWho{
         */
         p1Board.fillBoard(p1Initalization);
         p2Board.fillBoard(p2Initalization);
+        playGame();
     }
     //"Stolen" from https://intellipaat.com/community/294/java-clear-the-console
     public static void clrscr(){
@@ -122,43 +123,52 @@ public class GuessWho{
         System.out.println("Hit <<Enter>> to start the game.");
         pauseForInput = in.nextLine();
         clrscr();
-        System.out.println("Type \"PVP\" to play against a person\nType \"PVC\" to play against a computer")
+        System.out.println("Type \"PVP\" to play against a person\nType \"PVC\" to play against a computer");
         String pvpPvc = in.nextLine();
         String p1Confirm="";
         while (!p1Confirm.equalsIgnoreCase("yes")){
-            System.out.println("Pick your character by typing the number next to their name:");
+            System.out.println("Player 1: Pick your character by typing the number next to their name:");
             printChars(p1Board);
             byte p1ChoiceIndex = in.nextByte();
             System.out.println("Type \"Yes\" to confirm your selection");
             p1Confirm = in.nextLine();
-            p1Board.setPlayerChoice(p1ChoiceIndex);
+            p1Confirm = in.nextLine();
+            p1Board.setPlayerChoice(p1ChoiceIndex-1);
         }
         clrscr();
         String p2Confirm="";
         if(!pvpPvc.equalsIgnoreCase("pvc")){
             while (!p2Confirm.equalsIgnoreCase("yes")){
-                System.out.println("Pick your character by typing the number next to their name:");
+                System.out.println("Player 2: Pick your character by typing the number next to their name:");
                 printChars(p2Board);
                 byte p2ChoiceIndex = in.nextByte();
                 System.out.println("Type \"Yes\" to confirm your selection");
                 p2Confirm = in.nextLine();
-                p2Board.setPlayerChoice(p2ChoiceIndex);
+                p2Confirm = in.nextLine();
+                p2Board.setPlayerChoice(p2ChoiceIndex-1);
             }
         }
         else{
-            p2Board.setPlayerChoice((byte) rand.nextInt(p2Board.length()));
+            p2Board.setPlayerChoice(rand.nextInt(p2Board.length()));
         }
-        clrscr();   
+        clrscr();
+        while(!gameOver){
+            playerTurn++;
+            testCharacteristic();
+        } 
     }
     public static void testCharacteristic(){
         if(playerTurn%2 == 0) playerChars = p1Board;
         else                  playerChars = p2Board;
+        printChars(playerChars);
+        System.out.println();
+        System.out.println("Player "+ ((playerChars.equals(p1Board))? "1":"2")+  ": Make Your Choice");
         printOptions(questionOptions);
         while(!isInteger){
             System.out.println("Type in the option number.");
             selectionOption = in.nextLine();
             try{
-                atributeType = Byte.valueOf(selectionOption);
+                atributeType = (byte)(Integer.valueOf(selectionOption)-1);
                 if(atributeType <= questionOptions.size()){
                     isInteger = true;
                 }
@@ -167,10 +177,10 @@ public class GuessWho{
             }
         }
         isInteger = false;
-        while(!isDoesDoesNot || (atributeType != 19 || atributeType != 9)){
-            System.out.println("Type \"Has\" if they do have the atribute or \"Not\" if they do not.");
+        while(!isDoesDoesNot && (atributeType != 19 || atributeType != 9)){
+            System.out.println("Type \"Are\" if they do have the atribute or \"Not\" if they do not.");
             doesDoesNotHaveQuestion = in.nextLine();
-            if(doesDoesNotHaveQuestion.equalsIgnoreCase("has")){
+            if(doesDoesNotHaveQuestion.equalsIgnoreCase("are")){
                 checkingSide = true;
                 isDoesDoesNot = true;
             }
@@ -182,7 +192,7 @@ public class GuessWho{
         isDoesDoesNot = false;
         if (atributeType != 10 || atributeType != 20 || atributeType != 1){
             for(byte index = 0; index < playerChars.length(); index++){
-                if(checkingSide != playerChars.returnChar(index).questionB(atributeType)){
+                if(checkingSide != playerChars.returnChar(index).questionB(atributeType) && ){
                     playerChars.invalidChar(index);
                 }
             }

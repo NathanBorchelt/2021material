@@ -11,8 +11,8 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/krusty_krab_gallery_grub"
-        android:contentDescription="TODO" />
+        android:contentDescription="TODO"
+        android:src="@drawable/krusty_krab_gallery_grub" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,22 +23,7 @@
         <NumberPicker
             android:id="@+id/menuItems"
             android:layout_width="match_parent"
-            android:layout_height="250px"/>
-
-        <Button
-            android:id="@+id/optionsForItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Get Options for Seleected Item"
-            android:onClick="getOptions"/>
-
-        <Button
-            android:id="@+id/addItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="Add Item"
-            android:onClick="addItem"/>
+            android:layout_height="250px" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,12 +32,12 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/sandwichOptionsLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0"
                 android:orientation="vertical"
-                android:visibility="gone"
-                android:id="@+id/sandwichOptionsLayout">
+                android:visibility="gone">
 
                 <CheckBox
                     android:id="@+id/cheese"
@@ -68,14 +53,15 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/sizeOptionLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:id="@+id/sizeOptionLayout"
                 android:visibility="gone">
 
                 <RadioGroup
+                    android:id="@+id/sizeOptionsRadioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -99,6 +85,14 @@
                 </RadioGroup>
             </LinearLayout>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/addItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:onClick="addItem"
+            android:text="Add Item" />
 
     </LinearLayout>
 
