@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Cat
+comment0.text=\r\n\ Cat\ Class\ should\ just\ purr.\r\n\r\n\ @author\ Borchelt\r\n\ @version\ 20201105\r\n
+comment1.params=
+comment1.target=void\ purr()
+numComments=2

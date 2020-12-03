@@ -10,18 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KrustyKrabsApp">
         <activity
+            android:name=".OrderActivity"
+            android:label="@string/title_activity_order"
+            android:theme="@style/Theme.KrustyKrabsApp.NoActionBar"></activity>
+        <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SecondActivity"
-            android:label="@string/title_activity_second_activitity">
-        </activity>
-
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@
 
 DATE=$(date)
 
+
 DATE+'%c'
 
 PUSH="Push Up on"
@@ -14,7 +15,11 @@ COMMENT="$PUSH at $DATE from $HOSTNAME. Reason:  $REASON"
 
 cd
 
-cd C:\\Users\\CS-PM\\Documents\\2021material
+cd C:\\Users\\$USER\\Documents\\2021material
+
+echo "rand text"
+
+read  DATE
 
 cd C:\\Users\\tomme\\OneDrive\\Documents\\2021material
 
