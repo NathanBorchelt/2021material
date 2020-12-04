@@ -71,10 +71,18 @@ public class OrderActivity extends Activity {
                             selectedItems.add(menuObjs[wheelIndex]);
                         }
                     }
-                } else (sizeItems[wheelIndex]){
-                    if(menuObjs.equals(new CorralBits())){
-                        selectedItems.add(new CorralBits((CorralBits) menuObjs[wheelIndex],mSizeButton = (RadioButton) findViewById(mSizeOptionsRadio.getCheckedRadioButtonId()),));
-                    }
+                }
+                else if(sizeItems[wheelIndex]){
+                    SizeableItem itemWithSizeOption = new SizeableItem(menuObjs[wheelIndex].getItemName(),menuObjs[wheelIndex].getItemCost());
+                    mSizeOptionsRadio = (RadioGroup) findViewById(R.id.sizeOptionsRadioGroup);
+                    //https://stackoverflow.com/questions/6440259/how-to-get-the-selected-index-of-a-radiogroup-in-android
+                    int index = mSizeOptionsRadio.indexOfChild(findViewById(mSizeOptionsRadio.getCheckedRadioButtonId()));
+                    if (index==0){selectedItems.add(new SizeableItem(itemWithSizeOption.getItemName(),itemWithSizeOption.getItemCost(),"Small",0.));}
+                    else if (index==1){selectedItems.add(new SizeableItem(itemWithSizeOption.getItemName(),itemWithSizeOption.getItemCost(),"Medium",0.25));}
+                    else if (index==2){selectedItems.add(new SizeableItem(itemWithSizeOption.getItemName(),itemWithSizeOption.getItemCost(),"Large",0.5));}
+                }
+                else{
+                    selectedItems.add(menuObjs[wheelIndex]);
                 }
             }
         });
