@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a263be51-89c2-45ce-b612-a2a255935a99" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../KrustyKrabV2/app/src/main/java/com/example/krustykrabv2/Soda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KrustyKrabV2/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../KrustyKrabV2/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KrustyKrabV2/app/src/main/java/com/example/krustykrabv2/CorralBits.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KrustyKrabV2/app/src/main/java/com/example/krustykrabv2/CorralBits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KrustyKrabV2/app/src/main/java/com/example/krustykrabv2/KrabyPatty.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KrustyKrabV2/app/src/main/java/com/example/krustykrabv2/KrabyPatty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../KrustyKrabV2/app/src/main/java/com/example/krustykrabv2/OrderActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../KrustyKrabV2/app/src/main/java/com/example/krustykrabv2/OrderActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Finals/GuessWho/GuessWho.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Finals/GuessWho/GuessWho.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Finals/GuessWho/GuessWho.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Finals/GuessWho/GuessWho.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Finals/GuessWho/PlayerBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Finals/GuessWho/PlayerBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Finals/GuessWho/SWCharacter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Finals/GuessWho/SWCharacter$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Finals/GuessWho/SWCharacter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Finals/GuessWho/SWCharacter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Finals/GuessWho/SWCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Finals/GuessWho/SWCharacter.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1l9xZQ5AGiDIox9Lkh8OqaBr5ST" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../KrustyKrabV2" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a263be51-89c2-45ce-b612-a2a255935a99" name="Default Changelist" comment="" />
+      <created>1607023162741</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607023162741</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1607023177213">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="614" y="114" key="CommitChangelistDialog2/0.0.1920.1040/1920.174.1600.860@0.0.1920.1040" timestamp="1607023177213" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1607023186897">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.174.1600.860@0.0.1920.1040" timestamp="1607023186897" />
+  </component>
+</project>

@@ -3,7 +3,12 @@ public class PlayerBoard {
     private ArrayList<SWCharacter> playerBoard;
     private SWCharacter playerChoice;
 
+    
     public void setPlayerChoice(byte index){
+        this.playerChoice = this.playerBoard.get(index);
+    }
+    
+    public void setPlayerChoice(int index){
         this.playerChoice = this.playerBoard.get(index);
     }
 
