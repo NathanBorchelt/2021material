@@ -1,7 +1,9 @@
 package com.example.krustykrabv2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.*;
 import java.util.ArrayList;
@@ -15,9 +17,10 @@ public class OrderActivity extends Activity {
     private CheckBox mMealCBox;
     private RadioGroup mSizeOptionsRadio;
     private RadioButton mSizeButton;
+    private Button mCheckOut;
 
 
-    public ArrayList<MenuItem> selectedItems;
+    public ArrayList<MenuItem> selectedItems = new ArrayList<>();
     public int wheelIndex;
     public String[] menuItems = new String[]{"Krabby Patty", "Double Krabby Patty", "Triple Krabby  Patty", "Coral Bits", "Kelp Rings", "Salty Sea Dog", "FootLong", "Sailors Suprise", "Golden Loaf", "Kelp Shake", "Seafoam Soda"};
     public boolean[] sizeItems = new boolean[]{false, false, false, true, false, false, false, false, false, false, true};
@@ -33,6 +36,11 @@ public class OrderActivity extends Activity {
         mMenuScroller = (NumberPicker) findViewById(R.id.menuItems);
         mAddSelection = (Button) findViewById(R.id.addItem);
         mSizeOptionsRadio = (RadioGroup) findViewById(R.id.sizeOptionsRadioGroup);
+        mSandwichOptions = (LinearLayout) findViewById(R.id.sandwichOptionsLayout);
+        mSizeOptions = (LinearLayout) findViewById(R.id.sizeOptionLayout);
+        mMealCBox = (CheckBox) findViewById(R.id.meal);
+        mCheeseCBox = (CheckBox) findViewById(R.id.cheese);
+        mCheckOut = (Button) findViewById(R.id.checkout);
 
         //https://stackoverflow.com/questions/8227073/using-numberpicker-widget-with-strings
         mMenuScroller.setMinValue(0);
@@ -48,9 +56,13 @@ public class OrderActivity extends Activity {
                     mSizeOptions.setVisibility(View.VISIBLE);
                     mSandwichOptions.setVisibility(View.GONE);
                 }
-                if (mealOption[wheelIndex]) {
+                else if (mealOption[wheelIndex]) {
                     mSizeOptions.setVisibility(View.GONE);
                     mSandwichOptions.setVisibility(View.VISIBLE);
+                }
+                else{
+                    mSizeOptions.setVisibility(View.GONE);
+                    mSandwichOptions.setVisibility(View.GONE);
                 }
             }
         });
@@ -84,6 +96,15 @@ public class OrderActivity extends Activity {
                 else{
                     selectedItems.add(menuObjs[wheelIndex]);
                 }
+            }
+        });
+        mCheckOut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrderActivity.this, CheckOutActivity.class);
+                intent.putExtra("SELECTED_ITEMS",  selectedItems);
+                startActivity(intent);
+
             }
         });
 

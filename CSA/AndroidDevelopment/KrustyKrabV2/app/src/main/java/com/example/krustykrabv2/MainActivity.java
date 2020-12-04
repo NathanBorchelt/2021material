@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
-import android.content.*;
+import android.content.Intent;
 
 //multiActivity https://stackoverflow.com/questions/28438460/how-do-i-make-multiple-pages-that-i-can-go-to-in-the-app-with-buttons-and-make-t
 
