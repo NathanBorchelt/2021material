@@ -158,8 +158,8 @@ public class GuessWho{
         } 
     }
     public static void testCharacteristic(){
-        if(playerTurn%2 == 0) playerChars = p1Board;
-        else                  playerChars = p2Board;
+        if(playerTurn%2 == 0) {playerChars = p1Board; opPlayerChars = p2Board;}
+        else                  {playerChars = p2Board; opPlayerChars = p1Board;}
         printChars(playerChars);
         System.out.println();
         System.out.println("Player "+ ((playerChars.equals(p1Board))? "1":"2")+  ": Make Your Choice");
@@ -176,8 +176,9 @@ public class GuessWho{
                 System.out.println("That is not a valid option");
             }
         }
+        atributeType--;
         isInteger = false;
-        while(!isDoesDoesNot && (atributeType != 19 || atributeType != 9)){
+        while(!isDoesDoesNot && (atributeType != 19 || atributeType != 9 || atributeType != 1)){
             System.out.println("Type \"Are\" if they do have the atribute or \"Not\" if they do not.");
             doesDoesNotHaveQuestion = in.nextLine();
             if(doesDoesNotHaveQuestion.equalsIgnoreCase("are")){
@@ -192,29 +193,45 @@ public class GuessWho{
         isDoesDoesNot = false;
         if (atributeType != 10 || atributeType != 20 || atributeType != 1){
             for(byte index = 0; index < playerChars.length(); index++){
-                if(checkingSide != playerChars.returnChar(index).questionB(atributeType) && ){
-                    playerChars.invalidChar(index);
+                if(checkingSide == opPlayerChars.getPlayerChoice().questionB(atributeType)){
+                    if(checkingSide != playerChars.returnChar(index).questionB(atributeType)){
+                        playerChars.invalidChar(index);
+                    }
+                }
+                else{
+                    if (checkingSide == playerChars.returnChar(index).questionB(atributeType)){
+                        playerChars.invalidChar(index);
+                    }
                 }
             }
         }
         else if(atributeType == 1){
-            if(playerTurn%2 == 1) opPlayerChars = p1Board;
-            else                  opPlayerChars = p2Board;
             System.out.println("Type the number by the character's name:");
-            for(byte index = 0; index < opPlayerChars.length();index++){
-                System.out.println((index+1)+": "+opPlayerChars.returnChar(index));
+            for(byte index = 0; index < playerChars.length();index++){
+                System.out.println((index+1)+": "+playerChars.returnChar(index));
             }
             byte callout = in.nextByte();
-            if(opPlayerChars.returnChar(callout).equals(opPlayerChars.getPlayerChoice())){
+            callout--;
+            if(playerChars.returnChar(callout).equals(opPlayerChars.getPlayerChoice())){
                 gameOver = true;
+            }
+            else{
+
             }
         }
         else if(atributeType == 10){
             System.out.println("What rank is their Kessel Run");
             byte rank = in.nextByte();
             for(byte index = 0; index < playerChars.length(); index++){
-                if(rank != playerChars.returnChar(index).getKesselSpeed()){
-                    playerChars.invalidChar(index);
+                if(rank == opPlayerChars.getPlayerChoice().getKesselSpeed()){
+                    if(rank != playerChars.returnChar(index).getKesselSpeed()){
+                        playerChars.invalidChar(index);
+                    }
+                }
+                else{
+                    if(rank == playerChars.returnChar(index).getKesselSpeed()){
+                        playerChars.invalidChar(index);
+                    }
                 }
             }
         }
@@ -225,13 +242,21 @@ public class GuessWho{
             }
             byte saberColorChoice = in.nextByte();
             for(byte index = 0; index < playerChars.length(); index++){
-                if(saberColorChoice != playerChars.returnChar(index).getKesselSpeed()){
-                    playerChars.invalidChar(index);
+                if(saberColorChoice == opPlayerChars.getPlayerChoice().getLightsaberColor()){
+                    if(saberColorChoice != playerChars.returnChar(index).getLightsaberColor()){
+                        playerChars.invalidChar(index);
+                    }
+                }
+                else{
+                    if(saberColorChoice == playerChars.returnChar(index).getLightsaberColor()){
+                        playerChars.invalidChar(index);
+                    }
                 }
             }
         }
         else{
             System.out.println("There has been an error in checking the input");
+            playerTurn--;
         }
     }
     public static void printOptions(ArrayList<String> avalibleOptions){
