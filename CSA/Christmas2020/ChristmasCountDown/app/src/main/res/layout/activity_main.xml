@@ -8,6 +8,11 @@
     android:scaleType = "centerCrop"
     tools:context=".MainActivity">
 
+    <com.jetradarmobile.snowfall.SnowfallView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        app:snowflakeImage="@drawable/ic_launcher_foreground"
+        app:snowflakeSizeMin="50dp"/>
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -135,7 +140,7 @@
                     android:layout_weight="3"
                     android:gravity="center"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="#00F"
+                    android:textColor="#46F"
                     android:textSize="35dp"
                     android:textStyle="bold" />
 
