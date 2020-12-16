@@ -1,23 +1,30 @@
-package com.example.magpie2020;
+package com.example.borcheltmerrychristmas.ui.santaBot;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import com.example.borcheltmerrychristmas.R;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = MainActivity.class.getName();
+import static android.app.Activity.RESULT_OK;
+
+public class SantaBotFragment extends Fragment {
+    private static final String TAG = SantaBotFragment.class.getName();
+    SantaBotViewModel santaBotViewModel;
     TextToSpeech maggiesVoice;
     EditText keystrokeEditText;
     private TextView txtSpeechInput;
@@ -26,18 +33,18 @@ public class MainActivity extends AppCompatActivity {
     //Magpie4 maggie;
     private final int REQ_CODE_SPEECH_INPUT = 100;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        txtSpeechInput = (TextView) findViewById(R.id.txtSpeechInput);
-        keystrokeEditText = (EditText)findViewById(R.id.keystrokeInput);
-        submitTextInputButton = (Button)findViewById(R.id.submitTextInput);
-        speechToTextButton = (Button)findViewById(R.id.speechToTextButton);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        santaBotViewModel =
+                new ViewModelProvider(this).get(SantaBotViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_santabot, container, false);
+        txtSpeechInput = (TextView) root.findViewById(R.id.txtSpeechInput);
+        keystrokeEditText = (EditText) root.findViewById(R.id.keystrokeInput);
+        submitTextInputButton = (Button) root.findViewById(R.id.submitTextInput);
+        speechToTextButton = (Button) root.findViewById(R.id.speechToTextButton);
         //maggie = new Magpie4();
-        final SpeechRecognizer speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
 
-        maggiesVoice=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+        maggiesVoice=new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if(status != TextToSpeech.ERROR) {
@@ -66,18 +73,18 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
                 } catch (ActivityNotFoundException a) {
-                    Toast.makeText(getApplicationContext(),
+                    Toast.makeText(getContext(),
                             getString(R.string.speech_not_supported),
                             Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-
+    return root;
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
@@ -99,13 +106,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void processUserInput(String userInput){
         String response = userInput;//maggie.getResponse(userInput);
-        if (!userInput.equals("")) {
-            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-            maggiesVoice.speak(response, TextToSpeech.QUEUE_FLUSH, null, null);
+        if(response.equals("")){
+            Toast.makeText(getContext(),response,Toast.LENGTH_SHORT).show();
+            maggiesVoice.speak(response,TextToSpeech.QUEUE_FLUSH,null,null);
         }
         else {
-            String greeting = userInput;//maggie.getGreeting();
-            Toast.makeText(getApplicationContext(), greeting, Toast.LENGTH_SHORT).show();
+            String greeting = userInput;
+            Toast.makeText(getContext(), response, Toast.LENGTH_SHORT).show();
             maggiesVoice.speak(greeting, TextToSpeech.QUEUE_FLUSH, null, null);
         }
     }
