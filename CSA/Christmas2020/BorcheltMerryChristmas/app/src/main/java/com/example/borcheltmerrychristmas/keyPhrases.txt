@@ -43,7 +43,7 @@ In: Santa, I was left behind for Christmas!
 Out: Oh, you better call your parents.  Make sure to lock the doors as well!
 
 In: What do you eat?
-Out: The four main food groups: candy, candy canes, candy corsn and syrup!
+Out: The four main food groups: candy, candy canes, candy corn and syrup!
 
 In: Are you dangerous?
 Out: Yippee Ki Yay!

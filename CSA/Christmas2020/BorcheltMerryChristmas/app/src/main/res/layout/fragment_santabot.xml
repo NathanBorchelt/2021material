@@ -63,5 +63,15 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/txtSantaOutPut"
+        android:layout_width="275dp"
+        android:layout_height="110dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/keystrokeInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speechToTextButton" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
