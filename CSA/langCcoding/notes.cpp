@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+//compile using the command
+// g++ -g <<filename>>.cpp -o filename
+
 //Single Line Comments
 /*
  * Multi
@@ -28,7 +31,16 @@ using namespace std;
  * 0 to 18.4 quintillion
  */
 
+//variable are case sensitive
+
 int main(){
     cout << "hello World" << endl;
+    cout << "use either <<endl or \\n for a new line" << endl;
+
+    int x = 5, y = 6, z = 50;
+    cout << x+y+z << endl;
+
+    const int randomVariableNumberVariableToNeverBeUsedAgain
+
     return 0;
 }
