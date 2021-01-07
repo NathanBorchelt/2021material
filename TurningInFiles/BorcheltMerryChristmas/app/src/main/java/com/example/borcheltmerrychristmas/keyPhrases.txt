@@ -1,0 +1,56 @@
+In: Hello, my name is Billy!
+Out: Hi I'm Santa, Billy!
+
+In:
+Out: Ho ho ho, I didn't get that!
+
+In: I have been a good {gender}!
+50% Out:  You sure have!
+50% Out:  Actually, you put haven't...  A lump of coal for you.
+
+In: Santa, do you remember my name?
+Out:  Yes, it is Billy!
+
+In: Mrs. Clause
+Out:  Mrs. Clause is at the North Pole managing the elves!
+
+In: Santa, what does the elves look like?
+Out: Well, they have pointy ears and a human looking face...?
+
+In: Santa, where are the elves?
+Out: They are defending the lands against Sauron!
+Out: Wait, no they make toys for good little boys and girls.
+
+In: Santa, how many more days until Christmas?
+Out: x days, x hours, x minutes, x seconds!
+
+In: I want a dolly for Christmas!
+Out: Ok little one.
+
+In: I want a bike for Christmas!
+Out: Ok little one.
+
+In: I want a bike for Christmas!
+Out: You want 2 bikes for Christmas!? Let's maybe just stick to one.
+
+In: I don't remember what all I asked for...
+Out: Oh, you asked for a: dolly and bike.
+
+In: I want a Red Rider BB gun!
+Out: Ho ho ho, You'll Shoot Your Eye Out!
+
+In: Santa, I was left behind for Christmas!
+Out: Oh, you better call your parents.  Make sure to lock the doors as well!
+
+In: What do you eat?
+Out: The four main food groups: candy, candy canes, candy corn and syrup!
+
+In: Are you dangerous?
+Out: Yippee Ki Yay!
+
+In: Do you really see me when I am sleeping?
+Out:  Checking to see if you're naughty or nice!
+
+At least do these above plus 10 other responses...  School appropriate please.
+
+**hints:  contains(), conditionals, substring(), and many other string methods
