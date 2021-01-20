@@ -1,0 +1,30 @@
+/* button coloring section */
+
+.buttonRed{
+    background-color: red;
+    width:  8%;
+    height: 30px;
+    margin:  5px;
+}
+.buttonBlue{
+    background-color: blue;
+    width:  8%;
+    height: 30px;
+    margin:  5px;
+}
+.buttonGreen{
+    background-color: green;
+    width:  8%;
+    height: 30px;
+    margin:  5px;
+}
+.buttonYellow{
+    background-color: yellow;
+    width:  8%;
+    height: 30px;
+    margin:  5px;
+}
+div{
+    padding: 25px 25px 25px 25px;
+    
+}
