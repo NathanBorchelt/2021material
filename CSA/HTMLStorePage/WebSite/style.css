@@ -1,0 +1,78 @@
+#mainBackground{
+    background-color: #003A70;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+a{
+    color: #789D4A
+}
+
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 30pt;
+    color: #789D4A;
+    text-align: center;
+}
+
+table, th, td {
+  border: 10px ;
+}
+p1{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 15pt;
+    color: #789D4A;
+    text-align: center;
+}
+
+
+img{
+    width: 25vw;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+} 
+
+.spacing{
+    padding: 1vw;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 2.5vw;
+    width: 25vw;
+}
+
+
+
+h2{
+    font-family: "Times New Roman","Courier New", Courier, monospace;
+    font-size: 15pt;
+    color: #789D4A;
+}
+
+h3{
+    font-family: "Times New Roman","Courier New", Courier, monospace;
+    font-size: 12.5pt;
+    color: #789D4A;
+}
+
+ul{
+    color: #789D4A;
+}
+
+.warning{
+    color: red;
+    font-weight: bold;
+    font-size: 15pt;
+}
