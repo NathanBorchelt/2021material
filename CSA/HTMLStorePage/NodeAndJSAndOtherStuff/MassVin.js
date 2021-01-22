@@ -91,4 +91,4 @@ validVins.forEach(element => {
     }
 })
 
-console.log("Successful VINs: ", success, "\nFailed VINs: ", fails, "\nSuccess Rate: ", success / total, "\n Fail Rate: ", fails / total)
+console.log("Successful VINs: ", success, "\nFailed VINs: ", fails, "\nSuccess Rate: ", (success / total)*100, "%\n Fail Rate: ", (fails / total)*100,"%")

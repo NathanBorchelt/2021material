@@ -7,18 +7,52 @@
         <link rel="stylesheet" href="Arkansas.css">
     </head>
     <body>
-        <button>Reset</button>
-        <p>My Timer</p> <!--MyTimer is going to show us the timer-->
-        <p>Strike Count: 0</p>
+        <button onclick="reset()">Reset</button>
+        <p style=text-align:right>My Timer</p> <!--MyTimer is going to show us the timer-->
+        <p style=text-align:right>Strike Count: 0</p>
 
         <button>Start Timer</button>
         <button>Stop Timer</button>
+        <!--Form A button section-->
         <div>
-            <h1>Form A</h1>
-            <button class="buttonRed"></button>
-            <button class="buttonGreen"></button>
-            <button class="buttonBlue"></button>
-            <button class="buttonYellow"></button>
+            <h1 style=text-align:center>Form A</h1>
+            <button onclick="setColor(this)" class="buttonRed"></button>
+            <button onclick="setColor(this)" class="buttonGreen"></button>
+            <button onclick="setColor(this)" class="buttonBlue"></button>
+            <button onclick="setColor(this)" class="buttonYellow"></button>
         </div>
+
+        <form name="submit-to-google-sheet">
+            <input id='timer' name='timer' placeholder="timer">
+            <input id='c1' name='color1' placeholder="color 1 spot">
+            <input id='c2' name='color1' placeholder="color 2 spot">
+            <input id='c3' name='color1' placeholder="color 3 spot">
+            <button type='submit'>Submit</button>
+        </form>
     </body>
 </html>
+<script>
+    var listylist = []
+    var counter=1
+    var c = 0
+    var inputC1 = document.getElementById("c1")
+    var inputC2 = document.getElementById("c2")
+    var inputC3 = document.getElementById("c3")
+
+    //function to change the button color
+    function setColor(id){
+        id.style.backgroundColor='gray'
+
+    }
+    //function to change the timer
+
+    //function to reset everything
+    function reset(){
+        //reset colors
+        document.
+        //reset timer
+
+    }
+    //google sheet script
+
+</script>
