@@ -42,15 +42,22 @@ img{
 } 
 
 .spacing{
-    padding: 1vw;
+    padding: 2.5vw;
 }
 
 .flex-container {
     display: flex;
-    flex-wrap: wrap;
-    background-color: #fff;
+    flex-wrap:wrap;
+    background-color:#003A70;
     padding: 2.5vw;
-    width: 25vw;
+    flex-direction:inherit;
+    
+}
+
+.center-flex{
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 
 
