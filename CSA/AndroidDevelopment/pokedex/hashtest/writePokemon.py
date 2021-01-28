@@ -1,11 +1,7 @@
-try:
-    with open("pokeNames.txt","r") as sourcePokemon:
-        with open("pokeOut.txt","w") as destinationPokemion
-            allPokemon = sourcePokemon.readlines()
-            allPokemonList = allPokemon.split("\n")
+with open("pokeNames.txt","r") as sourcePokemon:
+    with open("pokeOut.txt","w") as destinationPokemion:
+        allPokemon = sourcePokemon.readlines()
+        for pokemon in range(len(allPokemon)):
+            allPokemon[pokemon] = allPokemon[pokemon].replace("\n","")
 
-            for pokemon in range(len(allPokemonList)):
-                destinationPokemion.write("new Pokemon(\""+allPokemonList[pokemon]+"\", (short) "+ pokemon +"),\n")
-
-except:
-    print("No source file with the name \"pokeNames.txt\"")
+            destinationPokemion.write("new Pokemon(\""+allPokemon[pokemon]+"\", (short) "+ str(pokemon) +"),\n")
