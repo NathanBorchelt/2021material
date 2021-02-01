@@ -4,12 +4,12 @@ public class Pokemon {
     private String name;
     private short number;
     private String url;
-    /*
+
     public Pokemon(String name, short number) {
         this.name = name;
         this.number = number;
     }
-    */
+
     public Pokemon(String name, String url){
         this.name = name;
         this.url = url;

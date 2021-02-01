@@ -33,6 +33,10 @@ p1{
     text-align: center;
 }
 
+.scrollingImages img{
+    height: 50vh;
+    width: auto;
+}
 
 img{
     width: 25vw;
@@ -40,6 +44,8 @@ img{
     background-repeat: no-repeat;
     background-size: contain;
 } 
+
+
 
 .spacing{
     padding: 2.5vw;
@@ -55,12 +61,11 @@ img{
 }
 
 .center-flex{
-    align-items: center;
-    justify-content: center;
-    align-content: center;
+    margin: auto;
+    position: relative;           
+    top: 50%;                     
+    transform: translate(0, -50%) ;
 }
-
-
 
 h2{
     font-family: "Times New Roman","Courier New", Courier, monospace;

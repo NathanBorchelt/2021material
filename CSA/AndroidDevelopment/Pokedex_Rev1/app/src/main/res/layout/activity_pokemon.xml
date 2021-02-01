@@ -9,13 +9,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="PokemonName"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:paddingTop="5dp"/>
 
     <TextView
         android:id="@+id/pokemonNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="PokeNumber"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:paddingTop="5dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/type1"
+        android:textAlignment="center"
+        android:paddingTop="5dp"
+        android:text="type1"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/type2"
+        android:textAlignment="center"
+        android:paddingTop="5dp"
+        android:text="type2"/>
 
 </LinearLayout>
