@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <style>
+        .filterDiv {
+            float: left;
+            background-color: #2196F3;
+            color: #FFF;
+            width: 100px;
+            line-height: 100px;
+            text-align: center;
+            margin: 2px;
+            display: none;
+            }
+       ​
+            .show {
+            display: block;
+            }
+       ​
+            .container {
+            margin-top: 20px;
+            overflow: hidden;
+            }
+       ​
+            /* Style the buttons */
+            .btn {
+            border: none;
+            outline: none;
+            padding: 12px 16px;
+            background-color: #F1F1F1;
+            cursor: pointer;
+            }
+       ​
+            .btn:hover {
+            background-color: #DDD;
+            }
+       ​
+            .btn.active {
+            background-color: #666;
+            color: white;
+            }
+    </style>
+
+    
+
+    <body>
+        <h2>Filter div Elements</h2>
+
+        <div id="myBtnContainer">
+            <button class="btn active" onclick="filterSelection('all')">Show All</button>
+            <button class="btn" onclick="filterSelection('light')">Light Side</button>
+            <button class="btn" onclick="filterSelection('dark')">Dark Side</button>
+            <button class="btn" onclick="filterSelection('bounty')">Bounty Hunter</button>
+            <button class="btn" onclick="filterSelection('droid')">Droid</button>
+
+            <button class="btn" onclick="filterSelection('columbia')">Columbia</button>
+            <button class="btn" onclick="filterSelection('isu')">ISU</button>
+            <button class="btn" onclick="filterSelection('murray')">Murray</button>
+            <button class="btn" onclick="filterSelection('rose')">Rose</button>
+            <button class="btn" onclick="filterSelection('walbash')">Walbash</button>
+            <button class="btn" onclick="filterSelection('ivyTech')">Ivy Tech</button>
+        </div>
+        <div class=containter>
+            <div class="filterDiv light isu">Yoda</div>
+            <div class="filterDiv dark droid rose">Grevious</div>
+            <div class="filterDiv light columbia">Kenobi </div>
+            <div class="filterDiv dark bounty droid isu">Darth Maul</div>
+            <div class="filterDiv light bounty murray">Dyn Jarren</div>
+            <div class="filterDiv dark light ivyTech">Jat Jar</div>
+            <div class="filterDiv dark light isu">Greedo</div>
+            <div class="filterDiv light droid columbia">BB-8</div>
+            <div class="filterDiv light dark droid bounty murray">K-2S0</div>
+            <div class="filterDiv dark light droid rose">C-3P0</div>
+            <div class="filterDiv light droid walbash">R2-D2</div>
+            <div class="filterDiv dark bounty isu">Boba Dett</div>
+            <div class="filterDiv columbia">Hunter</div>
+            <div class="filterDiv isu ivyTech">Luke</div>
+            <div class="filterDiv murray">Nathan</div>
+            <div class="filterDiv rose">Forche</div>
+            <div class="filterDiv rose">Caleb</div>
+            <div class="filterDiv walbash">Pat</div>
+        </div>
+    </body>
+    <script>
+        
+        /*
+            by default, the divs need to have all the filters needed
+            we will add/remove the "show" filter if we neeed it
+        */
+        function filterSelection(c){
+            var hashOfFilters = document.getElementsByClassName("filterDiv")
+            console.log("hashOfFilters: ", hashOfFilters)
+            if(c=="all"){c=""}
+            for (var i = 0; i<hashOfFilters.length;i++){
+                console.log("index: "+ i+"\ncharacter: "+hashOfFilters[i].innerHTML)
+                //remove "show" class
+                removeFilterClass(hashOfFilters[i])
+                //check if the filterName you want in in the filter
+                if(hashOfFilters[i].className.includes(c)){
+                    addFilterClass(hashOfFilters[i])
+                }
+                    //add the dive or show the div
+            }
+
+        }
+
+        function addFilterClass(element, showFilter="show"){
+            //all class names for that div
+            
+            var arrayOfPossibleFilters = element.className.split(" ")
+            //if it does not include "show", add it
+            if(!arrayOfPossibleFilters.includes(showFilter)){
+                element.className+=" "+showFilter
+            }
+            console.log("addFilterFunction: ",element.className)
+        }
+
+        function removeFilterClass(filterStringList, showFilter="show"){
+            var arrayOfPossibleFilters = filterStringList.className.split(" ")
+            while(arrayOfPossibleFilters.includes(showFilter)){
+                arrayOfPossibleFilters.splice(arrayOfPossibleFilters.indexOf(showFilter),1)
+            }
+
+            filterStringList.className = arrayOfPossibleFilters.join(" ")
+            console.log("removeFilterFunction: ",filterStringList.className)
+        }
+
+        filterSelection("all")
+
+        var btnContainer = document.getElementById("myBtnContainer")
+        var btns = btnContainer.getElementsByClassName("btn")
+
+        for(var i = 0; i < btns.length; i++){
+            btns[i].addEventListener("click",function(){
+                //each button has an onClick, grab any buttons that have theactive class,
+                var current = document.getElementsByClassName("active")
+                // assuming that only one has the class, replace the className with the " active" to ""
+                current[0].className = current[0].className.replace(" active", "")
+                //needs to update the clicked button to have the active id
+                this.className += " active"
+            })
+        }
+        
+    </script>
+</html>

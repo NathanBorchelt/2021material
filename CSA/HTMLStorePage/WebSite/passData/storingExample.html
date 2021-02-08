@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+        <script>
+            localStorage.clickCount=0
+            function clickCounter(){
+                if(typeof(Storage)!="undefined"){
+                    document.getElementById("name").innerHTML = "localStorage: " + localStorage.getItem("lastname")
+                }
+                if(localStorage.clickCount){
+                    localStorage.clickCount = Number(localStorage.clickCount)+1
+                }
+                else{
+                    localStorage.clickCount=1
+                }
+
+                document.getElementById("number").innerHTML = ("You clicked the button: "+(localStorage.clickCount == 1 ? (localStorage.clickCount+" time") : (localStorage.clickCount+" times")))
+
+            }
+        </script>
+    </head>
+    <body>
+            <p><button onclick="clickCounter()" type="button">Click me ! click Me !</button></p>
+            <div id="name"></div>
+            <div id="number"></div>
+    </body>
+</html> 
