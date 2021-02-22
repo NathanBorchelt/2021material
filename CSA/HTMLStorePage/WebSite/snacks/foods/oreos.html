@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width">
     <title>6 Pack of Oreos</title>
     <link href="../../style.css" rel="stylesheet" type="text/css" />
+    <script src="../order.js"></script>
   </head>
   <body id='mainBackground'>
-    <script src="../../script.js"></script>
     <h2> Quantity</h2><h3>0</h3>
     <h1>Oreos</h1>
     <!--https://wowslider.com/html5-slideshow-luxury-slices-demo.html-->
@@ -15,15 +15,15 @@
     <div id="wowslider-container1">
 	<div class="ws_images">
     <ul>
-		<li><img src="./pictures/oreoCookies.webp" alt="A Package of Oreos" id="wows1_0" class="center"></li>
-        <li><img src="./pictures/oreoInformation.webp" alt ="Oreo Nutritional Information" class="center" id="wows1_1"></li>
-        <li><img src="./pictures/oreoStack.webp" alt="A Stack of Oreos", Split in Two" class="center" id="wows1_2"></li>
-        <li><img src="./pictures/oreoIngre.webp" alt="Oreo Ingredients" class="center" id="wows1_3"></li>
+		<li><img src="../../pictures/oreoCookies.webp" alt="A Package of Oreos" id="wows1_0" class="center"></li>
+        <li><img src="../../pictures/oreoInformation.webp" alt ="Oreo Nutritional Information" class="center" id="wows1_1"></li>
+        <li><img src="../../pictures/oreoStack.webp" alt="A Stack of Oreos, Split in Two" class="center" id="wows1_2"></li>
+        <li><img src="../../pictures/oreoIngre.webp" alt="Oreo Ingredients" class="center" id="wows1_3"></li>
     </ul>        
 	</div>
     </div>
     <ul>
-        <li>Thirty 2.4 oz packs of OREO Chocolate Sandwich Cookies</li>
+        <li>2.4 oz packs of OREO Chocolate Sandwich Cookies</li>
         <li>6 chocolate cookies per snack pack</li>
         <li>Chocolate wafers filled with OREO creme</li>
         <li>Cookie snacks are perfectly dunkable</li>
@@ -80,8 +80,17 @@
             </ul>   
         </details></li>      
     </ul>
-    <h1>Cost <h2> $1.00 </h2></h1>
-    <h1>Go Back <a href="../../index.html">&#x21A9</a></h1>
+    <h1>Cost</h1>
+    <table align="center">
+        <tr>
+            <td>&#36</td>
+            <td id="priceOfItem">1.00</td>
+        </tr>
+    </table>
+
+    <input type="number" id="numberBying" name=pageName() min=0
+
+    <h1><a href="../../index.html">Go Back &#x21A9</a></h1>
     
   </body>
 </html>

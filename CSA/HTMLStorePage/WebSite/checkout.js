@@ -1,10 +1,15 @@
-function produceList(){
-    var allOrder = localStorage.getItem("order")
-    var splitOrder = allOrder.split("\t")
-    var produceTable = "<tr>\n\t"
-    for(var i = 0; i < splitOrder.length; i++){
-        var split = splitOrder[i].split(" ")
-        produceTable += "<td>" + split[0] + "</td>\n"
+function prdcList(){
+    var itemsInOrder = localStorage.getItem("itemsInOrder")
+    var arrayOrder = itemsInOrder.split(" ")
+    var tableHTML = ""
+    for(var itemIndex = 0; itemIndex < arrayOrder.length; itemIndex++){
+        tableHTML += "<tr>"
+        var itemAtIndexInformation = localStorage.getItem(arrayOrder[itemIndex])
+        var arrayItemAtIndexInformaion = itemAtIndexInformation.split(" ")
+        for(var itemInfoIndex = 0; itemInfoIndex < arrayItemAtIndexInformaion.length;itemInfoIndex++){
+            tableHTML +="<td>"+arrayItemAtIndexInformaion[itemInfoIndex]+"</td>"
+        }
+        tableHTML+="</tr>"
     }
-    produceTable += "</tr>"
+    document.getElementById("restOfOrder").innerHTML = tableHTML
 }

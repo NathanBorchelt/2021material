@@ -72,6 +72,12 @@ h2{
     font-size: 15pt;
     color: #789D4A;
 }
+td{
+    font-family: "Times New Roman","Courier New", Courier, monospace;
+    font-size: 15pt;
+    color: #789D4A;
+    font-weight: bold;
+}
 
 h3{
     font-family: "Times New Roman","Courier New", Courier, monospace;
