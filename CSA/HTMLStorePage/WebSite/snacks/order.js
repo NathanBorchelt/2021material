@@ -1,6 +1,6 @@
-function addToOrder(srtName,fullName,quantity){
+function addToOrder(srtName,fullName,quantityId){
     localStorage.setItem("itemsInOrder",localStorage.getItem("itemsInOrder")+" "+srtName)
-    var itemList = fullName+" "+document.getElementById("priceOfItem")+" "+quantity
+    var itemList = fullName+" "+document.getElementById("priceOfItem")+" "+document.getElementById(quantityId)
     localStorage.setItem(srtName,itemList)
 
 }
