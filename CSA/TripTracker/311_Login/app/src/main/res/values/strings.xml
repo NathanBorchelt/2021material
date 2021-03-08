@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TripTracker2021</string>
+    <string name="please_enter_your_email">Please Enter Your Email</string>
+    <string name="please_enter_your_password">Please Enter Your Password</string>
+    <string name="please_enter_your_name">Please Enter Your Name</string>
+    <string name="log_in">Log In</string>
+    <string name="need_to_register">Need To Register?</string>
+    <string name="sign_me_up">Sign Me Up</string>
+    <string name="already_registered">Already Registered?</string>
+</resources>
