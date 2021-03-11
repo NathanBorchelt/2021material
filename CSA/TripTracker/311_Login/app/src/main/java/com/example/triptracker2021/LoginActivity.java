@@ -48,16 +48,15 @@ public class LoginActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
     }
 
-    private class SwitchViewOnClickListener implements View.OnClickListener{
+    private class SwitchViewOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            if(mEnterName.getVisibility()==View.GONE){
+            if (mEnterName.getVisibility() == View.GONE) {
                 mEnterName.setVisibility(View.VISIBLE);
                 mSwitchViewText.setText(R.string.already_registered);
                 mLoginButton.setVisibility(View.GONE);
                 mSignMeUp.setVisibility(View.VISIBLE);
-            }
-            else{
+            } else {
                 mEnterName.setVisibility(View.GONE);
                 mSwitchViewText.setText(R.string.need_to_register);
                 mLoginButton.setVisibility(View.VISIBLE);
@@ -69,7 +68,8 @@ public class LoginActivity extends AppCompatActivity {
             //  login page
         }
     }
-    private class RegisterOnCLickListener implements View.OnClickListener{
+
+    private class RegisterOnCLickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
@@ -77,22 +77,22 @@ public class LoginActivity extends AppCompatActivity {
             String password = mEnterPassword.getText().toString().trim();
             String name = mEnterName.getText().toString().trim();
 
-            char[] specChars = {'!', '@', '#', '$', '%', '&', '*', '-', '_', '~'};
-            char[] lowerChars = new char[26];
-            char[] upperChars = new char[26];
-            char[] numberics = new char[10];
+            String specChars = "!@#$%&*-_";
+            String lowerChars = "";
+            String upperChars = "";
+            String numberics = "";
 
             for (byte i = 0; i < 10; i++) {
-                numberics[i] = (char) (i + 48);
+                numberics += String.valueOf((char) (i + 48));
             }
 
             for (byte i = 0; i < 26; i++) {
-                lowerChars[i] = (char) (i + 97);
-                upperChars[i] = (char) (i + 65);
+                lowerChars += String.valueOf((char) (i + 97));
+                upperChars += String.valueOf((char) (i + 65));
             }
-            byte specLen = (byte) specChars.length;
-            byte numLen = (byte) numberics.length;
-            byte charLen = (byte) lowerChars.length;
+            byte specLen = (byte) specChars.length();
+            byte numLen = (byte) numberics.length();
+            byte charLen = (byte) lowerChars.length();
 
 
             if (userEmail.isEmpty()) {
@@ -104,82 +104,70 @@ public class LoginActivity extends AppCompatActivity {
             } else if (name.isEmpty()) {
                 mEnterName.setError("Please enter a name");
                 mEnterName.requestFocus();
-            } else if (!(userEmail.isEmpty() && password.isEmpty()&&name.isEmpty())) {
-                if (password.length() >= 8) {
-                    for (byte i = 0; i < specLen; i++) {
-                        System.out.println(i);
-                        System.out.println(specChars[i]);
-                        if (password.contains(String.valueOf(specChars[i])) && (i < specLen)) {
-                            for (byte j = 0; j < numLen; j++) {
-                                System.out.println(j);
-                                if (password.contains(String.valueOf(numberics[j])) && (j < numLen)) {
-                                    for (byte k = 0; k < charLen; k++) {
-                                        System.out.println(k);
-                                        if (password.contains(String.valueOf(upperChars[k])) && (k < charLen)) {
-                                            for (byte l = 0; l < charLen; l++) {
-                                                System.out.println(l);
-                                                if (password.contains(String.valueOf(lowerChars[l])) && (l < charLen)) {
-                                                    Toast.makeText(com.example.triptracker2021.LoginActivity.this, "This is a Valid Password", Toast.LENGTH_LONG).show();
-                                                    mFirebaseAuth.createUserWithEmailAndPassword(userEmail,password).addOnCompleteListener(com.example.triptracker2021.LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                                            if(task.isSuccessful()){
-                                                                Toast.makeText(com.example.triptracker2021.LoginActivity.this,"You are Registered",Toast.LENGTH_LONG);
-                                                                startActivity(new Intent(com.example.triptracker2021.LoginActivity.this,com.example.triptracker2021.LoginActivity.class));
-                                                            }
-                                                            else{
-                                                                Toast.makeText(com.example.triptracker2021.LoginActivity.this, "Registration Failed",Toast.LENGTH_LONG).show();
-                                                            }
-                                                        }
-                                                    });
-                                                } else badPassword();
-                                            }
-                                        }
-                                        else badPassword();
-                                    }
-                                }
-                                else badPassword();
+
+            } else if (!(userEmail.isEmpty() && password.isEmpty() && name.isEmpty())) {
+                boolean specVer = false;
+                boolean numVer = false;
+                boolean lowVer = false;
+                boolean upVer = false;
+                boolean lenVer = false;
+                lenVer = mEnterPassword.getText().toString().length() > 7;
+                for (String passwordSingleLetter : mEnterPassword.getText().toString().split("")) {
+                    if (specChars.contains(passwordSingleLetter)) specVer = true;
+                    else if (numberics.contains(passwordSingleLetter)) numVer = true;
+                    else if (lowerChars.contains(passwordSingleLetter)) lowVer = true;
+                    else if (upperChars.contains(passwordSingleLetter)) upVer = true;
+                }
+                if (specVer && numVer && lowVer && upVer && lenVer && true) {
+                    Toast.makeText(com.example.triptracker2021.LoginActivity.this, "This is a Valid Password", Toast.LENGTH_LONG).show();
+                    mFirebaseAuth.createUserWithEmailAndPassword(userEmail, password).addOnCompleteListener(com.example.triptracker2021.LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(com.example.triptracker2021.LoginActivity.this, "You are Registered", Toast.LENGTH_LONG);
+                                startActivity(new Intent(com.example.triptracker2021.LoginActivity.this, com.example.triptracker2021.LoginActivity.class));
+                            } else {
+                                Toast.makeText(com.example.triptracker2021.LoginActivity.this, "Registration Failed", Toast.LENGTH_LONG).show();
                             }
                         }
-                        else badPassword();
-                    }
+                    });
                 }
-                else badPassword();
-            }
-            }
-            public void badPassword(){
-                Toast.makeText(com.example.triptracker2021.LoginActivity.this, "This Is NOT A Valid Password", Toast.LENGTH_LONG).show();
             }
         }
 
-    private class LogInOnClickListener implements View.OnClickListener {
-        private FirebaseAuth.AuthStateListener mAuthStateListener;
-        @Override
-        public void onClick(View view) {
-            String email = mEnterEmail.getText().toString().trim();
-            String password = mEnterPassword.getText().toString().trim();
+        public void badPassword() {
+            Toast.makeText(com.example.triptracker2021.LoginActivity.this, "This Is NOT A Valid Password", Toast.LENGTH_LONG).show();
+        }
+    }
 
-            //need to check to see if all fields are entered, if not, request focus
-            if (email.isEmpty()) {
-                mEnterEmail.setError("Please enter an email id");
-                mEnterEmail.requestFocus();
-            } else if (password.isEmpty()) {
-                mEnterPassword.setError("Please enter a password");
-                mEnterPassword.requestFocus();
-            }
-            else if(!(email.isEmpty()&&password.isEmpty())){
-                mFirebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(com.example.triptracker2021.LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(com.example.triptracker2021.LoginActivity.this, "You are Loged In", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(com.example.triptracker2021.LoginActivity.this, com.example.triptracker2021.TripListActivity.class));
-                        } else {
-                            Toast.makeText(com.example.triptracker2021.LoginActivity.this, "Login  Failed", Toast.LENGTH_LONG).show();
+        private class LogInOnClickListener implements View.OnClickListener {
+            private FirebaseAuth.AuthStateListener mAuthStateListener;
+
+            @Override
+            public void onClick(View view) {
+                String email = mEnterEmail.getText().toString().trim();
+                String password = mEnterPassword.getText().toString().trim();
+
+                //need to check to see if all fields are entered, if not, request focus
+                if (email.isEmpty()) {
+                    mEnterEmail.setError("Please enter an email id");
+                    mEnterEmail.requestFocus();
+                } else if (password.isEmpty()) {
+                    mEnterPassword.setError("Please enter a password");
+                    mEnterPassword.requestFocus();
+                } else if (!(email.isEmpty() && password.isEmpty())) {
+                    mFirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(com.example.triptracker2021.LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(com.example.triptracker2021.LoginActivity.this, "You are Loged In", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(com.example.triptracker2021.LoginActivity.this, com.example.triptracker2021.TripListActivity.class));
+                            } else {
+                                Toast.makeText(com.example.triptracker2021.LoginActivity.this, "Login  Failed", Toast.LENGTH_LONG).show();
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         }
     }
-}
