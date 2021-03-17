@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "436700061288",
+    "project_id": "triptrackerborchelt",
+    "storage_bucket": "triptrackerborchelt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436700061288:android:70659f52b1ba90995a65dd",
+        "android_client_info": {
+          "package_name": "com.example.triptracker2021"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436700061288-djbepf29h6optchc534dq9niu3j8l1je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw7HmMnR7xOGW75DZ0DuFeRHZhRDMZDxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436700061288-djbepf29h6optchc534dq9niu3j8l1je.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
