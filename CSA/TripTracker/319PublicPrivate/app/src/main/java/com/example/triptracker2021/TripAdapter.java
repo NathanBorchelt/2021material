@@ -12,12 +12,10 @@ import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +29,8 @@ import java.util.List;
 public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder> implements Filterable {
 
     private List<Trip> listOfTrips = new ArrayList<>();
-    private DatabaseReference demoRef;
+    private DatabaseReference rootRef;
+    private boolean mPublicTripView = TripListActivity.mPublicView;
 
     public TripAdapter(Context context) {
         Log.d("tripAdapter","new Trip adapter created");
@@ -76,7 +75,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
     @Override
     public void onBindViewHolder(@NonNull TripViewHolder holder, int position) {
         //sort here because onBindViewHolder will run each time that the adapter is reloaded
-        ArrayListSorter.insertionSort(listOfTrips,"ASC");
+        ArrayListSorter.selectionSort(listOfTrips,"DSC");
         Trip current = listOfTrips.get(position);
         holder.textView.setText(current.getName());
         holder.containerView.setTag(current);
@@ -126,7 +125,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
                             switch (menuItem.getItemId()){
                                 case(R.id.menu_item_delete_trip):
                                     Log.d("popups","delete item clicked");
-                                    //TODO need to run a delete function to delete the item
+                                    d
                                     return  true;
                             }
                             return false;
@@ -139,10 +138,13 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
             });
         }
     }
+
+
+
     private void loadTrips() {
         Log.d("TripAdapter","LoadingTrips");
-        demoRef = FirebaseDatabase.getInstance().getReference().child("Trip");
-        demoRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        rootRef = FirebaseDatabase.getInstance().getReference().child("Trip");
+        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listOfTrips.clear();
@@ -155,8 +157,22 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
                     Date startDate = ds.child("startDate").getValue(Date.class);
                     Date endDate = ds.child("startDate").getValue(Date.class);
                     String creator = ds.child("creator").getValue(String.class);
+                    Trip trip;
+                    if(mPublicTripView){
+                        //pull public
+                        trip = new Trip(objectId,name,desc,startDate,endDate,shared,creator);
+                        listOfTrips.add(trip);
+                    }
+                    else{
+                        if(!shared) {
+                            //pull private
+                            trip = new Trip(objectId, name, desc, startDate, endDate, shared, creator);
+                            listOfTrips.add(trip);
+                        }
+                    }
 
-                    listOfTrips.add(new Trip(objectId,name,desc,startDate,endDate,shared,creator));
+
+
                 }
                 notifyDataSetChanged();
             }

@@ -35,6 +35,41 @@ public class ArrayListSorter {
     }
 
     //selection method
+    //https://www.geeksforgeeks.org/selection-sort/
+    public static void selectionSort(List<Trip> list, String sortOrder){
+        List<Trip> sorted = new ArrayList<>();
+        int sortedReachingLen = list.size();
+        if(sortOrder.equals(ASCENDING_ORDER)){
+            for (int i = 0; i < sortedReachingLen-1; i++){
+                // Find the minimum element in unsorted array
+                int min_idx = i;
+                for (int j = i+1; j < sortedReachingLen; j++)
+                    if (list.get(j).compareTo(list.get(min_idx))<0)
+                        min_idx = j;
+
+                // Swap the found minimum element with the first
+                // element
+                Trip temp = list.get(min_idx);
+                list.set(min_idx,list.get(i));
+                list.set(i,temp);
+            }
+        } else{
+            for (int i = 0; i < sortedReachingLen-1; i++){
+                // Find the minimum element in unsorted array
+                int max_idx = i;
+                for (int j = i+1; j < sortedReachingLen; j++)
+                    if (list.get(j).compareTo(list.get(max_idx))>0)
+                        max_idx = j;
+
+                // Swap the found minimum element with the first
+                // element
+                Trip temp = list.get(max_idx);
+                list.set(max_idx,list.get(i));
+                list.set(i,temp);
+            }
+        }
+    }
+
 
     //mergeSort
     public static void mergeSort(ArrayList<Trip> list, String sortOrder) {

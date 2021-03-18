@@ -24,17 +24,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.BreakIterator;
 import java.util.Date;
 import java.util.Random;
 
 public class TripActivity extends AppCompatActivity {
 
+    private static DatabaseReference rootRef;
+    private static Trip mTrip;
     private EditText mNameField;
     private EditText mDescriptionField;
     private CheckBox mPublicCheckBox;
-    private TextView mIDText;
-    private DatabaseReference rootRef;
-    private Trip mTrip;
+    private static TextView mIDText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -195,7 +196,7 @@ public class TripActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void deleteTrip(MenuItem item) {
+    public static  void deleteTrip(MenuItem item) {
         Log.d("TripActivityDelete","Starting to delete trip");
         rootRef = FirebaseDatabase.getInstance().getReference("Trip");
         loadingScreen(item);

@@ -27,12 +27,14 @@ public class TripListActivity extends AppCompatActivity implements SearchView.On
     private RecyclerView recyclerView;
     private TripAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    public static boolean mPublicView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trip_list);
         setTitle("Trip List");
+        mPublicView = getIntent().getBooleanExtra(Trip.EXTRA_TRIP_PUBLIC_VIEW,true);
         recyclerView = findViewById(R.id.recycler_view);
         adapter = new TripAdapter(getApplicationContext());
         layoutManager = new LinearLayoutManager(this);
@@ -63,6 +65,23 @@ public class TripListActivity extends AppCompatActivity implements SearchView.On
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        //toggle between public a nd my(private) trips in the action bar
+        
+        if(mPublicView){
+            // myTrip option is visible
+            menu.findItem(R.id.action_public_trips).setVisible(false);
+            menu.findItem(R.id.action_my_trips).setVisible(true);
+        }
+        else {
+            //public trip is visible
+            menu.findItem(R.id.action_public_trips).setVisible(true);
+            menu.findItem(R.id.action_my_trips).setVisible(false);
+        }
+        return true; //always runs
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         System.out.println(LoginActivity.currentUser.getDisplayName());
         getMenuInflater().inflate(R.menu.menu_trips,menu);
@@ -86,6 +105,7 @@ public class TripListActivity extends AppCompatActivity implements SearchView.On
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent i;
         switch (item.getItemId()){
             case R.id.action_refresh:
                 Log.d("TripListActivity","refresh button");
@@ -106,9 +126,15 @@ public class TripListActivity extends AppCompatActivity implements SearchView.On
                 return true;
             case R.id.action_public_trips:
                 Log.d("TripListActivity","public trips button");
+                i = new Intent(getApplicationContext(), TripListActivity.class);
+                i.putExtra(Trip.EXTRA_TRIP_PUBLIC_VIEW,true);
+                startActivity(i);
                 return true;
             case R.id.action_my_trips:
                 Log.d("TripListActivity","private trips button");
+                i = new Intent(getApplicationContext(), TripListActivity.class);
+                i.putExtra(Trip.EXTRA_TRIP_PUBLIC_VIEW,false);
+                startActivity(i);
                 return true;
         }
         return super.onOptionsItemSelected(item);
