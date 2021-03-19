@@ -196,7 +196,16 @@ public class TripActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static  void deleteTrip(MenuItem item) {
+    public void loadingScreen(MenuItem item){
+        item.setActionView(new ProgressBar(getApplicationContext())); //make the icon spin
+        ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Saving to FireBase");
+        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progress.setIndeterminate(true);
+        progress.show();
+    }
+
+    public void deleteTrip(MenuItem item) {
         Log.d("TripActivityDelete","Starting to delete trip");
         rootRef = FirebaseDatabase.getInstance().getReference("Trip");
         loadingScreen(item);
@@ -228,14 +237,5 @@ public class TripActivity extends AppCompatActivity {
             Toast.makeText(this,"Error Removing"+e,Toast.LENGTH_SHORT).show();
         }
         //merge thread back into our application
-    }
-
-    private void loadingScreen(MenuItem item){
-        item.setActionView(new ProgressBar(getApplicationContext())); //make the icon spin
-        ProgressDialog progress = new ProgressDialog(this);
-        progress.setMessage("Saving to FireBase");
-        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progress.setIndeterminate(true);
-        progress.show();
     }
 }

@@ -12,6 +12,7 @@ import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -125,7 +127,9 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
                             switch (menuItem.getItemId()){
                                 case(R.id.menu_item_delete_trip):
                                     Log.d("popups","delete item clicked");
-                                    d
+                                    deleteTrip((Trip) containerView.getTag());
+                                    TripListActivity tla = new TripListActivity();
+                                    tla.onResume();
                                     return  true;
                             }
                             return false;
@@ -139,7 +143,38 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
         }
     }
 
+    public void deleteTrip(final Trip mTrip) {
+        Log.d("TripActivityDelete","Starting to delete trip");
+        rootRef = FirebaseDatabase.getInstance().getReference("Trip");
+        //create thread to delete form firebase
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Query q = rootRef.child(mTrip.getObjectId());
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        snapshot.getRef().removeValue();
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.e("DelButtonError", error.toString());
+                    }
+                });
+            }
+        });
+
+        thread.start();
+        //start thread
+        try {
+            thread.join();
+        }catch (Exception e){
+            Log.e("DelButtonError", e.toString());
+        }
+        //merge thread back into our application
+
+    }
 
     private void loadTrips() {
         Log.d("TripAdapter","LoadingTrips");
@@ -167,7 +202,9 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
                         if(!shared) {
                             //pull private
                             trip = new Trip(objectId, name, desc, startDate, endDate, shared, creator);
-                            listOfTrips.add(trip);
+                            if(trip.getCreator().equals(LoginActivity.currentUser.getUid())) {
+                                listOfTrips.add(trip);
+                            }
                         }
                     }
 
@@ -183,4 +220,6 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
             }
         });
     }
+
+
 }

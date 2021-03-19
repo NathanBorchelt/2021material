@@ -83,7 +83,7 @@ public class TripListActivity extends AppCompatActivity implements SearchView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        System.out.println(LoginActivity.currentUser.getDisplayName());
+        //System.out.println(LoginActivity.currentUser.getUid());
         getMenuInflater().inflate(R.menu.menu_trips,menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
@@ -101,6 +101,12 @@ public class TripListActivity extends AppCompatActivity implements SearchView.On
     public boolean onQueryTextChange(String newText) {
         adapter.getFilter().filter(newText);
         return false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshThePage();
     }
 
     @Override
@@ -140,7 +146,7 @@ public class TripListActivity extends AppCompatActivity implements SearchView.On
         return super.onOptionsItemSelected(item);
     }
 
-    private void refreshThePage() {
+    public void refreshThePage() {
         recyclerView = findViewById(R.id.recycler_view);
         adapter = new TripAdapter(getApplicationContext());
         layoutManager = new LinearLayoutManager(this);
