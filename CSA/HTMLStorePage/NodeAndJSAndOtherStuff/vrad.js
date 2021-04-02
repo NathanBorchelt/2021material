@@ -1,6 +1,6 @@
 const vmap = '0123456789ABCDEFGHJKLMNPRSTUVWXYZ'
 const base = '34'
-const vin = 'JTHKD5BH0D2170008'
+const vin = 'ZZZZZZZZZZZZZZZZZ'
 var wmi = vmapEncode(vin.substr(0, 3), base)
 var vds = vmapEncode(vin.substr(3, 8), base)
 var ser = vmapEncode(vin.substr(8), base)

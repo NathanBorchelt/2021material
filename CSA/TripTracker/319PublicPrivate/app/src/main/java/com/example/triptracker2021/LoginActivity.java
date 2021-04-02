@@ -82,6 +82,8 @@ public class LoginActivity extends AppCompatActivity {
             String lowerChars = "";
             String upperChars = "";
             String numberics = "";
+            String[] alphabet = lowerChars.split("");
+            boolean torf = true;
 
             for (byte i = 0; i < 10; i++) {
                 numberics += String.valueOf((char) (i + 48));
@@ -105,22 +107,53 @@ public class LoginActivity extends AppCompatActivity {
             } else if (name.isEmpty()) {
                 mEnterName.setError("Please enter a name");
                 mEnterName.requestFocus();
+            }
 
-            } else if (!(userEmail.isEmpty() && password.isEmpty() && name.isEmpty())) {
+            else if (!(userEmail.isEmpty() && password.isEmpty() && name.isEmpty())) {
                 boolean specVer = false;
                 boolean numVer = false;
                 boolean lowVer = false;
                 boolean upVer = false;
                 boolean lenVer = false;
                 lenVer = mEnterPassword.getText().toString().length() > 7;
+                String email = userEmail.toString();
+                String[] splitEmail = email.split("[@._]");
+                boolean emailIsOk = false;
+                //Toast.makeText(com.example.triptracker2021.LoginActivity.this,email,Toast.LENGTH_SHORT).show();
+                while (torf==true||emailIsOk!=true) {
+                    for (int i = 0; i < alphabet.length; i++) {
+                        if (splitEmail[0].contains(alphabet[i])) {
+                            for (int j = 0; j < alphabet.length; j++) {
+                                if (splitEmail[1].contains(alphabet[j])) {
+                                    for (int k = 0; k < email.length(); k++) {
+                                        if (email.indexOf("@") == email.lastIndexOf("@")) {
+                                            if (splitEmail.length >= 2) {
+                                                emailIsOk = true;
+                                            }
+                                        } else {
+                                            torf = false;
+                                        }
+                                    }
+                                } else {
+                                    torf = false;
+                                }
+                            }
+                        } else {
+                            //Toast.makeText(com.example.triptracker2021.LoginActivity.this,"Registration failed",Toast.LENGTH_SHORT).show();
+                            torf = false;
+                        }
+                    }
+                }
+                torf=true;
+
                 for (String passwordSingleLetter : mEnterPassword.getText().toString().split("")) {
                     if (specChars.contains(passwordSingleLetter)) specVer = true;
                     else if (numberics.contains(passwordSingleLetter)) numVer = true;
                     else if (lowerChars.contains(passwordSingleLetter)) lowVer = true;
                     else if (upperChars.contains(passwordSingleLetter)) upVer = true;
                 }
-                if (specVer && numVer && lowVer && upVer && lenVer && true) {
-                    Toast.makeText(com.example.triptracker2021.LoginActivity.this, "This is a Valid Password", Toast.LENGTH_LONG).show();
+                if (specVer && numVer && lowVer && upVer && lenVer && emailIsOk && true) {
+                    //Toast.makeText(com.example.triptracker2021.LoginActivity.this, "This is a Valid Password", Toast.LENGTH_LONG).show();
                     mFirebaseAuth.createUserWithEmailAndPassword(userEmail, password).addOnCompleteListener(com.example.triptracker2021.LoginActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {

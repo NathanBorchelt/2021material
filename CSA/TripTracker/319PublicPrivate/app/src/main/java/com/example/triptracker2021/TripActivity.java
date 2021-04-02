@@ -205,6 +205,8 @@ public class TripActivity extends AppCompatActivity {
         progress.show();
     }
 
+
+
     public void deleteTrip(MenuItem item) {
         Log.d("TripActivityDelete","Starting to delete trip");
         rootRef = FirebaseDatabase.getInstance().getReference("Trip");
@@ -217,7 +219,9 @@ public class TripActivity extends AppCompatActivity {
                 q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        snapshot.getRef().removeValue();
+                        if(mTrip.getCreator().equals(LoginActivity.currentUser)) {
+                            snapshot.getRef().removeValue();
+                        }
                     }
 
                     @Override

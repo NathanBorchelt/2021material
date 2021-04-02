@@ -1,5 +1,6 @@
 package com.example.triptracker2021;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +39,34 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
     public TripAdapter(Context context) {
         Log.d("tripAdapter","new Trip adapter created");
         loadTrips();
+    }
+    private void loadTrips() {
+        Log.d("TripAdapter","LoadingTrips");
+        rootRef = FirebaseDatabase.getInstance().getReference().child("Trip");
+        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listOfTrips.clear();
+                for(DataSnapshot ds : snapshot.getChildren()) {
+                    //Log.d("testinginfo",ds.toString());
+                    String name = ds.child("name").getValue(String.class);
+                    String desc = ds.child("description").getValue(String.class);
+                    String objectId = ds.child("objectId").getValue(String.class);
+                    boolean shared = ds.child("shared").getValue(Boolean.class);
+                    Date startDate = ds.child("startDate").getValue(Date.class);
+                    Date endDate = ds.child("startDate").getValue(Date.class);
+                    String creator = ds.child("creator").getValue(String.class);
+
+                    listOfTrips.add(new Trip(objectId,name,desc,startDate,endDate,shared,creator));
+                }
+                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("TripAdapter","Error loading tips");
+            }
+        });
     }
 
     @Override
@@ -119,18 +149,22 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
             //loading up a menu to give del optio
             containerView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public boolean onLongClick(View view) {
+                public boolean onLongClick(final View view) {
+                    final Trip current = (Trip) containerView.getTag();
                     PopupMenu pop = new PopupMenu(containerView.getContext(),itemView);
                     pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem menuItem) {
                             switch (menuItem.getItemId()){
                                 case(R.id.menu_item_delete_trip):
-                                    Log.d("popups","delete item clicked");
-                                    deleteTrip((Trip) containerView.getTag());
-                                    TripListActivity tla = new TripListActivity();
-                                    tla.onResume();
-                                    return  true;
+                                    if(((Trip)containerView.getTag()).getCreator().equals(LoginActivity.currentUser.getUid())) {
+                                        Log.d("popups", "delete item clicked");
+                                        deleteTrip(menuItem,current);
+                                        loadingScreen(view);
+                                        Intent i = new Intent(view.getContext(),TripListActivity.class);
+                                        view.getContext().startActivity(i);
+                                        return true;
+                                    }
                             }
                             return false;
                         }
@@ -143,8 +177,19 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
         }
     }
 
-    public void deleteTrip(final Trip mTrip) {
-        Log.d("TripActivityDelete","Starting to delete trip");
+    public void loadingScreen(View view){
+        //item.setActionView(new ProgressBar(getApplicationContext())); //make the icon spin
+        ProgressDialog progress = new ProgressDialog(view.getContext());
+        progress.setMessage("Saving to FireBase");
+        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progress.setIndeterminate(true);
+        progress.show();
+    }
+
+    public void deleteTrip(MenuItem item, final Trip mTrip) {
+        Log.d("TripDeletePopup","Starting to delete trip");
+
+
         rootRef = FirebaseDatabase.getInstance().getReference("Trip");
         //create thread to delete form firebase
         Thread thread = new Thread(new Runnable() {
@@ -154,12 +199,15 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
                 q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        snapshot.getRef().removeValue();
+                        if(mTrip.getCreator().equals(LoginActivity.currentUser)) {
+                            Log.d("delconfirmuser","deleting if you are creator");
+                            snapshot.getRef().removeValue();
+                        }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Log.e("DelButtonError", error.toString());
+                        Log.e("dellongerror",error.toString());
                     }
                 });
             }
@@ -169,56 +217,12 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
         //start thread
         try {
             thread.join();
+            Log.d("TripActivityDel", "Deleted" + mTrip.getObjectId());
         }catch (Exception e){
-            Log.e("DelButtonError", e.toString());
+            //Toast.makeText(this,"Error Removing"+e,Toast.LENGTH_SHORT).show();
         }
         //merge thread back into our application
 
-    }
-
-    private void loadTrips() {
-        Log.d("TripAdapter","LoadingTrips");
-        rootRef = FirebaseDatabase.getInstance().getReference().child("Trip");
-        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listOfTrips.clear();
-                for(DataSnapshot ds : snapshot.getChildren()) {
-                    //Log.d("testinginfo",ds.toString());
-                    String name = ds.child("name").getValue(String.class);
-                    String desc = ds.child("description").getValue(String.class);
-                    String objectId = ds.child("objectId").getValue(String.class);
-                    boolean shared = ds.child("shared").getValue(Boolean.class);
-                    Date startDate = ds.child("startDate").getValue(Date.class);
-                    Date endDate = ds.child("startDate").getValue(Date.class);
-                    String creator = ds.child("creator").getValue(String.class);
-                    Trip trip;
-                    if(mPublicTripView){
-                        //pull public
-                        trip = new Trip(objectId,name,desc,startDate,endDate,shared,creator);
-                        listOfTrips.add(trip);
-                    }
-                    else{
-                        if(!shared) {
-                            //pull private
-                            trip = new Trip(objectId, name, desc, startDate, endDate, shared, creator);
-                            if(trip.getCreator().equals(LoginActivity.currentUser.getUid())) {
-                                listOfTrips.add(trip);
-                            }
-                        }
-                    }
-
-
-
-                }
-                notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("TripAdapter","Error loading tips");
-            }
-        });
     }
 
 

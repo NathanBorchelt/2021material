@@ -2,9 +2,14 @@ const vmap = '0123456789ABCDEFGHJKLMNPRSTUVWXYZ'
 const base = '34'
 
 function encodeingCheck(vin) {
-    var decodeWMI = vmapDecode(vmapEncode(vin.substring(0, 3), 34), 34, 3)
-    var decodeVDS = vmapDecode(vmapEncode(vin.substring(3, 8), 34), 34, 5)
-    var decodeSER = vmapDecode(vmapEncode(vin.substring(8), 34), 34, 9)
+    var enWmi = vmapEncode(vin.substring(0, 3), 34)
+    var enVds = vmapEncode(vin.substring(3, 8), 34)
+    var enSer = vmapEncode(vin.substring(8), 34)
+    var c  = ", "
+    console.log('INSERT INTO Vins VALUES('+index+c+enWmi+c+enVds+c+enSer+");")
+    var decodeWMI = vmapDecode(enWmi, 34, 3)
+    var decodeVDS = vmapDecode(enVds, 34, 5)
+    var decodeSER = vmapDecode(enSer, 34, 9)
     var frakenstiened = decodeWMI + decodeVDS + decodeSER
     if (frakenstiened === vin) {
         return true
@@ -67,17 +72,17 @@ function vmapDecode(vrad, base, length) {
     return out
 }
 
-var file = "vins.csv"
+var file = "vin100.csv"
 
 var fs = require('fs');
 const lineReader = require('line-reader')
-var lines = fs.readFileSync(file, 'utf8').split('\r\n').filter(Boolean)
+var lines = fs.readFileSync(file, 'utf8').split('\n').filter(Boolean)
 
 var validVins = []
 var thisVin
 for (var index = 0; index < lines.length; index++) {
     thisVin = encodeingCheck(lines[index])
-    console.log("VIN: ", lines[index], "\nValid Check: ", thisVin)
+    //console.log("VIN: ", lines[index], "\nValid Check: ", thisVin)
     validVins.push(thisVin)
 }
 var success = 0
@@ -90,5 +95,5 @@ validVins.forEach(element => {
         fails++
     }
 })
-
-console.log("Successful VINs: ", success, "\nFailed VINs: ", fails, "\nSuccess Rate: ", (success / total)*100, "%\n Fail Rate: ", (fails / total)*100,"%")
+console.log("Done")
+//console.log("Successful VINs: ", success, "\nFailed VINs: ", fails, "\nSuccess Rate: ", (success / total)*100, "%\n Fail Rate: ", (fails / total)*100,"%")
