@@ -59,6 +59,26 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
 
                     listOfTrips.add(new Trip(objectId,name,desc,startDate,endDate,shared,creator));
                 }
+
+                if(mPublicTripView){
+                    for(short i = 0; i < listOfTrips.size(); ++i){
+                        if(!listOfTrips.get(i).isShared()){
+                            listOfTrips.remove(i);
+                        }
+                    }
+                }
+                else{
+                    for(short i = 0; i < listOfTrips.size(); ++i){
+                        if(!LoginActivity.currentUser.getUid().equals(listOfTrips.get(i).getCreator())) {
+                            listOfTrips.remove(i);
+                        }
+                        if(listOfTrips.get(i).isShared()) {
+                            listOfTrips.remove(i);
+                        }
+
+                    }
+                }
+
                 notifyDataSetChanged();
             }
 
@@ -199,7 +219,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
                 q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(mTrip.getCreator().equals(LoginActivity.currentUser)) {
+                        if(mTrip.getCreator().equals(LoginActivity.currentUser.getUid())) {
                             Log.d("delconfirmuser","deleting if you are creator");
                             snapshot.getRef().removeValue();
                         }
